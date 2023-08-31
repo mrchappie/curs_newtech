@@ -1,0 +1,160 @@
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+#header {
+  width: 100%;
+  height: 200px;
+
+  display: grid;
+  place-items: center;
+
+  background-image: url('https://picsum.photos/1500/1000');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#header h1 {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  padding: 1em;
+
+  border-radius: 0.5em;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 60px;
+
+  background-color: black;
+  z-index: 1;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0;
+}
+
+nav ul li {
+  padding: 1.5em;
+}
+
+nav ul li:hover {
+  background-color: rgba(128, 128, 128, 0.3);
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+main {
+  padding-bottom: 500px;
+}
+
+section {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+
+  border-bottom: 1px solid black;
+}
+
+section > header {
+  flex: 1 0 30%;
+  border-right: 1px solid black;
+}
+
+section > header h2 {
+  background-color: peru;
+  color: white;
+  padding: 1em 0;
+
+  position: sticky;
+  top: 60px;
+  left: 0;
+}
+
+section > div {
+  flex: 1 0 70%;
+  background-color: white;
+}
+
+article > header h3 {
+  background-color: peru;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+}
+
+article > header {
+  position: sticky;
+  top: 60px;
+  left: 0;
+}
+
+article img {
+  height: 200px;
+}
+
+.support {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  margin: 0 10px 10px 0;
+}
+
+.support p {
+  background-color: aquamarine;
+  padding: 1em;
+  border-radius: 1em;
+  margin-right: 20px;
+}
+
+.chat-bubble {
+  background-color: aquamarine;
+  padding: 1em;
+  position: relative;
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+}
+
+.chat-bubble span {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  background-color: red;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+
+  display: grid;
+  place-items: center;
+}

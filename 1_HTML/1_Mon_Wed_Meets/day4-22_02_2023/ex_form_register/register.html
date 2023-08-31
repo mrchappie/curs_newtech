@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create an account</title>
+  </head>
+  <body>
+    <form action="register.html">
+      <fieldset>
+        <legend>Create profile</legend>
+        <input type="text" name="username" placeholder="Username" required />
+        <br />
+        <br />
+        <input type="email" name="email" placeholder="Email" required />
+        <br />
+        <br />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          maxlength="8"
+          required
+        />
+        <br />
+        <br />
+        <input
+          type="password"
+          name="password"
+          placeholder="Confirm password"
+          maxlength="8"
+          required
+        />
+        <br />
+        <br />
+
+        <fieldset>
+          <legend>Optional</legend>
+          <label for="date-of-bird">Date of birth: </label>
+          <input type="date" name="date-of-bird" id="date-of-bird" />
+          <br />
+          <br />
+          <br />
+          <textarea
+            name="about-us"
+            id="about-us"
+            cols="30"
+            rows="10"
+            placeholder="How did you hear about us?"
+          ></textarea>
+          <br />
+          <br />
+          <label for="rating">Rate us</label>
+          <input
+            type="range"
+            name="rating"
+            id="rating"
+            min="1"
+            max="10"
+            step="1"
+          />
+        </fieldset>
+        <br />
+        <br />
+        <button>Create</button>
+        <br />
+        <br />
+        <fieldset>
+          <legend>Already have an account?</legend>
+          <a href="login.html">Login</a>
+        </fieldset>
+      </fieldset>
+    </form>
+  </body>
+</html>

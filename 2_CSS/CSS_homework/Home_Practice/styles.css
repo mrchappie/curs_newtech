@@ -1,0 +1,178 @@
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+section.class__practice {
+  min-height: 50vh;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  place-items: center;
+
+  outline: 1px dotted red;
+  padding-block: 40px;
+  overflow: hidden;
+}
+
+section.class__practice > header {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-weight: 900;
+
+  padding: 8px 16px;
+  border-radius: 10px;
+}
+
+section.class__practice > ul {
+  padding-block: 20px;
+  max-width: 700px;
+}
+
+section.class__practice > article {
+  width: 50%;
+  height: 300px;
+  padding: 10px;
+
+  outline: 1px solid black;
+
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+/*  */
+/* Styles per section */
+/*  */
+
+.bg__red {
+  background-color: red;
+}
+
+.bg__green {
+  background-color: green;
+}
+
+/* Global styles */
+.blue {
+  color: blue;
+}
+
+.yellow {
+  color: rgb(255, 255, 0);
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: #ff0000;
+}
+
+/*  Home Practice - CSS HW 1 */
+/*  */
+.title {
+  text-decoration: underline;
+  font-style: italic;
+}
+
+.subtitle {
+  text-decoration: underline;
+  font-style: italic;
+}
+
+.mypara {
+  text-align: center;
+}
+/*  Home Practice - CSS HW 2 */
+/*  */
+.hw__two__title {
+  border: 5px solid blue;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.hw__two__paragraph {
+  text-align: center;
+  border: 3px dotted green;
+}
+
+/*  Home Practice - CSS HW 3 */
+/*  */
+.hw__three__section article {
+  min-height: 600px;
+}
+
+.hw__three {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  border: 2px solid red;
+  padding: 10px;
+}
+
+.hw__three p {
+  text-align: center;
+  width: 300px;
+  height: 200px;
+
+  border: 2px solid green;
+}
+
+/*  Home Practice - CSS HW 4 */
+/*  */
+.hw__four {
+  padding: 20px;
+}
+
+.hw__four li {
+  background-color: #ee7969;
+  margin: 5px;
+}
+
+/*  Home Practice - CSS HW 5 */
+/*  */
+.hw__five__section article {
+  min-height: 600px;
+}
+
+.hw__five > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin-bottom: 40px;
+
+  position: relative;
+
+  border: 2px dotted black;
+}
+
+.hw__five > div > div {
+  width: 100px;
+  aspect-ratio: 1;
+}
+
+.hw__five > div:nth-of-type(1) > div:nth-child(2) {
+  position: static;
+}
+
+.hw__five > div:nth-of-type(2) > div:nth-child(2) {
+  position: relative;
+  top: 20px;
+  left: 20px;
+}
+
+.hw__five > div:nth-of-type(3) > div:nth-child(2) {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}

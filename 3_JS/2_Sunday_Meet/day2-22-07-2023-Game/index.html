@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="time__left" id="time__left">5</div>
+      <button id="start" class="start">Start Game</button>
+      <div class="press__random__key">
+        Next key is: <span id="press__random__key"></span>
+      </div>
+      <button id="w" class="key">W</button>
+      <div class="bottom__row">
+        <button id="a" class="key">A</button>
+        <button id="s" class="key">S</button>
+        <button id="d" class="key">D</button>
+      </div>
+      <div class="counter__display">
+        <div class="count">w: <span id="w__value">0</span></div>
+        <div class="count">a: <span id="a__value">0</span></div>
+        <div class="count">s: <span id="s__value">0</span></div>
+        <div class="count">d: <span id="d__value">0</span></div>
+      </div>
+      <div class="pressed__key">
+        Last pressed key: <span id="pressed__key">w</span>
+      </div>
+    </div>
+  </body>
+</html>

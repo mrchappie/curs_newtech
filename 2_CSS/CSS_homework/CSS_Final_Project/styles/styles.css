@@ -1,0 +1,32 @@
+/* Global styles */
+@import url('./globalStyles.css');
+/* --------- */
+/* Navigation */
+@import url('./navigationStyles.css');
+/* --------- */
+/* Section 1 */
+@import url('./section_one.css');
+/* --------- */
+/* Section 2 */
+@import url('./section_two.css');
+/* --------- */
+/* Section 3 */
+@import url('./section_three.css');
+/* --------- */
+/* Section 4 */
+@import url('./section_four.css');
+/* --------- */
+/* Section 5 */
+@import url('./section_five.css');
+/* --------- */
+/* Section 6 */
+@import url('./section_six.css');
+/* --------- */
+/* Section 7 */
+@import url('./section_seven.css');
+/* --------- */
+/* Section 8 */
+@import url('./section_eight.css');
+/* --------- */
+/* Footer */
+@import url('./footerStyles.css');

@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 200px 1fr;
+  place-items: stretch;
+  margin: 1em;
+  gap: 1em;
+}
+
+.tests > fieldset {
+  height: 100%;
+}
+
+#image-before,
+#image-after {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 10px solid black;
+  border-radius: 5px;
+  object-fit: contain;
+  background-color: lightgray;
+}
+
+.arrow {
+  object-fit: contain;
+  padding: 1em;
+}
+
+.tests,
+.after {
+  grid-column: 3;
+}
+
+.before,
+.after {
+  text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .tests,
+  .after {
+    grid-column: 1;
+  }
+
+  .arrow,
+  .after,
+  #image-after {
+    order: 2;
+  }
+
+  .arrow {
+    rotate: 90deg;
+    height: 50px;
+  }
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Change second to red 😱</h1>
+    <button onclick="changeSecondItemToRed()">Change second to red</button>
+    <ul id="friends-list">
+      <li>hi 😇</li>
+      <li>by 👺</li>
+      <li>dy 👻</li>
+    </ul>
+    <script>
+      function changeSecondItemToRed() {
+        document.querySelector('#friends-list > li:nth-child(2)').style.color =
+          'red';
+      }
+    </script>
+  </body>
+</html>

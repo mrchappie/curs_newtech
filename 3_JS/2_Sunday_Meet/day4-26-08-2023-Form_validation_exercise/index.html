@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <form>
+      <div class="description">
+        <h3>Sign Up</h3>
+        <p>It's free only takes a minute</p>
+      </div>
+      <label for="firstname">
+        First Name
+        <input type="text" id="firstname" class="firstname" required />
+        <p class="error" id="firstname_error">EROARE</p>
+      </label>
+      <label for="lastname">
+        Last Name
+        <input type="text" id="lastname" class="lastname" required />
+        <p class="error" id="lastname_error">EROARE</p>
+      </label>
+      <label for="email">
+        Email
+        <input type="email" id="email" class="email" />
+        <p class="error" id="email_error">EROARE</p>
+      </label>
+      <label for="password">
+        Password
+        <input type="password" id="password" class="password" required />
+        <p class="error" id="password_error">EROARE</p>
+      </label>
+      <label for="confirm_password">
+        Confirm Password
+        <input
+          type="password"
+          id="confirm_password"
+          class="confirm_password"
+          required
+        />
+        <p class="error" id="confirm_password_error">EROARE</p>
+      </label>
+      <label for="age">
+        Age
+        <input type="number" id="age" class="age" required />
+        <p class="error" id="age_error">EROARE</p>
+      </label>
+
+      <button id="submit"><b> SUBMIT</b></button>
+    </form>
+  </body>
+</html>

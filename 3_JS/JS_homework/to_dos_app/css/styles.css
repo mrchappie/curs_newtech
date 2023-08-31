@@ -1,0 +1,203 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: monospace;
+  font-size: 20px;
+}
+
+ul {
+  list-style: none;
+}
+
+.app__container .tasks > div > ul li .delete__btn, .app__container .tasks > div > ul li, .app__container .tasks > div > ul, .app__container .tasks, .app__container .inputs > div, .app__container .inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  background-color: rgb(255, 255, 255);
+}
+
+.app__container {
+  -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  color: black;
+  padding: 30px;
+  min-height: 80%;
+  margin-block: 100px;
+  max-width: 1200px;
+  border-radius: 20px;
+}
+.app__container .heading {
+  text-align: center;
+  font-size: 30px;
+}
+.app__container .inputs {
+  padding-block: 40px;
+  -webkit-column-gap: 40px;
+     -moz-column-gap: 40px;
+          column-gap: 40px;
+}
+.app__container .inputs > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 40%;
+          flex: 1 0 40%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 500px;
+}
+.app__container .inputs > div input {
+  outline: none;
+  text-indent: 10px;
+  width: 100%;
+  border: 1px solid black;
+  -webkit-transition: scale 0.25s ease-in-out;
+  transition: scale 0.25s ease-in-out;
+}
+.app__container .inputs > div input:hover {
+  border: 1px solid green;
+}
+.app__container .inputs > div > * {
+  width: 100%;
+  height: 40px;
+}
+.app__container .inputs .add__tasks button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: scale 0.25s ease-in-out;
+  transition: scale 0.25s ease-in-out;
+}
+.app__container .inputs .add__tasks button:hover {
+  scale: 0.99;
+  -webkit-box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+.app__container .inputs .search__tasks button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: scale 0.25s ease-in-out;
+  transition: scale 0.25s ease-in-out;
+}
+.app__container .inputs .search__tasks button:hover {
+  scale: 0.99;
+  -webkit-box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+.app__container .tasks {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding-block: 40px;
+  -webkit-column-gap: 40px;
+     -moz-column-gap: 40px;
+          column-gap: 40px;
+  color: white;
+}
+.app__container .tasks > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 40%;
+          flex: 1 0 40%;
+}
+.app__container .tasks > div > h2 {
+  background-color: rgb(0, 0, 0);
+  margin-block: 30px;
+  padding-block: 15px;
+  text-transform: uppercase;
+  text-indent: 50px;
+  font-size: 25px;
+  border-radius: 10px;
+}
+.app__container .tasks > div > ul {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 20px;
+  width: 500px;
+}
+.app__container .tasks > div > ul li {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  padding-block: 10px;
+  border-radius: 10px;
+}
+.app__container .tasks > div > ul li .task__content {
+  -webkit-box-flex: 6;
+      -ms-flex: 6 0 250px;
+          flex: 6 0 250px;
+}
+.app__container .tasks > div > ul li .task__content h2 {
+  font-size: 25px;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+.app__container .tasks > div > ul li .task__content p {
+  font-style: italic;
+  text-indent: 10px;
+}
+.app__container .tasks > div > ul li .task__content p:first-letter {
+  text-transform: capitalize;
+}
+.app__container .tasks > div > ul li .done__btn {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 50px;
+          flex: 1 0 50px;
+}
+.app__container .tasks > div > ul li .done__btn > input {
+  margin-inline: 20px;
+  -webkit-transform: scale(2);
+          transform: scale(2);
+}
+.app__container .tasks > div > ul li .delete__btn {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 50px;
+          flex: 1 0 50px;
+  cursor: pointer;
+}
+.app__container .tasks > div > ul li .delete__btn img {
+  width: 40px;
+}
+.app__container .tasks .done__items__list li h2 {
+  text-decoration: line-through;
+  text-decoration-color: black;
+}
+.app__container .tasks .done__items__list li p {
+  text-decoration: line-through;
+  text-decoration-color: black;
+}
+
+@media (width < 1000px) {
+  .app__container .inputs {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .app__container .tasks {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}

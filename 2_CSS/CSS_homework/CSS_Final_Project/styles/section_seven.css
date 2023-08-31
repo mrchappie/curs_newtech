@@ -1,0 +1,107 @@
+.courses {
+  background-color: var(--white);
+
+  padding: 200px;
+}
+
+.courses article h1 {
+  font-size: 40px;
+  font-family: var(--second-font);
+  margin-bottom: 40px;
+  color: var(--heading-text-color);
+  text-align: center;
+}
+
+.courses .cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.courses .card {
+  padding: 20px;
+
+  background: linear-gradient(to bottom, var(--linear-grad-third));
+
+  border: 1px solid var(--offers-border-color);
+  border-radius: 20px;
+
+  transition: scale 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+.courses .card:hover {
+  scale: 1.1;
+}
+
+.courses .card.best__course {
+  padding: 30px;
+}
+
+.courses .card.best__course .best {
+  color: var(--recommended-text-color);
+  font-weight: 700;
+  margin: 0 auto;
+}
+
+.courses .card h2 {
+  color: var(--white);
+}
+
+.courses .card h4 {
+  color: var(--white);
+}
+
+.courses .card h4 span {
+  color: var(--price-text-color);
+}
+
+.what__you__get {
+  padding: 10px 0;
+}
+
+.what__you__get .course__option {
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.courses .card .sign__up__button {
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 20px;
+
+  transition: background-color 0.5s ease-in-out;
+}
+
+.courses .card .sign__up__button:hover {
+  background-color: var(--button-bg);
+}
+
+@media only screen and (max-width: 900px) {
+  .courses .cards {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .courses {
+    padding: 20px;
+  }
+
+  .courses article h1 {
+    font-size: 20px;
+  }
+
+  .courses .cards {
+    flex-direction: column;
+  }
+
+  .courses article span.border {
+    margin-bottom: 40px;
+  }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Dos App</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="main.js" type="module" defer></script>
+  </head>
+  <body>
+    <div class="app__container">
+      <h1 class="heading">My To-dos</h1>
+      <section class="inputs">
+        <div class="add__tasks">
+          <input
+            type="text"
+            name="todo__title"
+            id="todo__title"
+            placeholder="Task title..."
+          />
+          <input
+            type="text"
+            name="todo__description"
+            id="todo__description"
+            placeholder="Task description..."
+          />
+          <button id="add__task__btn" class="add__task__btn">Add task</button>
+        </div>
+        <div class="search__tasks">
+          <input
+            type="text"
+            name="todo__search__item"
+            id="todo__search__item"
+            placeholder="Search item..."
+          />
+          <button id="todo__search__btn" class="todo__search__btn">
+            Search
+          </button>
+          <button id="todo__clear__btn" class="todo__clear__btn">Clear</button>
+        </div>
+      </section>
+      <section class="tasks">
+        <div class="to__do__tasks">
+          <h2>To Do<span>'s</span></h2>
+          <ul id="to__do__tasks__list" class="to__do__tasks__list"></ul>
+        </div>
+        <div class="done__items">
+          <h2>Done</h2>
+          <ul id="done__items__list" class="done__items__list"></ul>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

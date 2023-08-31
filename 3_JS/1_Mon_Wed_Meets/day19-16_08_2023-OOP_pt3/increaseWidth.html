@@ -1,0 +1,38 @@
+<!-- L_AM FACUT VARZA, NU TE UITA -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="code/width-ex.js"></script>
+    <style>
+      p {
+        background-color: red;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="para">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. At, voluptas.
+    </p>
+    <br />
+    <button onclick="updateWidth()">Increase width</button>
+
+    <script>
+      const para = document.getElementById('para');
+      let pxValue = para.style.width;
+      console.log(para.style.width);
+      function updateWidth() {
+        // Adauga 10px la latimea paragrafului
+        // Daca latimea este >= 200px, resetati la 100px
+        if (para.style.width <= 200) {
+          console.log(para.style);
+          pxValue += 10;
+          para.style.width += `${para.style.width + pxValue}px`;
+        }
+      }
+    </script>
+  </body>
+</html>

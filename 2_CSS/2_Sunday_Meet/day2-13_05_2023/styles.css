@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-color: #fefefe;
+  --input-background-color: #fcfcfc;
+  --primary-color: #242d4a;
+  --secundary-color: #9f9f9f;
+  --img-url: url('https://images.pexels.com/photos/254069/pexels-photo-254069.jpeg?auto=compress&cs=tinysrgb&w=600');
+}
+[data-theme='dark'] {
+  --background-color: #212121;
+  --input-background-color: #151515;
+  --primary-color: #fefefe;
+  --secundary-color: #fcfcfc;
+  --img-url: url('https://images.pexels.com/photos/16380570/pexels-photo-16380570.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+}
+
+body {
+  background-color: lightgray;
+  display: grid;
+  place-items: center;
+}
+.toggle__theme {
+  border: none;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  font-size: 10px;
+}
+.app__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  overflow: hidden;
+
+  background-color: var(--background-color);
+
+  max-width: 500px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.app__container__left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 10px;
+
+  background-color: var(--background-color);
+  color: var(--secundary-color);
+}
+
+.app__container__title {
+  color: var(--primary-color);
+  max-width: 220px;
+
+  text-align: center;
+}
+
+.app__container__description {
+  max-width: 250px;
+
+  padding: 10px;
+
+  font-size: 12px;
+  text-align: center;
+}
+
+.app__container__left input {
+  background-color: var(--input-background-color);
+  color: var(--primary-color);
+  border: 1px solid rgb(240, 238, 238);
+  border-radius: 6px;
+  outline: none;
+
+  padding: 8px 6px;
+  font-size: 8px;
+
+  margin-bottom: 4px;
+
+  width: 300px;
+}
+
+.app__container__submit {
+  padding: 8px 6px;
+  margin-top: 6px;
+
+  border: none;
+  border-radius: 6px;
+
+  font-size: 8px;
+  color: var(--background-color);
+
+  background-color: var(--primary-color);
+  width: 300px;
+}
+
+.app__container__right {
+  width: 150px;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-image: var(--img-url);
+}

@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  row-gap: 5px;
+}
+
+.key {
+  width: 100px;
+  aspect-ratio: 1;
+  border: 2px solid black;
+  background: transparent;
+  border-radius: 10px;
+
+  font-size: 25px;
+
+  cursor: pointer;
+}
+
+.counter__display {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.count {
+  font-size: 25px;
+}
+
+.pressed__key {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.press__random__key {
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.start {
+  background-color: transparent;
+  padding: 10px 20px;
+}

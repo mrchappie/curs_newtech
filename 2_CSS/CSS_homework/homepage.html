@@ -1,0 +1,86 @@
+<!-- This file is a menu for all CSS exercises / projects -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        gap: 20px;
+
+        overflow: hidden;
+      }
+
+      ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      li {
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+
+        text-align: center;
+
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      a {
+        width: max-content;
+        display: inline-block;
+        color: black;
+        font-family: monospace;
+        font-size: 30px;
+
+        text-decoration: none;
+        padding: 20px 30px;
+      }
+
+      li:hover {
+        box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      ul:hover li:not(:hover) {
+        opacity: 0.4;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <a href="./Class_practice/index.html" target="_blank"
+          >Class Practice DIY - CSS
+        </a>
+      </li>
+      <li>
+        <a href="./Rolling_exercise/index.html" target="_blank">
+          Rolling Exercise - CSS
+        </a>
+      </li>
+      <li>
+        <a href="./Home_practice/index.html" target="_blank"
+          >Home Practice - CSS
+        </a>
+      </li>
+      <li>
+        <a href="./CSS_Final_Project/index.html" target="_blank"
+          >🏆 Final Module Project - CSS
+        </a>
+      </li>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,2 @@
+# curs_newtech
+ 

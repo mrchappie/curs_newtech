@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      ul {
+        display: flex;
+        /* align-items: center; */
+        /* justify-content: center; */
+
+        margin: 0;
+        padding: 0;
+        position: relative;
+      }
+
+      nav {
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      ul li {
+        padding: 10px 20px;
+        margin-left: 35px;
+      }
+
+      li a {
+        color: white;
+        text-decoration: none;
+      }
+
+      li a:hover {
+        color: green;
+      }
+
+      ul li::marker {
+        content: '💯';
+        color: black;
+      }
+      /*  */
+
+      /* .login {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      } */
+
+      /*  */
+      h1 {
+        display: none;
+      }
+
+      section {
+        width: 100%;
+        height: 100vh;
+      }
+
+      section:nth-child(1) {
+        background-color: chartreuse;
+      }
+      section:nth-child(2) {
+        background-color: wheat;
+      }
+      section:nth-child(1) {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My Ingredients</h1>
+
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <ul>
+          <li class="login"><a href="#">Log out</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="home"></section>
+      <section id="about"></section>
+      <section id="contact"></section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+body {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+.container {
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 20px;
+
+  width: max-content;
+}
+.display {
+  height: 60px;
+  width: 200px;
+
+  background-color: lightcoral;
+}
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+
+  margin-top: 10px;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo Editor</title>
+    <link rel="stylesheet" href="photo-editor.css" />
+    <script src="photo-editor.js" defer></script>
+  </head>
+  <body>
+    <h1>Photo Editor</h1>
+    <div class="container">
+      <fieldset class="instr-container">
+        <legend>Instructions:</legend>
+        <ol>
+          <li>
+            Select a picture using the file type input<br />
+            * You can pretty much any image file, but to avoid waiting you can
+            start with the images in the <b>testImages/</b> folder
+          </li>
+          <li>Select a filter to apply using the filter select</li>
+          <li>Click apply filter and wait for the "After" image to update</li>
+          <li>
+            You can check your implementation as well
+            <ol>
+              <li>
+                Select a test using the test select at the bottom of the page
+              </li>
+              <li>
+                Click "Run test" and check the console to see the output<br />
+                * Tests that apply filters, may take some time to complete
+              </li>
+              <li>
+                You should see a green text starting with "PASSED" if your
+                implementation is correct<br />
+                or a red text starting with "FAILED" if the test produced
+                incorrect results
+              </li>
+            </ol>
+          </li>
+        </ol>
+      </fieldset>
+
+      <form class="tests" onsubmit="applySelectedFilter(event)">
+        <fieldset>
+          <legend>Controls</legend>
+          <label for="imagePicker">Choose an image</label><br />
+          <input
+            accept="image/*"
+            type="file"
+            name="image"
+            id="imagePicker"
+            onchange="onImageSelected(this.files[0])"
+          />
+          <br />
+          <br />
+          <label for="filterPicker">Filter</label><br />
+          <select name="filter" id="filterPicker">
+            <option value="boxBlur">Box blur</option>
+            <option value="gaussianBlur">Gaussian blur</option>
+            <option value="edge0">Edge detection 0</option>
+            <option value="edge1">Edge detection 1</option>
+            <option value="edge2">Edge detection 2</option>
+            <option value="sharpen">Sharpen</option>
+            <option value="emboss">Emboss</option>
+            <option value="topSobel">Top sobel</option>
+            <option value="bottomSobel">Bottom sobel</option>
+            <option value="leftSobel">Left sobel</option>
+            <option value="rightSobel">Right sobel</option>
+            <option value="grayscale">Grayscale</option>
+            <option value="sepia">Sepia</option>
+          </select>
+          <br />
+          <input type="submit" value="Apply filter" />
+          <br />
+          <br />
+          <label for="testPicker">Test</label><br />
+          <select name="test" id="testPicker">
+            <option value="all">All tests</option>
+            <option value="step1">STEP 1: PixelData.getNeighbours</option>
+            <option value="step2">STEP 2: Pixel.fromKernelFilter</option>
+            <option value="step3">STEP 3: Pixel.fromColorFilter</option>
+            <option value="blur">STEP 4: Apply GAUSSIAN BLUR filter</option>
+            <option value="sharpen">STEP 4: Apply SHARPEN filter</option>
+            <option value="emboss">STEP 4: Apply EMBOSS filter</option>
+            <option value="edge2">STEP 4: Apply EDGE DETECTION 2 filter</option>
+            <option value="bottomSobel">
+              STEP 4: Apply BOTTOM SOBEL filter
+            </option>
+            <option value="grayscale">STEP 4: Apply GRAYSCALE filter</option>
+            <option value="sepia">STEP 4: Apply SEPIA filter</option>
+          </select>
+          <br />
+          <button onclick="runTest(event)">Run test</button>
+        </fieldset>
+      </form>
+
+      <img src="" alt="" id="image-before" />
+      <img src="arrow.png" alt="" class="arrow" />
+      <canvas id="image-after"></canvas>
+      <h2 class="before">BEFORE</h2>
+      <h2 class="after">AFTER</h2>
+    </div>
+  </body>
+</html>

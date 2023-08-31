@@ -1,0 +1,131 @@
+.contact__us__section {
+  background-color: var(--white);
+
+  padding: 300px;
+
+  position: relative;
+}
+
+.contact__us__section article h1 {
+  font-size: 40px;
+  font-family: var(--second-font);
+  margin-bottom: 40px;
+  color: var(--heading-text-color);
+}
+
+.contact__section__illustration {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.contact__section__illustration:hover {
+  transform: scale(1.1);
+}
+
+.contact__us__form {
+  justify-self: flex-start;
+  padding-left: 100px;
+  z-index: 1;
+  gap: 40px;
+}
+
+.contact__us__inputs {
+  gap: 10px;
+}
+
+.contact__us__inputs input {
+  width: 300px;
+  padding: 5px 10px;
+
+  background-color: var(--white);
+  border: 2px solid var(--input-text-area-color);
+  border-radius: 5px;
+}
+
+.contact__us__textarea {
+  position: relative;
+}
+
+.contact__us__textarea textarea {
+  background-color: var(--white);
+  border: 2px solid var(--input-text-area-color);
+  border-radius: 5px;
+
+  padding: 5px 10px;
+}
+
+.contact__form__button {
+  background: linear-gradient(to right, var(--submit-button-bg));
+  padding: 10px 80px;
+  border: none;
+  border-radius: 40px;
+
+  position: absolute;
+  top: 110%;
+
+  transition: transform 0.25s ease-in-out;
+}
+
+.contact__form__button:hover {
+  transform: scaleX(0.7);
+}
+
+.contact__us__section .whatsapp_btn {
+  bottom: -20px;
+  left: 20px;
+}
+
+.contact__us__section .whatsapp_btn:hover {
+  scale: 1.1;
+}
+
+@media (width<1500px) {
+  .contact__section__illustration {
+    opacity: 0.25;
+    z-index: 0;
+  }
+
+  .contact__us__form {
+    justify-self: center;
+    padding: 0;
+  }
+}
+
+@media (width<1000px) {
+  .contact__section__illustration {
+    display: none;
+  }
+
+  .contact__us__form {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .contact__section__illustration {
+    display: none;
+  }
+
+  .contact__us__section {
+    padding: 100px 0;
+    margin-bottom: 100px;
+  }
+
+  .contact__us__form {
+    flex-direction: column;
+  }
+
+  .contact__us__inputs {
+    margin: 0 auto;
+  }
+
+  .contact__us__form {
+    justify-self: center;
+  }
+
+  .contact__us__section .whatsapp_btn {
+    bottom: -120px;
+  }
+}

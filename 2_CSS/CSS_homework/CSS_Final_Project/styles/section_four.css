@@ -1,0 +1,61 @@
+.how__works {
+  background-color: var(--white);
+  row-gap: 100px;
+  padding: 150px 0;
+}
+
+.how__works article h1 {
+  font-size: 40px;
+  font-family: var(--second-font);
+  margin-bottom: 40px;
+  color: var(--heading-text-color);
+}
+
+.how__works .cards {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-4-columns), 200px);
+  gap: 100px;
+}
+
+.how__works .cards .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.how__works .cards .card .image {
+  background: linear-gradient(to bottom, var(--disc-bg));
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+
+  position: relative;
+
+  box-shadow: 5px 5px 10px var(--disc-shadow-color);
+
+  transition: transform 0.25s ease-in-out;
+}
+
+.how__works .cards .card .image img:hover {
+  transform: scaleY(-1) rotate(180deg);
+}
+
+.how__works .cards .card .image span {
+  position: absolute;
+  top: -15px;
+  right: 30px;
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--number-text-color);
+  background-color: var(--white);
+}
+
+.how__works .cards .card p {
+  text-align: center;
+  margin-top: 20px;
+
+  border: 2px dotted var(--number-text-color);
+}

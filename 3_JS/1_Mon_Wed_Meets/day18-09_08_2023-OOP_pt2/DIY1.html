@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Please add friends 💕</h1>
+    <input type="text" id="friend" placeholder="add friend" />
+    <button onclick="addFriend()">Add friend</button>
+    <ul id="myFriends"></ul>
+  </body>
+  <script>
+    const ulEl = document.getElementById('myFriends');
+    const input = document.getElementById('friend');
+
+    function addFriend() {
+      const listEl = document.createElement('li');
+      listEl.textContent = input.value;
+      ulEl.append(listEl);
+      input.value = '';
+    }
+  </script>
+</html>

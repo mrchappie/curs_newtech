@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/recipe.css" />
+  </head>
+  <body>
+    <h1>Recipe</h1>
+    <h2>Description</h2>
+
+    <p class="description">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex porro quasi
+      amet eveniet facilis earum, tenetur harum atque aliquid id vitae eligendi
+      accusantium recusandae. Quis impedit commodi voluptates in exercitationem
+      odit accusamus ipsam iusto beatae dolorum eligendi cumque itaque error
+      <span class="interesting">vero corporis</span>, fugit illo ad praesentium,
+      sunt cum nesciunt. Consequuntur, necessitatibus ex. Ipsam omnis nobis
+      tenetur iure magni. Enim sapiente maxime assumenda reiciendis dolorum!
+      Veniam maiores quod officia laborum, maxime officiis laboriosam fugiat
+      velit iure error voluptates consectetur assumenda in beatae provident
+      repellendus similique quos, odit est distinctio a tempore sit expedita?
+      Maiores cum fugit nisi eaque dolor dolore sint!
+    </p>
+
+    <h2>Ingredients</h2>
+    <p>Not too many, good stuff here.</p>
+    <ul>
+      <li class="mandatory">Pasta</li>
+      <li class="mandatory">Shrimp</li>
+      <li class="mandatory">Garlic</li>
+      <li class="optional">Basil</li>
+      <li class="optional">Cognac</li>
+    </ul>
+
+    <h2>Time</h2>
+    <p>It takes about <span>30 minutes</span>.</p>
+
+    <h2>Grocery list</h2>
+    <table border="1" cellpadding="10">
+      <tr>
+        <th></th>
+        <th>Quantity</th>
+        <th>Price (kg)</th>
+      </tr>
+      <tr class="mandatory">
+        <td>Pasta</td>
+        <td>150g</td>
+        <td>30</td>
+      </tr>
+      <tr class="mandatory">
+        <td>Shrimp</td>
+        <td>50g</td>
+        <td>60</td>
+      </tr>
+      <tr class="mandatory">
+        <td>Garlic</td>
+        <td>5g</td>
+        <td>10</td>
+      </tr>
+      <tr class="optional">
+        <td>Basil</td>
+        <td>3g</td>
+        <td>60</td>
+      </tr>
+      <tr class="optional">
+        <td>Cognac</td>
+        <td>5000g</td>
+        <td class="expensive">600</td>
+      </tr>
+    </table>
+
+    <form action="">
+      <fieldset>
+        <legend>Feedback</legend>
+        <input type="text" name="name" id="" value="Name" required />
+        <br />
+        <input type="radio" name="rating" id="" required="required" />1<input
+          type="radio"
+          name="rating"
+          id=""
+          required="required"
+        />2<input type="radio" name="rating" id="" required="required" />3<input
+          type="radio"
+          name="rating"
+          id=""
+          required="required"
+        />4<input
+          type="radio"
+          name="rating"
+          id=""
+          required="required"
+          checked
+        />5
+        <br />
+        <textarea name="comment" id="comment" cols="30" rows="10">
+Comment...</textarea
+        >
+        <br />
+        <input type="submit" value="Submit" />
+      </fieldset>
+    </form>
+  </body>
+</html>

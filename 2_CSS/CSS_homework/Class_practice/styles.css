@@ -1,0 +1,233 @@
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+section.class__practice {
+  min-height: 50vh;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  place-items: center;
+
+  outline: 1px dotted red;
+  padding-block: 40px;
+  overflow: hidden;
+}
+
+section.class__practice > header {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-weight: 900;
+
+  padding: 8px 16px;
+  border-radius: 10px;
+}
+
+section.class__practice > ul {
+  padding-block: 20px;
+  max-width: 700px;
+}
+
+section.class__practice > article {
+  width: 50%;
+  height: 300px;
+  padding: 10px;
+
+  outline: 1px solid black;
+
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+/*  */
+/* Styles per section */
+/*  */
+
+/* Global styles */
+.blue {
+  color: blue;
+}
+
+.yellow {
+  color: rgb(255, 255, 0);
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: #ff0000;
+}
+
+/* Class Practice - DIY 1 - Intro */
+/*  */
+
+/* Class Practice - DIY 2 - Colors */
+/*  */
+
+/* Class Practice - DIY 3 - Background */
+/*  */
+.repeating__background {
+  border: 3px solid red;
+  height: 200px;
+  width: 100%;
+  background-image: url('https://picsum.photos/100');
+}
+
+/* Class Practice - DIY 4 - Border */
+/*  */
+.border__div {
+  border: 4px solid red;
+  padding: 8px 16px;
+}
+
+.border__paragraph {
+  text-align: center;
+  border: dotted black;
+
+  border-top-width: 2px;
+  border-right-width: 20px;
+  border-bottom-width: 6px;
+  border-left-width: 15px;
+}
+
+/* Class Practice - DIY 5 - Margin */
+/*  */
+.margin__div {
+  border: solid;
+  margin-left: 50px;
+}
+
+.margin__title {
+  border: 8px groove red;
+  border-radius: 15px;
+  width: max-content;
+
+  margin: 0 auto;
+}
+
+.margin__paragraph {
+  border: 5px dotted;
+  margin-left: inherit;
+  margin-top: 8px;
+}
+
+/* Class Practice - DIY 6 - Text */
+/*  */
+.text__title {
+  text-decoration: underline;
+  text-transform: capitalize;
+  text-shadow: 2px 2px 5px orange;
+  letter-spacing: 3px;
+  /* I did'n use text-align:center on title because I've centered all elements inside parent on line 42 */
+}
+
+.text__paragraph {
+  word-spacing: -3px;
+  text-indent: 75px;
+}
+
+/* Class Practice - DIY 7 - Height and Width */
+/*  */
+.height__width__div {
+  width: 40px;
+  height: 80px;
+  background-color: pink;
+}
+
+/* Class Practice - DIY 8 - Fonts */
+/*  */
+.fonts__div {
+  font-family: Arial;
+}
+
+/* Class Practice - DIY 9 - Links */
+/*  */
+.link__anchor {
+  text-decoration: none;
+}
+
+.link__anchor:hover,
+.link__anchor:active {
+  color: red;
+}
+/* Class Practice - DIY 10 - Tables */
+/*  */
+table {
+  border: 3px solid red;
+}
+
+table td {
+  padding: 5px;
+}
+
+table tr:nth-child(odd) {
+  color: blue;
+}
+/* Class Practice - DIY 11 - Lists */
+/*  */
+.list__section ::marker {
+  color: red;
+  font: 40px;
+}
+/* Class Practice - DIY 12 - Position */
+/*  */
+.position__center {
+  aspect-ratio: 1;
+  color: white;
+  background-color: red;
+
+  padding: 5px;
+  display: grid;
+  place-items: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.position__corner {
+  aspect-ratio: 1;
+  color: white;
+  background-color: green;
+
+  padding: 5px;
+  display: grid;
+  place-items: center;
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+/* Class Practice - DIY 13 - Display */
+/*  */
+.display__list li {
+  display: inline;
+}
+
+.display__none[type='checkbox']:checked + h1 {
+  display: none;
+}
+
+.opacity__zero[type='checkbox']:checked + h1 {
+  opacity: 0;
+}
+/* Class Practice - DIY 14 - Align */
+/*  */
+
+.align__div {
+  width: 50%;
+  text-align: center;
+  border: 1px solid blue;
+  /* I did'n align the div in the middle because I've centered all elements inside parent on line 42 */
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      table,
+      td,
+      th {
+        border: 2px solid black;
+      }
+
+      th:nth-child(1) {
+        border: none;
+      }
+
+      td,
+      th {
+        padding: 10px 20px;
+      }
+
+      tr:target {
+        background-color: mediumaquamarine;
+      }
+
+      col:target {
+        background-color: pink;
+      }
+
+      form {
+        width: 300px;
+      }
+
+      input:focus-visible,
+      select:focus-visible {
+        background-color: greenyellow;
+      }
+
+      fieldset > fieldset:focus-within {
+        border-color: greenyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Part 1 -->
+    <table>
+      <colgroup>
+        <col />
+        <col id="col1" />
+        <col id="col2" />
+        <col id="col3" />
+      </colgroup>
+      <tr>
+        <th></th>
+        <th><a href="#col1">Header 1</a></th>
+        <th><a href="#col2">Header 2</a></th>
+        <th><a href="#col3">Header 3</a></th>
+      </tr>
+      <tr id="row1">
+        <td><a href="#row1">Row 1</a></td>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+        <td>Cell 3</td>
+      </tr>
+      <tr id="row2">
+        <td><a href="#row2">Row 2</a></td>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+        <td>Cell 3</td>
+      </tr>
+      <tr id="row3">
+        <td><a href="#row3">Row 3</a></td>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+        <td>Cell 3</td>
+      </tr>
+    </table>
+
+    <!-- Part 2 -->
+
+    <form
+      action=""
+      id="form"
+      onsubmit="form.action='#'+entity.value+number.value"
+    >
+      <fieldset>
+        <legend>Highlight</legend>
+        <fieldset>
+          <legend>Entity type</legend>
+          <select name="options" id="entity">
+            <option value="---">---</option>
+            <option value="row">Row</option>
+            <option value="col">Column</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <legend>Id (number)</legend>
+          <input
+            type="number"
+            name="number"
+            id="number"
+            value=""
+            min="1"
+            max="3"
+            step="1"
+          />
+        </fieldset>
+        <button
+          type="button
+        "
+        >
+          Highlight
+        </button>
+      </fieldset>
+    </form>
+  </body>
+</html>

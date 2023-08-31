@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.container {
+  background-color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 20px;
+}
+
+.box {
+  flex: 1 0 10%;
+  height: 200px;
+  position: relative;
+  background-color: green;
+}
+
+.inside-box {
+  width: 20%;
+  height: 100%;
+  background-color: red;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  transition: left 1s cubic-bezier(1, 0.01, 0.18, 0.9);
+}
+
+/* forwards animation */
+.container:hover .box:nth-child(1) .inside-box {
+  left: 80%;
+  transition-delay: 0s;
+}
+
+.container:hover .box:nth-child(2) .inside-box {
+  left: 80%;
+  transition-delay: 1s;
+}
+
+.container:hover .box:nth-child(3) .inside-box {
+  left: 80%;
+  transition-delay: 2s;
+}
+
+/* backwards animation */
+.box:nth-child(1) .inside-box {
+  transition-delay: 2s;
+}
+
+.box:nth-child(2) .inside-box {
+  transition-delay: 1s;
+}
+
+.box:nth-child(3) .inside-box {
+  transition-delay: 0s;
+}
