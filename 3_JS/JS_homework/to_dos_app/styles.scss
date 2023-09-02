@@ -42,7 +42,8 @@ body {
     padding-block: 40px;
     column-gap: 40px;
 
-    > div {
+    > .add__tasks,
+    .search__tasks {
       flex: 1 0 40%;
       @extend %flex-center;
       flex-direction: column;
@@ -50,7 +51,7 @@ body {
       margin-bottom: 20px;
       width: 500px;
 
-      input {
+      > input {
         outline: none;
         text-indent: 10px;
         width: 100%;
@@ -104,7 +105,8 @@ body {
     column-gap: 40px;
     color: white;
 
-    > div {
+    > .to__do__tasks,
+    .done__items {
       flex: 1 0 40%;
       > h2 {
         background-color: rgba(0, 0, 0, 1);
