@@ -1,0 +1,35 @@
+//   e.preventDefault();
+  //   if (firstName.value.length < 3) {
+  //     firstNameError.style.visibility = 'visible';
+  //   } else {
+  //     firstNameError.style.visibility = 'hidden';
+  //   }
+  //   if (lastName.value.length < 3) {
+  //     lastNameError.style.visibility = 'visible';
+  //   } else {
+  //     lastNameError.style.visibility = 'hidden';
+  //   }
+  //   console.log(password.value);
+  //   console.log(confirmPassword.value);
+
+  //   if (
+  //     password.value.length < 4 &&
+  //     confirmPassword.value.length < 4 &&
+  //     password.value != confirmPassword.value
+  //   ) {
+  //     passwordError.style.visibility = 'visible';
+  //     confirmPasswordError.style.visibility = 'visible';
+  //     passwordError.textContent = 'ERROR';
+  //     confirmPasswordError.textContent = 'ERROR';
+  //   }
+
+  //   if (
+  //     password.value.length >= 4 &&
+  //     confirmPassword.value.length >= 4 &&
+  //     password.value === confirmPassword.value
+  //   ) {
+  //     passwordError.style.visibility = 'visible';
+  //     confirmPasswordError.style.visibility = 'visible';
+  //     passwordError.textContent = 'Password ok';
+  //     confirmPasswordError.textContent = 'Password ok';
+  //   }

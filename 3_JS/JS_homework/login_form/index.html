@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <form>
+      <div id="log__in" class="log__in">
+        <div class="description">
+          <h3>Log In</h3>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <label for="email__login">
+          Email
+          <input type="email" id="email__login" class="email__login" />
+          <p class="error" id="email__login_error">EROARE</p>
+        </label>
+        <label for="password__login">
+          Password
+          <input type="password" id="password__login" class="password__login" />
+          <p class="error" id="password__login_error">EROARE</p>
+        </label>
+        <button id="log__in__btn">Log In</button>
+      </div>
+      <div id="sign__up">
+        <div class="description">
+          <h3>Sign Up</h3>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <label for="firstname">
+          First Name
+          <input
+            name="firstname"
+            type="text"
+            id="firstname"
+            class="firstname"
+          />
+          <p class="error" id="firstname_error">EROARE</p>
+        </label>
+        <label for="lastname">
+          Last Name
+          <input name="lastname" type="text" id="lastname" class="lastname" />
+          <p class="error" id="lastname_error">EROARE</p>
+        </label>
+        <label for="email">
+          Email
+          <input name="email" type="email" id="email" class="email" />
+          <p class="error" id="email_error">EROARE</p>
+        </label>
+        <label for="password">
+          Password
+          <input name="password" type="text" id="password" class="password" />
+          <p class="error" id="password_error">EROARE</p>
+        </label>
+        <label for="confirm_password">
+          Confirm Password
+          <input
+            name="confirm_password"
+            type="text"
+            id="confirm_password"
+            class="confirm_password"
+          />
+          <p class="error" id="confirm_password_error">EROARE</p>
+        </label>
+        <button id="submit"><b>SUBMIT</b></button>
+      </div>
+      <a type="button" id="show__log__in" class="show__log__in"
+        >Already have an account?</a
+      >
+    </form>
+  </body>
+</html>
