@@ -3,6 +3,10 @@
 
 import userTasks from './script/state.js';
 
+//
+// ----------------------------- DOM ELEMENTS DECLARATION -----------------------------
+//
+
 const taskTitle = document.getElementById('todo__title');
 const taskDescription = document.getElementById('todo__description');
 const searchQuery = document.getElementById('todo__search__item');
@@ -13,6 +17,10 @@ const clearSearchBtn = document.getElementById('todo__clear__btn');
 
 const todoListEl = document.getElementById('to__do__tasks__list');
 const doneListEl = document.getElementById('done__items__list');
+
+//
+// ----------------------------- HELPER FUNCTIONS -----------------------------
+//
 
 /**
  * The function handleLocalStorage() saves the userTasks array to the localStorage as a JSON string.
@@ -149,16 +157,6 @@ function insertTaskInDOMOnLoad() {
   });
 }
 
-/* The `window.addEventListener('load', () => { insertTaskInDOMOnLoad(); });` code is adding an event
-listener to the `window` object for the `load` event. When the `load` event is triggered, it calls
-the `insertTaskInDOMOnLoad()` function. This function is responsible for retrieving tasks from local
-storage, clearing the task lists, and inserting the tasks into the appropriate DOM elements. By
-adding this event listener, the `insertTaskInDOMOnLoad()` function will be executed once all the
-resources on the page have finished loading. */
-window.addEventListener('load', () => {
-  insertTaskInDOMOnLoad();
-});
-
 /**
  * The `addTask` function adds a new task with a title and description to the user's todo list.
  * @param title - The title parameter is a string that represents the title of the task.
@@ -199,13 +197,46 @@ function removeTask(id, elemParent) {
   handleLocalStorage();
 }
 
+//
+// ----------------------------- EVENT LISTENERS -----------------------------
+//
+
+/* The `window.addEventListener('load', () => { insertTaskInDOMOnLoad(); });` code is adding an event
+listener to the `window` object for the `load` event. When the `load` event is triggered, it calls
+the `insertTaskInDOMOnLoad()` function. This function is responsible for retrieving tasks from local
+storage, clearing the task lists, and inserting the tasks into the appropriate DOM elements. By
+adding this event listener, the `insertTaskInDOMOnLoad()` function will be executed once all the
+resources on the page have finished loading. */
+window.addEventListener('load', () => {
+  insertTaskInDOMOnLoad();
+});
+
 /* The code `addTaskBtn.addEventListener('click', () => { addTask(taskTitle.value,
 taskDescription.value); taskTitle.value = ''; taskDescription.value = ''; });` is adding an event
 listener to the `addTaskBtn` element. When the button is clicked, the callback function is executed. */
 addTaskBtn.addEventListener('click', () => {
-  addTask(taskTitle.value, taskDescription.value);
-  taskTitle.value = '';
-  taskDescription.value = '';
+  const title = taskTitle.value;
+  const description = taskDescription.value;
+
+  if (title && description) {
+    addTask(title, description);
+    taskTitle.value = '';
+    taskDescription.value = '';
+  } else {
+    if (!title) {
+      taskTitle.style.border = '2px solid red';
+      taskTitle.addEventListener('focus', () => {
+        taskTitle.style.border = '1px solid black';
+      });
+    }
+    if (!description) {
+      taskDescription.style.border = '2px solid red';
+
+      taskDescription.addEventListener('focus', () => {
+        taskDescription.style.border = '1px solid black';
+      });
+    }
+  }
 });
 
 /* The `searchTaskBtn.addEventListener('click', () => { ... })` code adds an event listener to the
@@ -213,6 +244,13 @@ addTaskBtn.addEventListener('click', () => {
 searchTaskBtn.addEventListener('click', () => {
   /* This code is performing a search functionality based on the user's input query. */
   const query = searchQuery.value.toLowerCase();
+  if (!query) {
+    searchQuery.style.border = '2px solid red';
+    searchQuery.addEventListener('focus', () => {
+      searchQuery.style.border = '1px solid black';
+    });
+    return;
+  }
 
   todoListEl.innerHTML = '';
   doneListEl.innerHTML = '';
@@ -251,6 +289,6 @@ insertTaskInDOMOnLoad(); });` adds an event listener to the `clearSearchBtn` ele
 button is clicked, the callback function is executed. */
 clearSearchBtn.addEventListener('click', () => {
   searchQuery.value = '';
-
+  searchQuery.style.border = '1px solid black';
   insertTaskInDOMOnLoad();
 });
