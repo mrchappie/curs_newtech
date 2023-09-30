@@ -1,0 +1,62 @@
+@use './utils/globalClasses' as *;
+
+.app__body {
+  .app__container {
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .homepage__content {
+    padding-block: 20px;
+    .search__shift {
+    }
+
+    .shifts__table {
+      margin-block: 20px;
+      &__header {
+        ul {
+          @extend %flex-row;
+
+          gap: 10px;
+          li {
+            @extend %flex-row;
+            width: 150px;
+            height: 60px;
+            background-color: bisque;
+          }
+        }
+      }
+
+      &__list {
+        @extend %flex-column;
+        margin-block: 20px;
+        gap: 20px;
+
+        ul {
+          @extend %flex-row;
+          padding: 10px;
+          transition: 0.5s ease;
+
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+          }
+
+          gap: 10px;
+          li {
+            @extend %flex-row;
+            width: 150px;
+            height: 50px;
+            background-color: whitesmoke;
+          }
+        }
+      }
+
+      &__footer {
+        ul {
+          @extend %flex-row;
+          justify-content: space-evenly;
+        }
+      }
+    }
+  }
+}

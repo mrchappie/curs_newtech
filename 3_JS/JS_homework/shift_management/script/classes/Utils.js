@@ -1,3 +1,5 @@
+import routes from '../dataBase/routes.js';
+
 class Utils {
   generateId() {
     const { v4: uuidv4 } = window.uuid;
@@ -59,9 +61,40 @@ class Utils {
     }
   }
 
-  redirectToNewPage(path, pageRef) {
-    location.href = location.origin + `${path}/${pageRef}.html`;
+  redirectToNewPage(path, pageRef, shiftId) {
+    location.href =
+      location.origin +
+      `${path}/${pageRef}.html${shiftId ? '?shiftId=' + shiftId : ''}`;
     // location.replace(location.origin + `${path}/${pageRef}.html`);
+  }
+
+  createShift(shift, parentEl) {
+    const ulEl = document.createElement('ul');
+    ulEl.classList.add('shifts__table__shift');
+    ulEl.id = shift.shiftId;
+
+    for (const key in shift) {
+      if (key != 'shiftId') {
+        const liEl = document.createElement('li');
+        liEl.textContent = shift[key];
+        ulEl.append(liEl);
+      }
+    }
+
+    ulEl.addEventListener('click', () => {
+      this.editShift(ulEl.id);
+    });
+
+    parentEl.append(ulEl);
+  }
+
+  editShift(shiftId) {
+    // console.log(shiftId);
+    this.redirectToNewPage(
+      routes.addNewShift[0],
+      routes.addNewShift[1],
+      shiftId
+    );
   }
 }
 

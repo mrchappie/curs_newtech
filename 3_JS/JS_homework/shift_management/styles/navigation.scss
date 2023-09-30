@@ -1,0 +1,24 @@
+@use './utils/globalClasses' as *;
+
+.navigation {
+  @extend %flex-row;
+  justify-content: space-between;
+
+  &__links {
+    ul {
+      @extend %flex-row;
+
+      a {
+        background-color: antiquewhite;
+        padding: 15px 15px;
+
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__account {
+    @extend %flex-row;
+    gap: 10px;
+  }
+}

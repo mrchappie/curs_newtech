@@ -10,28 +10,19 @@ class HandleLocalStorage {
 
   updateLoggedUser(loggedUserId) {
     this.usersDataBase.loggedUser = loggedUserId;
-    // this.usersDataBase.users = [
-    //   ...this.usersDataBase.users,
-    //   ...this.retriveUsers().users,
-    // ];
-    // this.updateUsers();
-  }
-
-  retriveLoggedUser() {
-    return JSON.parse(localStorage.getItem('shiftAppUsers'));
   }
 
   retriveUsers() {
     return JSON.parse(localStorage.getItem('shiftAppUsers'));
   }
 
-  retrieveShifts() {
-    return JSON.parse(localStorage.getItem('shiftAppUsersShifts'));
-  }
-
   updateUsers(user, data = this.usersDataBase) {
     if (user) this.usersDataBase.users.push(user);
     localStorage.setItem('shiftAppUsers', JSON.stringify(data));
+  }
+
+  retrieveShifts() {
+    return JSON.parse(localStorage.getItem('shiftAppUsersShifts'));
   }
 
   updateShifts(data = this.shiftsDataBase) {

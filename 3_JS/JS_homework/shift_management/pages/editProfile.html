@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GuardianNet - Edit Profile</title>
+
+    <script type="module" src="../script/editProfile.js" defer></script>
+    <script type="module" src="../script/navigation.js" defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <link rel="stylesheet" href="../css/globalStyles.css" />
+    <link rel="stylesheet" href="../css/navigation.css" />
+    <link rel="stylesheet" href="../css/editProfile.css" />
+  </head>
+  <body class="app__body">
+    <div class="app__container">
+      <header class="navigation">
+        <div class="navigation__logo">
+          <h1>GuardianNet</h1>
+        </div>
+        <nav class="navigation__links">
+          <ul>
+            <li><a href="./homePage.html">My Shifts</a></li>
+            <li><a href="./addNewShift.html">Add Shift</a></li>
+            <li><a href="./editProfile.html">Edit Profile</a></li>
+          </ul>
+        </nav>
+        <div class="navigation__account">
+          <div id="navigation__account__greeting">Hello <span></span></div>
+          <div class="navigation__account__profile">
+            <img src="https://picsum.photos/50" alt="" />
+          </div>
+          <button id="logOut">Log out</button>
+        </div>
+      </header>
+      <main id="edit__profile" class="edit__profile">
+        <form id="edit__profile__form" class="edit__profile__form">
+          <label class="edit__profile__email" for="edit__profile__email__input">
+            <img src="" alt="" />
+            <input
+              type="email"
+              id="edit__profile__email__input"
+              class="edit__profile__email__input"
+              placeholder="Email"
+              value="alex.boscu@mail.com"
+            />
+          </label>
+          <label
+            class="edit__profile__firstname"
+            for="edit__profile__firstname__input"
+          >
+            <img src="" alt="" />
+            <input
+              type="text"
+              id="edit__profile__firstname__input"
+              class="edit__profile__firstname__input"
+              placeholder="First name"
+              value="alex"
+            />
+          </label>
+          <label
+            class="edit__profile__lastname"
+            for="edit__profile__lastname__input"
+          >
+            <img src="" alt="" />
+            <input
+              type="text"
+              id="edit__profile__lastname__input"
+              class="edit__profile__lastname__input"
+              placeholder="Last name"
+              value="boscu"
+            />
+          </label>
+          <label
+            class="edit__profile__username"
+            for="edit__profile__username__input"
+          >
+            <img src="" alt="" />
+            <input
+              type="text"
+              id="edit__profile__username__input"
+              class="edit__profile__username__input"
+              value="alex.boscu"
+              placeholder="User name"
+              disabled
+            />
+          </label>
+          <label class="edit__profile__age" for="edit__profile__age__input">
+            <img src="" alt="" />
+            <input
+              type="number"
+              id="edit__profile__age__input"
+              class="edit__profile__age__input"
+              placeholder="Age"
+              value="24"
+            />
+          </label>
+          <label
+            class="edit__profile__password"
+            for="edit__profile__password__input"
+          >
+            <img src="" alt="" />
+            <input
+              type="password"
+              id="edit__profile__password__input"
+              class="edit__profile__password__input"
+              placeholder="Password"
+              value="12sde!A0"
+            />
+          </label>
+          <button id="edit__profile__button" class="edit__profile__button">
+            Save new informations
+          </button>
+        </form>
+      </main>
+    </div>
+  </body>
+</html>

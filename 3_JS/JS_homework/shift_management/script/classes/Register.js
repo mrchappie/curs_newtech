@@ -28,6 +28,8 @@ class Register {
 
     handleStorage.updateLoggedUser(user.id);
     handleStorage.updateUsers(user);
+    handleStorage.shiftsDataBase[user.id] = [];
+    handleStorage.updateShifts();
 
     utils.redirectToNewPage(routes.homePage[0], routes.homePage[1]);
   }
