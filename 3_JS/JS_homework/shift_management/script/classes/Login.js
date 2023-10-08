@@ -12,25 +12,21 @@ class LogIn {
   }
 
   verifyUser() {
-    const usernameValidation = handleStorage
-      .retriveUsers()
-      ?.users.find((user) => {
-        if (
-          user.userName === this.userName &&
-          utils.decryptPassword(user.password) === this.password
-        )
-          return user;
-      });
+    const userExists = handleStorage.retriveUsers()?.users.find((user) => {
+      if (
+        user.userName === this.userName &&
+        utils.decryptPassword(user.password) === this.password
+      )
+        return user;
+    });
 
-    if (usernameValidation) {
-      handleStorage.updateLoggedUser(usernameValidation.id);
+    if (userExists) {
+      handleStorage.updateLoggedUser(userExists.id);
       handleStorage.updateUsers();
-
-      // alert('user logged in');
 
       utils.redirectToNewPage(routes.homePage[0], routes.homePage[1]);
     } else {
-      alert('user not found');
+      throw new Error('userNotFound');
     }
   }
 }

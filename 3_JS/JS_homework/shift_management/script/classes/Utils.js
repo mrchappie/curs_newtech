@@ -7,14 +7,14 @@ class Utils {
   }
 
   encryptPassword(password) {
-    return password + '1';
+    return password;
   }
 
   decryptPassword(password) {
-    return password.slice(0, password.length - 1);
+    return password;
   }
 
-  validateUserInput(inputType, inputValue, inputParentElement) {
+  validateUserInput(inputType, inputValue, inputParentElement, inputElemnt) {
     const regexValidation = {
       /** This regex pattern checks for a basic email format. It allows for letters, digits, dots,
        * and hyphens in the local part, followed by an "@" symbol, followed by the domain
@@ -23,11 +23,11 @@ class Utils {
       email: /^[\w\.-]+@[a-z\d\.-]+\.[a-z]{2,}$/i,
 
       /**
-       * This regex pattern allows for alphabetic characters only.
+       * This pattern enforces a minimum length of 2 characters and allows both letters and digits.
        * It matches a single word (the first name) or two words separated by
        * a space (the first and last names).
        */
-      text: /^[A-Za-z]+(?:\s[A-Za-z]+)?$/,
+      text: /^(?:[A-Za-z\d]{2,}(?:\s[A-Za-z\d]+)?)$/,
 
       /**
        * This regular expression pattern ensures that the username consists
@@ -40,32 +40,91 @@ class Utils {
        * which could be used for validating age. */
       number: /^(1[89]|[2-9]\d|\d{3,})$/,
 
-      /** This regex pattern enforces that the password must be at least 8 characters
-       * long and include at least one uppercase letter, one digit, and one special
-       * character (from the set [@$!%*?&]). */
-      password: /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+      /** This regex ensures a strong password: 8+ characters,
+       * at least one uppercase letter, at least one lowercase letter,
+       * at least one digit, and at least one special character from [@ $ ! % * ? &] */
+      password:
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
     };
 
-    //! BUG validation for username not working properly
-    if (regexValidation['username'].test(inputValue)) {
+    // validation for username input from login form
+    if (
+      regexValidation['username'].test(inputValue) &&
+      inputElemnt.id === 'login__form__username__input'
+    ) {
       inputParentElement.style.border = '2px solid green';
+      if (inputParentElement.lastChild.className === 'error__container') {
+        inputParentElement.lastChild.remove();
+      }
       return true;
     }
 
-    if (regexValidation[inputType].test(inputValue)) {
+    // validation for the other inputs
+    else if (
+      regexValidation[inputType].test(inputValue) &&
+      inputElemnt.id != 'login__form__username__input'
+    ) {
       inputParentElement.style.border = '2px solid green';
+
+      if (inputParentElement.lastChild.className === 'error__container') {
+        inputParentElement.lastChild.remove();
+      }
       return true;
     } else {
       inputParentElement.style.border = '2px solid red';
+      // create error html element and insert it under the input
+
+      if (
+        !document.querySelector(
+          `.${inputParentElement.className} > .error__container`
+        )
+      ) {
+        const errorContainer = document.createElement('div');
+        errorContainer.classList.add('error__container');
+        errorContainer.textContent = this.handleErrorMessages(
+          inputElemnt.dataset.error
+        );
+        inputParentElement.append(errorContainer);
+      }
       return false;
     }
+  }
+
+  handleErrorMessages(typeOfError) {
+    const errorMessages = {
+      username: 'Please use a username in the format "john.doe".',
+      password: '8+ chars, uppercase, lowercase, digit, special char',
+      email: 'Please enter a valid email address.',
+      firstName: 'Use 2+ characters (letters/digits) for the first name.',
+      lastName: 'Use 2+ characters (letters/digits) for the last name.',
+      age: 'Age must be between 18 and 65 years.',
+      userNotFound:
+        'User not found. Please check your credentials and try again.',
+      userExists:
+        'This user already exists. Please choose a different username or email.',
+      emptyInputs: 'Please fill in all the required fields.',
+      deleteAccount: 'Please ensure both email addresses match.',
+    };
+
+    return errorMessages[typeOfError];
+  }
+
+  toastNotification(errorMessage, time = 4000, toastsContainer) {
+    const toastElement = document.createElement('div');
+    toastElement.classList.add('toast__notification');
+    toastElement.textContent = errorMessage || 'Something went wrong..';
+
+    toastsContainer.prepend(toastElement);
+
+    setTimeout(() => {
+      toastElement.remove();
+    }, time);
   }
 
   redirectToNewPage(path, pageRef, shiftId) {
     location.href =
       location.origin +
       `${path}/${pageRef}.html${shiftId ? '?shiftId=' + shiftId : ''}`;
-    // location.replace(location.origin + `${path}/${pageRef}.html`);
   }
 
   createShift(shift, parentEl) {
@@ -76,7 +135,16 @@ class Utils {
     for (const key in shift) {
       if (key != 'shiftId') {
         const liEl = document.createElement('li');
-        liEl.textContent = shift[key];
+        liEl.textContent =
+          key === 'totalProfitPerShift'
+            ? `${shift[key]} RON`
+            : key === 'shiftName'
+            ? shift[key].slice(0, 1).toUpperCase() + shift[key].slice(1)
+            : key === 'shiftPlace'
+            ? shift[key].slice(0, 1).toUpperCase() + shift[key].slice(1)
+            : shift[key];
+
+        liEl.classList.add(key);
         ulEl.append(liEl);
       }
     }
@@ -89,12 +157,26 @@ class Utils {
   }
 
   editShift(shiftId) {
-    // console.log(shiftId);
     this.redirectToNewPage(
       routes.addNewShift[0],
       routes.addNewShift[1],
       shiftId
     );
+  }
+
+  togglePassword(parentElement, childElement) {
+    //toggle password
+    parentElement.type === 'text'
+      ? (parentElement.type = 'password')
+      : (parentElement.type = 'text');
+
+    // toggle icon
+    childElement.getAttribute('src') ===
+    '/3_JS/JS_homework/shift_management/assets/icons/visibility_on.svg'
+      ? (childElement.src =
+          '/3_JS/JS_homework/shift_management/assets/icons/visibility_off.svg')
+      : (childElement.src =
+          '/3_JS/JS_homework/shift_management/assets/icons/visibility_on.svg');
   }
 }
 

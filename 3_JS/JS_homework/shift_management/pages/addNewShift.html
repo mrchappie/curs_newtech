@@ -17,77 +17,80 @@
     <link rel="stylesheet" href="../css/addNewShift.css" />
   </head>
   <body class="app__body">
+    <div class="toasts__container"></div>
     <div class="app__container">
       <header class="navigation">
-        <div class="navigation__logo">
-          <h1>GuardianNet</h1>
-        </div>
-        <nav class="navigation__links">
-          <ul>
-            <li><a href="./homePage.html">My Shifts</a></li>
-            <li><a href="./addNewShift.html">Add Shift</a></li>
-            <li><a href="./editProfile.html">Edit Profile</a></li>
-          </ul>
-        </nav>
-        <div class="navigation__account">
-          <div id="navigation__account__greeting">Hello <span></span></div>
-          <div class="navigation__account__profile">
-            <img src="https://picsum.photos/50" alt="" />
+        <div class="navigation__container">
+          <div class="navigation__logo">
+            <h1>GuardianNet</h1>
           </div>
-          <button id="logOut">Log out</button>
+          <nav class="navigation__links">
+            <ul>
+              <li><a href="./homePage.html">My Shifts</a></li>
+              <li>
+                <a href="./addNewShift.html" class="selected">Add Shift</a>
+              </li>
+              <li><a href="./editProfile.html">Edit Profile</a></li>
+            </ul>
+          </nav>
+          <div class="navigation__account">
+            <div id="navigation__account__greeting">Hello, <span></span></div>
+            <div class="navigation__account__profile">
+              <img src="https://picsum.photos/50" alt="" />
+            </div>
+            <button id="logOut">Log out</button>
+          </div>
         </div>
       </header>
       <main id="add__new__shift" class="add__new__shift">
         <form id="new__shift__form" class="new__shift__form">
-          <h1 id="add__new__shift__heading">Add new shift</h1>
-          <input
-            type="text"
-            id="new__shift__name"
-            placeholder="Shift name"
-            value="Morning Shift"
-          />
-          <input
-            type="date"
-            id="new__shift__date"
-            placeholder="dd-mm-yyyy"
-            value="24-12-2023"
-          />
+          <h1 id="add__new__shift__heading">Create New Shift</h1>
+          <label for="new__shift__name"
+            ><input type="text" id="new__shift__name" placeholder="Shift name"
+          /></label>
+          <label for="new__shift__date" class="new__shift__date__label"
+            ><input type="date" id="new__shift__date"
+          /></label>
 
-          <input
-            type="time"
-            id="new__shift__starttime"
-            placeholder="--:--"
-            value="08:00"
-          />
-          <input
-            type="time"
-            id="new__shift__endtime"
-            placeholder="--:--"
-            value="20:00"
-          />
-          <input
-            type="number"
-            id="new__shift__hourly__wage"
-            placeholder="50"
-            value="50"
-          />
-          <input
-            type="text"
-            id="new__shift__workplace"
-            placeholder="Google"
-            value="Google"
-          />
-          <input
-            type="text"
-            id="new__shift__profit"
-            placeholder="200"
-            value="200"
-            disabled
-          />
+          <label
+            for="new__shift__starttime"
+            class="new__shift__starttime__label"
+          >
+            <input type="time" id="new__shift__starttime" placeholder="--:--" />
+          </label>
+          <label for="new__shift__endtime" class="new__shift__endtime__label"
+            ><input type="time" id="new__shift__endtime" placeholder="--:--"
+          /></label>
+          <label for="new__shift__hourly__wage"
+            ><input
+              type="number"
+              id="new__shift__hourly__wage"
+              placeholder="Hourly wage"
+              min="0"
+          /></label>
+          <label for="new__shift__workplace"
+            ><input
+              type="text"
+              id="new__shift__workplace"
+              placeholder="Workplace"
+          /></label>
+          <label for="new__shift__profit"
+            ><input
+              type="text"
+              id="new__shift__profit"
+              placeholder="Shift profit"
+              disabled
+          /></label>
 
           <button id="new__shift__button">Add shift</button>
         </form>
       </main>
+      <footer>
+        <div>
+          Copyright &copy; <span id="footerYear">2023</span> Shift Builder. All
+          Rights Reserved!
+        </div>
+      </footer>
     </div>
   </body>
 </html>

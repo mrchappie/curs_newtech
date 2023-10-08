@@ -1,4 +1,4 @@
-.navigation, .navigation__links ul, .navigation__account {
+.navigation__container, .navigation__container .navigation__links ul, .navigation__container .navigation__account {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11,15 +11,82 @@
 }
 
 .navigation {
+  background-color: #e4f1ff;
+  padding-block: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+.navigation__container {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
 }
-.navigation__links ul a {
-  background-color: antiquewhite;
-  padding: 15px 15px;
+.navigation__container .navigation__logo {
+  color: #27005d;
+  font-size: 18px;
+}
+.navigation__container .navigation__links ul {
+  gap: 10px;
+}
+.navigation__container .navigation__links ul a {
+  background-color: #aed2ff;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
   cursor: pointer;
 }
-.navigation__account {
+.navigation__container .navigation__links ul a:hover {
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+.navigation__container .navigation__links ul a.selected {
+  background-color: transparent;
+  border: 2px solid #aed2ff;
+}
+.navigation__container .navigation__account {
   gap: 10px;
+}
+.navigation__container .navigation__account #navigation__account__greeting {
+  font-style: italic;
+}
+.navigation__container .navigation__account #navigation__account__greeting > span {
+  font-weight: 900;
+  font-style: normal;
+  color: #27005d;
+}
+.navigation__container .navigation__account__profile {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #27005d;
+}
+
+@media (width < 1200px) {
+  .navigation__container {
+    padding-inline: 40px;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  .navigation__container .navigation__logo {
+    display: none;
+  }
+  .navigation__container .navigation__account #navigation__account__greeting {
+    display: none;
+  }
+  .navigation__container .navigation__account__profile {
+    display: none;
+  }
 }

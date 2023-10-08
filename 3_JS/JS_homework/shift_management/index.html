@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body class="app__container">
+    <div class="toasts__container"></div>
     <section id="login__signup" class="login__signup">
       <div id="login" class="login">
         <div class="login__heading">Log In</div>
@@ -30,35 +31,47 @@
           </div>
         </div>
         <form class="login__form" id="login__form">
-          <div class="login__form__heading">or use email for log in:</div>
+          <div class="login__form__heading">or use username for log in:</div>
           <label
             class="login__form__username"
             for="login__form__username__input"
           >
-            <img src="./assets/icons/user.svg" alt="" />
+            <img src="./assets/icons/user.svg" alt="user icon" />
             <input
               type="text"
               id="login__form__username__input"
               class="login__form__username__input"
               placeholder="User name"
-              value="alex.boscu"
+              data-error="username"
             />
           </label>
           <label
             class="login__form__password"
             for="login__form__password__input"
           >
-            <img src="./assets/icons/user.svg" alt="" />
+            <img src="./assets/icons/password.svg" alt="password icon" />
             <input
               type="password"
               id="login__form__password__input"
               class="login__form__password__input"
               placeholder="Password"
-              value="12sde!A0"
+              data-error="password"
             />
+            <div id="showPassword" class="show__password">
+              <img
+                src="/3_JS/JS_homework/shift_management/assets/icons/visibility_on.svg"
+                alt=""
+              />
+            </div>
           </label>
           <button id="login__form__button" class="login__form__button">
             LOG IN
+          </button>
+          <button
+            id="login__form__signup__button"
+            class="login__form__signup__button"
+          >
+            SIGN UP
           </button>
         </form>
       </div>
@@ -77,94 +90,98 @@
         </div>
         <form class="signup__form" id="signup__form">
           <div class="signup__form__heading">
-            or use email to create account:
+            or use email to create new account:
           </div>
           <label class="signup__form__email" for="signup__form__email__input">
-            <img src="" alt="" />
+            <img src="./assets/icons/email.svg" alt="email icon" />
             <input
               type="email"
               id="signup__form__email__input"
               class="signup__form__email__input"
               placeholder="Email"
-              value="alex.boscu@mail.com"
+              data-error="email"
             />
           </label>
           <label
             class="signup__form__firstname"
             for="signup__form__firstname__input"
           >
-            <img src="" alt="" />
+            <img src="./assets/icons/name.svg" alt="first name icon" />
             <input
               type="text"
               id="signup__form__firstname__input"
               class="signup__form__firstname__input"
               placeholder="First name"
-              value="alex"
+              data-error="firstName"
             />
           </label>
           <label
             class="signup__form__lastname"
             for="signup__form__lastname__input"
           >
-            <img src="" alt="" />
+            <img src="./assets/icons/name.svg" alt="last name icon" />
             <input
               type="text"
               id="signup__form__lastname__input"
               class="signup__form__lastname__input"
               placeholder="Last name"
-              value="boscu"
+              data-error="lastName"
             />
           </label>
           <label
             class="signup__form__username"
             for="signup__form__username__input"
           >
-            <img src="" alt="" />
+            <img src="./assets/icons/user.svg" alt="user name icon" />
             <input
               type="text"
               id="signup__form__username__input"
               class="signup__form__username__input"
-              value="alex.boscu"
               placeholder="User name"
               disabled
             />
           </label>
           <label class="signup__form__age" for="signup__form__age__input">
-            <img src="" alt="" />
+            <img src="./assets/icons/calendar.svg" alt="calendar icon" />
             <input
               type="number"
               id="signup__form__age__input"
               class="signup__form__age__input"
               placeholder="Age"
-              value="24"
+              min="18"
+              max="65"
+              data-error="age"
             />
           </label>
           <label
             class="signup__form__password"
             for="signup__form__password__input"
           >
-            <img src="" alt="" />
+            <img src="./assets/icons/password.svg" alt="password icon" />
             <input
               type="password"
               id="signup__form__password__input"
               class="signup__form__password__input"
               placeholder="Password"
-              value="12sde!A0"
+              data-error="password"
             />
+            <div id="showPassword" class="show__password">
+              <img
+                src="/3_JS/JS_homework/shift_management/assets/icons/visibility_on.svg"
+                alt=""
+              />
+            </div>
           </label>
           <button id="signup__form__button" class="signup__form__button">
             SIGN UP
           </button>
+          <button
+            id="signup__form__login__button"
+            class="signup__form__login__button"
+          >
+            SIGN IN
+          </button>
         </form>
-      </div>
-      <div id="login__overlay" class="login__overlay">
-        <div class="login__overlay__heading">Welcome back!</div>
-        <p id="login__overlay__description" class="login__overlay__description">
-          "Unlock the door to your digital fortress."
-        </p>
-        <button id="login__overlay__button" class="login__overlay__button">
-          SIGN UP
-        </button>
       </div>
     </section>
   </body>

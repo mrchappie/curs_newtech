@@ -16,22 +16,35 @@ class Register {
   }
 
   addNewUser() {
-    const user = {
-      id: utils.generateId(),
-      email: this.email,
-      firstName: this.firstName,
-      lastName: this.lastName,
-      userName: this.userName,
-      age: this.age,
-      password: utils.encryptPassword(this.password),
-    };
+    const userExists = handleStorage.retriveUsers()?.users.find((user) => {
+      if (
+        user.userName === this.userName ||
+        user.email === this.email ||
+        (user.userName === this.userName && user.email === this.email)
+      )
+        return user;
+    });
 
-    handleStorage.updateLoggedUser(user.id);
-    handleStorage.updateUsers(user);
-    handleStorage.shiftsDataBase[user.id] = [];
-    handleStorage.updateShifts();
+    if (!userExists) {
+      const user = {
+        id: utils.generateId(),
+        email: this.email,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        userName: this.userName,
+        age: this.age,
+        password: utils.encryptPassword(this.password),
+      };
 
-    utils.redirectToNewPage(routes.homePage[0], routes.homePage[1]);
+      handleStorage.updateLoggedUser(user.id);
+      handleStorage.updateUsers(user);
+      handleStorage.shiftsDataBase[user.id] = [];
+      handleStorage.updateShifts();
+
+      utils.redirectToNewPage(routes.homePage[0], routes.homePage[1]);
+    } else {
+      throw new Error('userExists');
+    }
   }
 }
 

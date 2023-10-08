@@ -27,14 +27,15 @@ const signUpPassword = document.getElementById('signup__form__password__input');
 const signUpButton = document.getElementById('signup__form__button');
 const sigInInputsArray = document.querySelectorAll('#signup__form input');
 
-// FORM overlay
-const overlayButton = document.getElementById('login__overlay__button');
-const overlayElementContainer = document.getElementById('login__overlay');
-const overlayDescription = document.getElementById(
-  'login__overlay__description'
+// LOGIN / SIGNUP toggle
+const handleLoginToggle = document.getElementById(
+  'login__form__signup__button'
 );
-const logInElContainer = document.getElementById('login');
-const signUpElContainer = document.getElementById('signup');
+const handleSignupToggle = document.getElementById(
+  'signup__form__login__button'
+);
+const loginElement = document.getElementById('login');
+const signupElement = document.getElementById('signup');
 
 window.addEventListener('load', () => {
   const getLoggedUser = handleStorage.retriveUsers()?.loggedUser;
@@ -44,28 +45,21 @@ window.addEventListener('load', () => {
   }
 });
 
-// const userInput = {
-//   email: signUpEmail.value,
-//   firstName: signUpFirstName.value,
-//   lastName: signUpLastName.value,
-//   userName,
-//   age: signUpAge.value,
-//   password: signUpPassword.value,
-// };
+const toastsContainer = document.querySelector('.toasts__container');
 
-// Form validation
-
-// TODO validation logic is not perfect
+// live input validation
 let response = false;
-function handleInputValidation(formInput, button) {
+function handleLiveInputValidation(formInput, button) {
   formInput.addEventListener('input', () => {
-    response = utils.validateUserInput(
-      formInput.type,
-      formInput.value,
-      formInput.parentElement
-    );
+    if (formInput.id != 'signup__form__username__input') {
+      response = utils.validateUserInput(
+        formInput.type,
+        formInput.value,
+        formInput.parentElement,
+        formInput
+      );
+    }
 
-    //!
     if (signUpFirstName && signUpLastName) {
       signUpUserName.value = signUpFirstName.value + '.' + signUpLastName.value;
     }
@@ -79,14 +73,26 @@ function handleInputValidation(formInput, button) {
   });
 }
 
+// validation on submit
+function handleSubmitInputValidation(formInput) {
+  if (formInput.id != 'signup__form__username__input') {
+    response = utils.validateUserInput(
+      formInput.type,
+      formInput.value,
+      formInput.parentElement,
+      formInput
+    );
+  }
+}
+
 // Sign up validation
 sigInInputsArray.forEach((formInput) => {
-  handleInputValidation(formInput, signUpButton);
+  handleLiveInputValidation(formInput, signUpButton);
 });
 
 // Log in validation
 logInInputsArray.forEach((formInput) => {
-  handleInputValidation(formInput, logInButton);
+  handleLiveInputValidation(formInput, logInButton);
 });
 
 /* The code snippet is adding an event listener to the signUpForm element for the 'submit' event. When the form is submitted, the event listener callback function is executed and
@@ -95,7 +101,19 @@ a new user is added to the database. */
 signUpForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  if (!response) return;
+  sigInInputsArray.forEach((formInput) => {
+    handleSubmitInputValidation(formInput);
+  });
+
+  if (!response) {
+    utils.toastNotification(
+      utils.handleErrorMessages('emptyInputs'),
+      4000,
+      toastsContainer
+    );
+    signUpButton.setAttribute('disabled', '');
+    return;
+  }
 
   const userName =
     signUpFirstName.value.toLowerCase() +
@@ -111,7 +129,16 @@ signUpForm.addEventListener('submit', (e) => {
     signUpPassword.value
   );
 
-  register.addNewUser();
+  try {
+    register.addNewUser();
+  } catch (error) {
+    signUpButton.setAttribute('disabled', '');
+    utils.toastNotification(
+      utils.handleErrorMessages(error.message),
+      4000,
+      toastsContainer
+    );
+  }
 });
 
 /* The code snippet is adding an event listener to the `logInForm` element for the 'submit' event. When the form is submitted, the event listener callback function is executed and the user is logged in his account. */
@@ -120,28 +147,53 @@ logInForm.addEventListener('submit', (e) => {
 
   const login = new LogIn(logInUserName.value, logInPassword.value);
 
-  login.verifyUser();
+  logInInputsArray.forEach((formInput) => {
+    handleSubmitInputValidation(formInput);
+  });
+
+  if (!response) {
+    utils.toastNotification(
+      utils.handleErrorMessages('emptyInputs'),
+      4000,
+      toastsContainer
+    );
+    logInButton.setAttribute('disabled', '');
+    return;
+  }
+
+  try {
+    login.verifyUser();
+  } catch (error) {
+    logInButton.setAttribute('disabled', '');
+    utils.toastNotification(
+      utils.handleErrorMessages(error.message),
+      4000,
+      toastsContainer
+    );
+  }
 });
 
-overlayButton.addEventListener('click', () => {
-  overlayElementContainer.classList.toggle('show__signup');
+// toggle login / singup form
 
-  if (overlayElementContainer.classList.contains('show__signup')) {
-    overlayButton.textContent = 'SIGN IN';
-    overlayDescription.textContent =
-      '"Join the guardians of the online realm."';
+handleLoginToggle.addEventListener('click', (e) => {
+  e.preventDefault();
+  loginElement.style.transform = 'translate(-110%)';
+  signupElement.style.transform = 'translate(0%)';
+});
+handleSignupToggle.addEventListener('click', (e) => {
+  e.preventDefault();
+  signupElement.style.transform = 'translate(100%)';
+  loginElement.style.transform = 'translate(0%)';
+});
 
-    logInElContainer.style = 'width: 30%; opacity: 0';
-    signUpElContainer.style = 'width: 70%; opacity: 1';
-
-    // width: 30%; opacity: 0;
-  } else {
-    overlayButton.textContent = 'SIGN UP';
-
-    overlayDescription.textContent =
-      '"Unlock the door to your digital fortress."';
-
-    logInElContainer.style = 'width: 70%; opacity: 1';
-    signUpElContainer.style = 'width: 30%; opacity: 0';
-  }
+// toggle password visibility
+const showPassword = document.querySelectorAll('.show__password');
+showPassword.forEach((element) => {
+  element.addEventListener('click', () => {
+    // console.log(showPassword.firstElementChild);
+    utils.togglePassword(
+      element.previousElementSibling,
+      element.firstElementChild
+    );
+  });
 });

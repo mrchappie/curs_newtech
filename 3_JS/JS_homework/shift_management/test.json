@@ -1,0 +1,481 @@
+// {
+//   "loggedUser": "6589f4a3-5d0e-487f-8b7f-46a7c2ba7db3",
+//   "users": [
+//     {
+//       "id": "653fac9d-fe1e-4e45-a412-cb82a64f5460",
+//       "email": "alex.boscu@mail.com",
+//       "firstName": "alex",
+//       "lastName": "boscu",
+//       "userName": "alex.boscu",
+//       "age": "24",
+//       "password": "12sde!A01"
+//     },
+//     {
+//       "id": "6589f4a3-5d0e-487f-8b7f-46a7c2ba7db3",
+//       "email": "lucia.florina@mail.com",
+//       "firstName": "lucia",
+//       "lastName": "florina",
+//       "userName": "lucia.florina",
+//       "age": "27",
+//       "password": "12sde!A01"
+//     },
+//     {
+//       "id": "9084f11e-ad4a-4166-8143-5c60b43a16e7",
+//       "email": "ionel.ionescu@mail.com",
+//       "firstName": "ionel",
+//       "lastName": "ionescu",
+//       "userName": "ionel.ionescu",
+//       "age": "24",
+//       "password": "12sde!A01"
+//     }
+//   ]
+// }
+
+// {
+//   "653fac9d-fe1e-4e45-a412-cb82a64f5460": [],
+//   "6589f4a3-5d0e-487f-8b7f-46a7c2ba7db3": [],
+//   "9084f11e-ad4a-4166-8143-5c60b43a16e7": []
+// }
+
+// {
+//   "653fac9d-fe1e-4e45-a412-cb82a64f5460": [
+//     {
+//       "shiftId": "b202e8bd-b9b8-4b98-8518-9633c1fcf68c",
+//       "shiftName": "Morning Shift",
+//       "date": "2023-10-02",
+//       "startTime": "08:00",
+//       "endTime": "16:00",
+//       "hourlyWage": "23",
+//       "shiftPlace": "Coffee Shop",
+//       "totalProfitPerShift": 184
+//     },
+//     {
+//       "shiftId": "fdb7abb0-b98c-45cf-b0a1-4a01f218d443",
+//       "shiftName": "Night Shift",
+//       "date": "2023-08-02",
+//       "startTime": "00:00",
+//       "endTime": "08:00",
+//       "hourlyWage": "29",
+//       "shiftPlace": "Restaurant",
+//       "totalProfitPerShift": 232
+//     },
+//     {
+//       "shiftId": "54d4f861-dcef-4e12-85bf-e7d27d37d681",
+//       "shiftName": "Double Shift",
+//       "date": "2023-09-06",
+//       "startTime": "08:00",
+//       "endTime": "20:00",
+//       "hourlyWage": "32",
+//       "shiftPlace": "School",
+//       "totalProfitPerShift": 384
+//     },
+//     {
+//       "shiftId": "74fb6216-19c5-4702-95b2-7dd2fcab7871",
+//       "shiftName": "Afternoon Shift",
+//       "date": "2023-06-07",
+//       "startTime": "20:00",
+//       "endTime": "04:00",
+//       "hourlyWage": "40",
+//       "shiftPlace": "Google",
+//       "totalProfitPerShift": 320
+//     },
+//     {
+//       "shiftId": "74fb6216-19c5-4702-95b2-7dd2fcab7871",
+//       "shiftName": "Afternoon Shift",
+//       "date": "2023-07-07",
+//       "startTime": "20:00",
+//       "endTime": "04:00",
+//       "hourlyWage": "40",
+//       "shiftPlace": "Google",
+//       "totalProfitPerShift": 320
+//     }
+//   ],
+//   "6589f4a3-5d0e-487f-8b7f-46a7c2ba7db3": [
+//     {
+//       "shiftId": "b202e8bd-b9b8-4b98-8518-9633c1fcf68c",
+//       "shiftName": "Morning Shift",
+//       "date": "2023-10-02",
+//       "startTime": "08:00",
+//       "endTime": "16:00",
+//       "hourlyWage": "23",
+//       "shiftPlace": "Coffee Shop",
+//       "totalProfitPerShift": 184
+//     },
+//     {
+//       "shiftId": "fdb7abb0-b98c-45cf-b0a1-4a01f218d443",
+//       "shiftName": "Night Shift",
+//       "date": "2023-08-02",
+//       "startTime": "00:00",
+//       "endTime": "08:00",
+//       "hourlyWage": "29",
+//       "shiftPlace": "Restaurant",
+//       "totalProfitPerShift": 232
+//     },
+//     {
+//       "shiftId": "54d4f861-dcef-4e12-85bf-e7d27d37d681",
+//       "shiftName": "Double Shift",
+//       "date": "2023-09-06",
+//       "startTime": "08:00",
+//       "endTime": "20:00",
+//       "hourlyWage": "32",
+//       "shiftPlace": "School",
+//       "totalProfitPerShift": 384
+//     },
+//     {
+//       "shiftId": "74fb6216-19c5-4702-95b2-7dd2fcab7871",
+//       "shiftName": "Afternoon Shift",
+//       "date": "2023-06-07",
+//       "startTime": "20:00",
+//       "endTime": "04:00",
+//       "hourlyWage": "40",
+//       "shiftPlace": "Google",
+//       "totalProfitPerShift": 320
+//     },
+//     {
+//       "shiftId": "74fb6216-19c5-4702-95b2-7dd2fcab7871",
+//       "shiftName": "Afternoon Shift",
+//       "date": "2023-07-07",
+//       "startTime": "20:00",
+//       "endTime": "04:00",
+//       "hourlyWage": "40",
+//       "shiftPlace": "Google",
+//       "totalProfitPerShift": 320
+//     }
+//   ],
+//   "9084f11e-ad4a-4166-8143-5c60b43a16e7": [
+//     {
+//       "shiftId": "b202e8bd-b9b8-4b98-8518-9633c1fcf68c",
+//       "shiftName": "Morning Shift",
+//       "date": "2023-10-02",
+//       "startTime": "08:00",
+//       "endTime": "16:00",
+//       "hourlyWage": "23",
+//       "shiftPlace": "Coffee Shop",
+//       "totalProfitPerShift": 184
+//     },
+//     {
+//       "shiftId": "fdb7abb0-b98c-45cf-b0a1-4a01f218d443",
+//       "shiftName": "Night Shift",
+//       "date": "2023-08-02",
+//       "startTime": "00:00",
+//       "endTime": "08:00",
+//       "hourlyWage": "29",
+//       "shiftPlace": "Restaurant",
+//       "totalProfitPerShift": 232
+//     },
+//     {
+//       "shiftId": "54d4f861-dcef-4e12-85bf-e7d27d37d681",
+//       "shiftName": "Double Shift",
+//       "date": "2023-09-06",
+//       "startTime": "08:00",
+//       "endTime": "20:00",
+//       "hourlyWage": "32",
+//       "shiftPlace": "School",
+//       "totalProfitPerShift": 384
+//     },
+//     {
+//       "shiftId": "74fb6216-19c5-4702-95b2-7dd2fcab7871",
+//       "shiftName": "Afternoon Shift",
+//       "date": "2023-06-07",
+//       "startTime": "20:00",
+//       "endTime": "04:00",
+//       "hourlyWage": "40",
+//       "shiftPlace": "Google",
+//       "totalProfitPerShift": 320
+//     },
+//     {
+//       "shiftId": "74fb6216-19c5-4702-95b2-7dd2fcab7871",
+//       "shiftName": "Afternoon Shift",
+//       "date": "2023-07-07",
+//       "startTime": "20:00",
+//       "endTime": "04:00",
+//       "hourlyWage": "40",
+//       "shiftPlace": "Google",
+//       "totalProfitPerShift": 320
+//     }
+//   ]
+// }
+
+// {
+//   "loggedUser": "",
+//   "users": [
+//     {
+//       "id": "653fac9d-fe1e-4e45-a412-cb82a64f5460",
+//       "email": "alex.boscu@mail.com",
+//       "firstName": "alex",
+//       "lastName": "boscu",
+//       "userName": "alex.boscu",
+//       "age": "25",
+//       "password": "Alex2023!"
+//     },
+//     {
+//       "id": "6589f4a3-5d0e-487f-8b7f-46a7c2ba7db3",
+//       "email": "lucia.florina@mail.com",
+//       "firstName": "lucia",
+//       "lastName": "florina",
+//       "userName": "lucia.florina",
+//       "age": "27",
+//       "password": "Alex2023!"
+//     },
+//     {
+//       "id": "9084f11e-ad4a-4166-8143-5c60b43a16e7",
+//       "email": "ionel.ionescu@mail.com",
+//       "firstName": "ionel",
+//       "lastName": "ionescu",
+//       "userName": "ionel.ionescu",
+//       "age": "34",
+//       "password": "Alex2023!"
+//     }
+//   ]
+// }
+
+// {
+//   "653fac9d-fe1e-4e45-a412-cb82a64f5460": [
+//     {
+//       "shiftId": "b202e8bd-b9b8-4b98-8518-9633c1fcf68c",
+//       "shiftName": "Morning Shift",
+//       "date": "2023-10-02",
+//       "startTime": "08:00",
+//       "endTime": "18:00",
+//       "hourlyWage": "27",
+//       "shiftPlace": "Coffee Shop",
+//       "totalProfitPerShift": 270
+//     },
+//     {
+//       "shiftId": "fdb7abb0-b98c-45cf-b0a1-4a01f218d443",
+//       "shiftName": "Night Shift",
+//       "date": "2023-08-02",
+//       "startTime": "00:00",
+//       "endTime": "08:00",
+//       "hourlyWage": "29",
+//       "shiftPlace": "Restaurant",
+//       "totalProfitPerShift": 232
+//     },
+//     {
+//       "shiftId": "54d4f861-dcef-4e12-85bf-e7d27d37d681",
+//       "shiftName": "Double Shift",
+//       "date": "2023-09-06",
+//       "startTime": "08:00",
+//       "endTime": "18:30",
+//       "hourlyWage": "38",
+//       "shiftPlace": "School",
+//       "totalProfitPerShift": 399
+//     },
+//     {
+//       "shiftId": "74fb6216-19c5-4702-95b2-7dd2fcab7871",
+//       "shiftName": "Afternoon Shift",
+//       "date": "2023-06-07",
+//       "startTime": "20:00",
+//       "endTime": "05:00",
+//       "hourlyWage": "40",
+//       "shiftPlace": "Google",
+//       "totalProfitPerShift": 360
+//     },
+//     {
+//       "shiftId": "74fb6216-19c5-4702-95b2-7dd2fcab7871",
+//       "shiftName": "Afternoon Shift",
+//       "date": "2023-07-07",
+//       "startTime": "20:00",
+//       "endTime": "04:00",
+//       "hourlyWage": "40",
+//       "shiftPlace": "Google",
+//       "totalProfitPerShift": 320
+//     },
+//     {
+//       "shiftId": "f8ab80d9-0ad5-479d-8ff0-53076b865009",
+//       "shiftName": "Coffee",
+//       "date": "2023-08-02",
+//       "startTime": "08:00",
+//       "endTime": "16:15",
+//       "hourlyWage": "17",
+//       "shiftPlace": "Google",
+//       "totalProfitPerShift": 140
+//     }
+//   ],
+//   "6589f4a3-5d0e-487f-8b7f-46a7c2ba7db3": [
+//     {
+//       "shiftId": "b202e8bd-b9b8-4b98-8518-9633c1fcf68c",
+//       "shiftName": "Morning Shift",
+//       "date": "2023-10-02",
+//       "startTime": "08:00",
+//       "endTime": "16:00",
+//       "hourlyWage": "23",
+//       "shiftPlace": "Coffee Shop",
+//       "totalProfitPerShift": 184
+//     },
+//     {
+//       "shiftId": "fdb7abb0-b98c-45cf-b0a1-4a01f218d443",
+//       "shiftName": "Night Shift",
+//       "date": "2023-08-02",
+//       "startTime": "00:00",
+//       "endTime": "08:00",
+//       "hourlyWage": "29",
+//       "shiftPlace": "Restaurant",
+//       "totalProfitPerShift": 232
+//     },
+//     {
+//       "shiftId": "54d4f861-dcef-4e12-85bf-e7d27d37d681",
+//       "shiftName": "Double Shift",
+//       "date": "2023-09-06",
+//       "startTime": "08:00",
+//       "endTime": "20:00",
+//       "hourlyWage": "32",
+//       "shiftPlace": "School",
+//       "totalProfitPerShift": 384
+//     },
+//     {
+//       "shiftId": "74fb6216-19c5-4702-95b2-7dd2fcab7871",
+//       "shiftName": "Afternoon Shift",
+//       "date": "2023-06-07",
+//       "startTime": "20:00",
+//       "endTime": "04:00",
+//       "hourlyWage": "40",
+//       "shiftPlace": "Google",
+//       "totalProfitPerShift": 320
+//     },
+//     {
+//       "shiftId": "74fb6216-19c5-4702-95b2-7dd2fcab7871",
+//       "shiftName": "Afternoon Shift",
+//       "date": "2023-07-07",
+//       "startTime": "20:00",
+//       "endTime": "04:00",
+//       "hourlyWage": "40",
+//       "shiftPlace": "Google",
+//       "totalProfitPerShift": 320
+//     },
+//     {
+//       "shiftId": "bdf0bfd8-4b6a-498a-b827-61d7aefe1bb1",
+//       "shiftName": "coffee",
+//       "date": "2023-11-11",
+//       "startTime": "10:58",
+//       "endTime": "18:00",
+//       "hourlyWage": "16",
+//       "shiftPlace": "5 to go",
+//       "totalProfitPerShift": 113
+//     },
+//     {
+//       "shiftId": "b202e8bd-b9b8-4b98-8518-9633c1fcf68c",
+//       "shiftName": "Morning Shift",
+//       "date": "2023-10-02",
+//       "startTime": "08:00",
+//       "endTime": "16:00",
+//       "hourlyWage": "23",
+//       "shiftPlace": "Coffee Shop",
+//       "totalProfitPerShift": 184
+//     },
+//     {
+//       "shiftId": "fdb7abb0-b98c-45cf-b0a1-4a01f218d443",
+//       "shiftName": "Night Shift",
+//       "date": "2023-08-02",
+//       "startTime": "00:00",
+//       "endTime": "08:00",
+//       "hourlyWage": "29",
+//       "shiftPlace": "Restaurant",
+//       "totalProfitPerShift": 232
+//     },
+//     {
+//       "shiftId": "54d4f861-dcef-4e12-85bf-e7d27d37d681",
+//       "shiftName": "Double Shift",
+//       "date": "2023-09-06",
+//       "startTime": "08:00",
+//       "endTime": "20:00",
+//       "hourlyWage": "32",
+//       "shiftPlace": "School",
+//       "totalProfitPerShift": 384
+//     },
+//     {
+//       "shiftId": "74fb6216-19c5-4702-95b2-7dd2fcab7871",
+//       "shiftName": "Afternoon Shift",
+//       "date": "2023-06-07",
+//       "startTime": "20:00",
+//       "endTime": "04:00",
+//       "hourlyWage": "40",
+//       "shiftPlace": "Google",
+//       "totalProfitPerShift": 320
+//     },
+//     {
+//       "shiftId": "74fb6216-19c5-4702-95b2-7dd2fcab7871",
+//       "shiftName": "Afternoon Shift",
+//       "date": "2023-07-07",
+//       "startTime": "20:00",
+//       "endTime": "04:00",
+//       "hourlyWage": "40",
+//       "shiftPlace": "Google",
+//       "totalProfitPerShift": 320
+//     },
+//     {
+//       "shiftId": "bdf0bfd8-4b6a-498a-b827-61d7aefe1bb1",
+//       "shiftName": "coffee",
+//       "date": "2023-11-11",
+//       "startTime": "10:58",
+//       "endTime": "18:00",
+//       "hourlyWage": "16",
+//       "shiftPlace": "5 to go",
+//       "totalProfitPerShift": 113
+//     }
+//   ],
+//   "9084f11e-ad4a-4166-8143-5c60b43a16e7": [
+//     {
+//       "shiftId": "b202e8bd-b9b8-4b98-8518-9633c1fcf68c",
+//       "shiftName": "Morning Shift",
+//       "date": "2023-10-02",
+//       "startTime": "08:00",
+//       "endTime": "16:00",
+//       "hourlyWage": "23",
+//       "shiftPlace": "Coffee Shop",
+//       "totalProfitPerShift": 184
+//     },
+//     {
+//       "shiftId": "fdb7abb0-b98c-45cf-b0a1-4a01f218d443",
+//       "shiftName": "Night Shift",
+//       "date": "2023-08-02",
+//       "startTime": "00:00",
+//       "endTime": "08:00",
+//       "hourlyWage": "29",
+//       "shiftPlace": "Restaurant",
+//       "totalProfitPerShift": 232
+//     },
+//     {
+//       "shiftId": "54d4f861-dcef-4e12-85bf-e7d27d37d681",
+//       "shiftName": "Double Shift",
+//       "date": "2023-09-06",
+//       "startTime": "08:00",
+//       "endTime": "20:00",
+//       "hourlyWage": "32",
+//       "shiftPlace": "School",
+//       "totalProfitPerShift": 384
+//     },
+//     {
+//       "shiftId": "74fb6216-19c5-4702-95b2-7dd2fcab7871",
+//       "shiftName": "Afternoon Shift",
+//       "date": "2023-06-07",
+//       "startTime": "20:00",
+//       "endTime": "04:00",
+//       "hourlyWage": "40",
+//       "shiftPlace": "Google",
+//       "totalProfitPerShift": 320
+//     },
+//     {
+//       "shiftId": "74fb6216-19c5-4702-95b2-7dd2fcab7871",
+//       "shiftName": "Afternoon Shift",
+//       "date": "2023-07-07",
+//       "startTime": "20:00",
+//       "endTime": "04:00",
+//       "hourlyWage": "40",
+//       "shiftPlace": "Google",
+//       "totalProfitPerShift": 320
+//     }
+//   ],
+//   "81b2936f-a48e-49f6-8b62-b6012974b3ac": [
+//     {
+//       "shiftId": "270404e4-743d-4256-91e0-e7b66b82cb35",
+//       "shiftName": "night shift",
+//       "date": "2023-10-28",
+//       "startTime": "17:30",
+//       "endTime": "03:30",
+//       "hourlyWage": "23",
+//       "shiftPlace": "gas station",
+//       "totalProfitPerShift": 230
+//     }
+//   ]
+// }
