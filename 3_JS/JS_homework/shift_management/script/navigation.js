@@ -35,3 +35,23 @@ logOutBtn.addEventListener('click', () => {
   handleStorage.updateUsers();
   utils.redirectToNewPage(routes.logInPage[0], routes.logInPage[1]);
 });
+
+// extracts shift Id from URL, if this exists
+const params = new URL(document.location).searchParams;
+const urlShiftId = params.get('shiftId');
+
+if (urlShiftId) {
+  document
+    .querySelectorAll('.navigation__links__add__shift')
+    .forEach((element) => {
+      element.textContent = 'Edit shift';
+    });
+}
+
+// Mobile navigation
+const toggleNavigationButton = document.getElementById('mobile__menu');
+const toggleNavigationContainer = document.getElementById('mobile__nav');
+
+toggleNavigationButton.addEventListener('click', () => {
+  toggleNavigationContainer.classList.toggle('hide');
+});

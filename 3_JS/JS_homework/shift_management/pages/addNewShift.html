@@ -28,18 +28,42 @@
             <ul>
               <li><a href="./homePage.html">My Shifts</a></li>
               <li>
-                <a href="./addNewShift.html" class="selected">Add Shift</a>
+                <a
+                  href="./addNewShift.html"
+                  class="selected navigation__links__add__shift"
+                  >Add Shift</a
+                >
               </li>
               <li><a href="./editProfile.html">Edit Profile</a></li>
             </ul>
           </nav>
           <div class="navigation__account">
             <div id="navigation__account__greeting">Hello, <span></span></div>
+            <!-- mobile navigation -->
+            <div class="mobile__menu" id="mobile__menu">
+              <img src="../assets/icons/menu.svg" alt="mobile menu icon" />
+            </div>
             <div class="navigation__account__profile">
               <img src="https://picsum.photos/50" alt="" />
             </div>
             <button id="logOut">Log out</button>
           </div>
+        </div>
+        <!-- mobile navigation -->
+        <div class="mobile__nav hide" id="mobile__nav">
+          <ul>
+            <li>
+              <a href="./homePage.html">My Shifts</a>
+            </li>
+            <li>
+              <a
+                href="./addNewShift.html"
+                class="selected navigation__links__add__shift"
+                >Add Shift</a
+              >
+            </li>
+            <li><a href="./editProfile.html">Edit Profile</a></li>
+          </ul>
         </div>
       </header>
       <main id="add__new__shift" class="add__new__shift">

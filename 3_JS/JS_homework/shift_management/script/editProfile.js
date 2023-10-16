@@ -164,6 +164,7 @@ deleteAccountInput.addEventListener('input', (e) => {
     if (
       deleteAccountInput.parentElement.lastChild.className != 'error__container'
     ) {
+      deleteAccountButton.setAttribute('disabled', '');
       const errorContainer = document.createElement('div');
       errorContainer.classList.add('error__container');
       errorContainer.textContent = utils.handleErrorMessages(
