@@ -92,6 +92,8 @@ class Utils {
 
   handleErrorMessages(typeOfError) {
     const errorMessages = {
+      usernameLogin: 'Please provide valid credentials',
+      passwordLogin: 'Please provide valid credentials',
       username: 'Please use a username in the format "john.doe".',
       password: '8+ chars, uppercase, lowercase, digit, special char',
       email: 'Please enter a valid email address.',
@@ -171,12 +173,17 @@ class Utils {
       : (parentElement.type = 'text');
 
     // toggle icon
-    childElement.getAttribute('src') ===
-    '/3_JS/JS_homework/shift_management/assets/icons/visibility_on.svg'
-      ? (childElement.src =
-          '/3_JS/JS_homework/shift_management/assets/icons/visibility_off.svg')
-      : (childElement.src =
-          '/3_JS/JS_homework/shift_management/assets/icons/visibility_on.svg');
+    const imgPath = childElement.getAttribute('src').split('_');
+
+    (imgPath[1] === 'on.svg'
+      ? () => {
+          imgPath[1] = 'off.svg';
+          childElement.setAttribute('src', imgPath.join('_'));
+        }
+      : () => {
+          imgPath[1] = 'on.svg';
+          childElement.setAttribute('src', imgPath.join('_'));
+        })();
   }
 }
 
