@@ -1,0 +1,15 @@
+<fieldset>
+  <input type="text" placeholder="first name" [(ngModel)]="firstName" />
+  {{ firstName }}
+  <br />
+  <br />
+  <input type="text" placeholder="last name" [(ngModel)]="lastName" />
+  {{ lastName }}
+  <br />
+  <br />
+  <input type="email" placeholder="email" [(ngModel)]="email" />
+  {{ email }}
+  <br />
+  <br />
+  <input type="button" value="Click Me!" (click)="sayHello()" />
+</fieldset>

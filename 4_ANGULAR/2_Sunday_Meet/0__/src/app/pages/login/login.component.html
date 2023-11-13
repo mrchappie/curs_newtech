@@ -1,0 +1,9 @@
+<div class="form">
+  <input type="text" placeholder="Email" [(ngModel)]="loggedUserData.email" />
+  <input
+    type="text"
+    placeholder="Password"
+    [(ngModel)]="loggedUserData.password"
+  />
+  <button (click)="getUsersFromDB()">Log in</button>
+</div>

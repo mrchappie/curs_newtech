@@ -1,0 +1,84 @@
+<h1>Structural Directives</h1>
+<h2>ngIf</h2>
+<hr />
+
+<p *ngIf="true">Show this if true</p>
+<p *ngIf="false">Show this if false</p>
+
+<hr />
+
+<button (click)="isVisible = !isVisible">Toggle visibility</button>
+<p>Visible:{{ isVisible }}</p>
+<h1 *ngIf="isVisible">Show is visible</h1>
+
+<hr />
+
+<input type="checkbox" [(ngModel)]="check1" />
+<input type="checkbox" [(ngModel)]="check2" />
+<input type="checkbox" [(ngModel)]="check3" />
+
+<p *ngIf="!check1 && !check2 && !check3">Show if none are checked</p>
+<p *ngIf="check1 && check2 && check3">Show if all are checked</p>
+<p *ngIf="check1 || check2 || check3">Show if some are checked</p>
+
+<!-- /\/\/\/\/\/\ -->
+<h2>ngIf - Else</h2>
+<hr />
+
+<input type="checkbox" [(ngModel)]="checkIfElse" />
+<h3 *ngIf="checkIfElse; else elseEl">This is true</h3>
+<ng-template #elseEl><p>Uh-ohh</p></ng-template>
+
+<!-- /\/\/\/\/\/\ -->
+<h2>ngFor</h2>
+<hr />
+
+<fieldset>
+  <input type="text" #name />
+  <input type="number" #quantity />
+  <input type="number" #price />
+  <button
+    (click)="
+      items.push({
+        name: name.value,
+        quantity: +quantity.value,
+        price: +price.value
+      })
+    "
+  >
+    Add item
+  </button>
+</fieldset>
+
+<div
+  class="list"
+  *ngFor="let item of items; let idx = index"
+  [style.backgroundColor]="item.price > 5 ? 'orange' : 'green'"
+>
+  <p class="list-item">
+    {{ idx + 1 }}. <b>{{ item.name }}</b> - <i>{{ item.quantity }} L</i> -
+    <u>{{ item.price }} RON</u>
+    <button (click)="items.splice(idx, 1)">Remove</button>
+  </p>
+</div>
+
+<!-- /\/\/\/\/\/\ -->
+<h2>ngSwitch</h2>
+<hr />
+
+<select [(ngModel)]="tagType">
+  <option value="h1">h1</option>
+  <option value="p">p</option>
+  <option value="ul">ul</option>
+</select>
+
+<div [ngSwitch]="tagType">
+  <h1 *ngSwitchCase="'h1'">Heading <i>1</i></h1>
+  <p *ngSwitchCase="'p'">paragraph</p>
+  <ul *ngSwitchCase="'ul'">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+  <div *ngSwitchDefault>Default div</div>
+</div>

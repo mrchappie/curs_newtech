@@ -1,0 +1,28 @@
+<!-- Implement a To-Do list which contains:
+ - 2 inputs and a button for adding a new task
+ - a list of tasks
+
+A task is defined as a description and a due date and its template consists of: a checkbox, the description, the due date and a delete button.
+
+Functionality:
+    *When check is on, strikethrough the description through the "completed" CSS class
+    *When dueDate is in the past, put a red background on it
+    *Only when check is on, show the delete button on the task
+    *Display a list of tasks
+    *Add the ability to dynamically add tasks
+    *When clicking delete on a task, remove it from the list -->
+
+<div class="form">
+  <input type="text" placeholder="Task description" #taskContent />
+  <input type="date" placeholder="Due date" #dueDate />
+  <button (click)="addTask(taskContent.value, dueDate.value)">Add task</button>
+</div>
+<hr />
+<div class="taskContainer">
+  <ul *ngFor="let task of tasks">
+    <input type="checkbox" />
+    <li>{{ task.taskContent }}</li>
+    <li>{{ task.dueDate }}</li>
+    <button>Delete</button>
+  </ul>
+</div>

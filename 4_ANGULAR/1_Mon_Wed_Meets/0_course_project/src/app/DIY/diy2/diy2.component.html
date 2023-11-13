@@ -1,0 +1,7 @@
+<fieldset>
+  <input type="text" [(ngModel)]="fullName" />
+  <input type="text" [(ngModel)]="city" />
+  <input type="text" [(ngModel)]="country" />
+  <button (click)="showPersonLocation()">Join inputs</button>
+  <p>{{ joinedData }}</p>
+</fieldset>

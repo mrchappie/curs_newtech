@@ -1,0 +1,15 @@
+<div class="counter">
+  <h1>This is my counter</h1>
+  <span [ngStyle]="{ color: textColor }">{{ counter }}</span>
+  <div class="buttons">
+    <button (click)="increaseCounter()" [disabled]="counter === 10">+</button>
+    <button (click)="decreaseCounter()" [disabled]="counter === 0">-</button>
+  </div>
+</div>
+
+<!-- ngFor -->
+<div class="boxes" *ngFor="let num of counterArray; let idx = index">
+  <div class="box" [style.backgroundColor]="idx < 5 ? 'red' : 'green'">
+    {{ idx + 1 }}
+  </div>
+</div>

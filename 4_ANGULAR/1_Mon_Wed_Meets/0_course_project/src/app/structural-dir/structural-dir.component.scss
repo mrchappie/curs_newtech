@@ -1,0 +1,9 @@
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item {
+  border: 3px dotted blue;
+  padding-block: 5px;
+}
