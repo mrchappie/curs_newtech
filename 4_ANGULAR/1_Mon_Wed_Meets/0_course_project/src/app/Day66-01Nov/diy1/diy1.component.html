@@ -1,0 +1,5 @@
+<input type="text" #first />
+<input type="text" #last />
+<input type="text" #email />
+<button (click)="saveData(first.value, last.value, email.value)">Save</button>
+<p>{{ getGreeting(first.value, last.value, email.value) }}</p>

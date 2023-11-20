@@ -1,20 +1,14 @@
-h1 {
-  color: red;
+select {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 0.5em 1.5em;
+  font-size: 1.5em;
+  background-color: black;
+  color: white;
+  border-bottom-left-radius: 3em;
 }
 
-table,
-td {
-  border: 1px solid black;
-}
-
-.color-red {
-  color: red;
-}
-
-.bg-blue {
-  background-color: lightblue;
-}
-
-.border-green {
-  border: 5px solid green;
+p {
+  font-size: 1.5em;
 }

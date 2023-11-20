@@ -1,0 +1,9 @@
+.list {
+  border: 3px solid black;
+}
+
+.list-item {
+  border: 3px dashed blue;
+  margin: 0;
+  padding: 1em;
+}

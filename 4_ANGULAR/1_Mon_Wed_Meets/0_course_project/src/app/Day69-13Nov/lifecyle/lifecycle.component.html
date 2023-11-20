@@ -1,0 +1,12 @@
+<p>Lyfecyle</p>
+
+<input type="text" [(ngModel)]="input" />
+
+<label for="vis">Child visible:</label>
+<input type="checkbox" [(ngModel)]="isChildVisible" />
+
+<app-lifecycle-child
+  *ngIf="isChildVisible"
+  [input]="input"
+  (output)="onOutput()"
+></app-lifecycle-child>

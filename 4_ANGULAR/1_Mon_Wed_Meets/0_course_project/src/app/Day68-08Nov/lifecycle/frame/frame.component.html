@@ -1,0 +1,9 @@
+<div class="frame" [class.dark]="darkThemeEnabled">
+  <ng-content select="[buttons]"></ng-content>
+  <br />
+
+  <label for="theme">Dark theme</label>
+  <input type="checkbox" id="theme" [(ngModel)]="darkThemeEnabled" />
+
+  <ng-content></ng-content>
+</div>

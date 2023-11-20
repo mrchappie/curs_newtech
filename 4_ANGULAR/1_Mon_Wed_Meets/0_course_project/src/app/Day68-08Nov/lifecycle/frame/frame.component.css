@@ -1,0 +1,11 @@
+.frame {
+  width: fit-content;
+  padding: 1em;
+  border: 10px inset darkred;
+}
+
+.dark {
+  border-color: yellow;
+  background-color: black;
+  color: white;
+}

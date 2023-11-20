@@ -1,0 +1,8 @@
+<div class="game-container">
+  <h1>First Input-Output</h1>
+  <app-display [points]="counter"></app-display>
+  <div>
+    <app-plus (increment)="increment()"></app-plus>
+    <app-minus (decrement)="decrement()"></app-minus>
+  </div>
+</div>

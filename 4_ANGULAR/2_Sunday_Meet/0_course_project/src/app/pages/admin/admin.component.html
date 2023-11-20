@@ -1,0 +1,17 @@
+<h1>Admin</h1>
+<div>
+  <ul>
+    <li>First name</li>
+    <li>Last name</li>
+    <li>Email</li>
+    <li>Delete user</li>
+    <li>Update user</li>
+  </ul>
+  <ul *ngFor="let user of users">
+    <li>{{ user.firstName }}</li>
+    <li>{{ user.lastName }}</li>
+    <li>{{ user.email }}</li>
+    <button>Delete User</button>
+    <button>Update User</button>
+  </ul>
+</div>

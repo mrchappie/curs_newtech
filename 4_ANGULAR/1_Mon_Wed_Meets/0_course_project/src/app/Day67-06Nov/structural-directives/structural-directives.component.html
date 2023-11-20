@@ -1,0 +1,85 @@
+<h1>Structural directives</h1>
+
+<h2>ngIf</h2>
+<p *ngIf="true">Show this if true</p>
+<p *ngIf="true">Show this if false</p>
+<p hidden>Show this if hidden</p>
+
+<h2>ngIf-else</h2>
+<input type="checkbox" [(ngModel)]="checkIfElse" />
+<h3 *ngIf="checkIfElse; else elseEl">This is true</h3>
+<ng-template #elseEl><p>Uh-ohh</p></ng-template>
+
+<ng-container *ngIf="checkIfElse">
+  <ng-container *ngFor="let item of items">
+    <p>CONTAINER HERE</p>
+  </ng-container>
+</ng-container>
+
+<hr />
+
+<button (click)="isVisible = !isVisible">Toggle visibility</button>
+<p>Visible: {{ isVisible }}</p>
+<h5 *ngIf="isVisible">Show if visible</h5>
+
+<hr />
+
+<input type="checkbox" [(ngModel)]="check1" />
+<input type="checkbox" [(ngModel)]="check2" />
+<p *ngIf="!check1 && !check2">Show if none checked</p>
+<p *ngIf="check1 || check2">Show if any checked</p>
+<p *ngIf="check1 && check2">Show if all checked</p>
+
+<hr />
+
+<h2>ngFor</h2>
+<input type="text" #name /><input type="number" #quantity /><input
+  type="number"
+  #price
+/>
+<button
+  (click)="
+    items.unshift({
+      name: name.value,
+      quantity: quantity.valueAsNumber,
+      price: price.valueAsNumber
+    })
+  "
+>
+  Add
+</button>
+<div class="list">
+  <p
+    class="list-item"
+    [style.backgroundColor]="item.price > 5 ? 'red' : 'green'"
+    *ngFor="let item of items; let index = index"
+  >
+    {{ index + 1 }}.
+    <b>{{ item.name }}</b>
+    -
+    <i>{{ item.quantity }} kg</i>
+    :
+    <u>{{ item.price }} lei</u>
+    <button (click)="items.splice(index, 1)">Remove</button>
+  </p>
+</div>
+
+<hr />
+
+<h2>ngSwitch</h2>
+<select [(ngModel)]="tagType">
+  <option value="h1">h1</option>
+  <option value="p">p</option>
+  <option value="ul">ul</option>
+</select>
+
+<div [ngSwitch]="tagType">
+  <h1 *ngSwitchCase="'h1'">Heading <i>1</i></h1>
+  <p *ngSwitchCase="'p'">Paragraph</p>
+  <ul *ngSwitchCase="'ul'">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+  <div *ngSwitchDefault>Default div</div>
+</div>

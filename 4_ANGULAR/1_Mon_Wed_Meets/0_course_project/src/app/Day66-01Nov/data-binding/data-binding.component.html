@@ -1,0 +1,84 @@
+<h1>Hello, Angular! from {{ name }}</h1>
+<button [disabled]="!enabled">Click me</button>
+
+<hr />
+
+<h2>Data binding</h2>
+<ul>
+  <li>
+    <p>
+      String interpolation (syntax: <i>{{ '{{ TS_property }}' }}</i>):
+      {{ interpolatedString }}
+    </p>
+  </li>
+  <li>
+    <p>
+      Property/attribute binding (syntax: <i>[html property]="TS_property"</i>):
+      <input
+        type="text"
+        [disabled]="propertyBoundDisabled"
+        [placeholder]="getPlaceholder()"
+        #myInput
+      />
+    </p>
+    <table>
+      <tr>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+        <td>Cell 3</td>
+      </tr>
+      <tr>
+        <td [attr.colspan]="attributeBoundColspan ? 3 : 1">Cell 4</td>
+      </tr>
+    </table>
+  </li>
+  <li>
+    <p>Event binding (syntax: <i>(html event)="eventHandler()"</i>):</p>
+    <button
+      (click)="displayAlert($event, myInput.value); myInput.disabled = true"
+    >
+      Display alert
+    </button>
+    <input type="text" (focus)="onFocus()" (blur)="onBlur()" />
+    <textarea type="text" (keydown.shift.enter)="onNewLine($event)"></textarea>
+  </li>
+  <li>
+    <p>Two-way data binding (syntax: <i>[(ngModel)]="TS_property"</i>):</p>
+    <input type="text" [(ngModel)]="twoWayDataBoundString" />
+    {{ twoWayDataBoundString }}
+    <br />
+    <input
+      type="text"
+      [value]="twoWayDataBoundString2"
+      (input)="twoWayDataBoundString2 = twoWayInput.value"
+      #twoWayInput
+    />
+    {{ twoWayDataBoundString2 }}
+  </li>
+</ul>
+
+<hr />
+<h2>CSS class binding</h2>
+<p [class]="'color-red'">Paragraph one</p>
+<p [class.color-red]="enabled">Paragraph one again</p>
+<p [class]="classString">Paragraph two</p>
+<p [class]="classObject">Paragraph three</p>
+<p [ngClass]="classObject">Paragraph three again</p>
+
+<hr />
+<h2>CSS style binding</h2>
+<p [style]="'color: red'">Paragraph one</p>
+<p [style.color]="'red'">Paragraph one again</p>
+<p [style]="styleString">Paragraph one again again</p>
+<p class="bg-blue" [style.padding.%]="padding">Paragraph two</p>
+<button (click)="padding = padding + 10">Increase padding</button>
+<p [style]="styleObject">Paragraph three</p>
+<p [ngStyle]="styleObject">Paragraph three</p>
+<p
+  [ngStyle]="{
+    color: enabled ? 'green' : 'red',
+    backgroundColor: enabled ? 'blue' : 'yellow',
+  }"
+>
+  Paragraph three
+</p>

@@ -1,100 +1,76 @@
-<app-input-output></app-input-output>
+<select [(ngModel)]="chapter">
+  <option value="" disabled>--- Select chapter ---</option>
 
-<!-- <app-component-interaction></app-component-interaction> -->
+  <!-- Day66-01Nov -->
+  <option disabled>--- 01 November ---</option>
+  <option value="data-binding">Data-binding</option>
+  <option value="diy1-2">Do it yourself 1 & 2</option>
 
-<!-- <app-diy4-todo></app-diy4-todo> -->
+  <!-- Day67-06Nov -->
+  <option disabled>--- 06 November ---</option>
+  <option value="structural-directives">Structural Directives</option>
+  <option value="diy3">Do it yourself 3</option>
 
-<!-- <app-diy3></app-diy3> -->
+  <!-- Day68-08Nov -->
+  <option disabled>--- 08 November ---</option>
+  <option value="todo">Angular To-Do app</option>
+  <option value="component-interaction">Component interaction</option>
+  <option value="diy4">Do it yourself 4</option>
+  <option value="lifecycle">Lifecycle, referencing & content projection</option>
 
-<!-- <app-structural-dir></app-structural-dir> -->
+  <!-- Day69-13Nov -->
+  <option disabled>--- 13 November ---</option>
+  <option value="lifecycle">Lifecycle</option>
+  <option value="todo-interaction">Todo interaction</option>
+  <option value="counter-with-services">Counter with services</option>
+  <!-- <option value="TBA">Dependency injection</option> -->
 
-<!-- 
+  <!-- Day70-15Nov -->
+  <option disabled>--- 15 November ---</option>
+  <option value="todo-with-services">Todo with services</option>
+  <option value="observables">RxJS: Observables & Subjects</option>
+</select>
 
-<app-diy2></app-diy2>
-
-<app-diy1></app-diy1>
-
-<h1>Hello, Angular! from {{ name }}</h1>
-<button [disabled]="!enabled">Click me</button>
-
-<hr />
-
-<h2>Data binding</h2>
-<ul>
-  <li>
+<ng-container [ngSwitch]="chapter">
+  <ng-container *ngSwitchDefault>
+    <h1>NewTech - Angular Course Project</h1>
     <p>
-      String interpolation (syntax: <i>{{ '{{ TS_property }}' }}</i>):
-      {{ interpolatedString }}
+      Use the <b>top-left select element</b> to switch between implementations
+      and demos for each chapter in the Angular module.
     </p>
-  </li>
-  <li>
-    <p>
-      Property/attribute binding (syntax: <i>[html property]="TS_property"</i>):
-      <input
-        type="text"
-        [disabled]="propertyBoundDisabled"
-        [placeholder]="getPlaceholder()"
-        #myInput
-      />
-    </p>
-    <table>
-      <tr>
-        <td>Cell 1</td>
-        <td>Cell 2</td>
-        <td>Cell 3</td>
-      </tr>
-      <tr>
-        <td [attr.colspan]="attributeBoundColspan ? 3 : 1">Cell 4</td>
-      </tr>
-    </table>
-  </li>
-  <li>
-    <p>Event binding (syntax: <i>(html event)="eventHandler()"</i>):</p>
-    <button
-      (click)="displayAlert($event, myInput.value); myInput.disabled = true"
-    >
-      Display alert
-    </button>
-    <input type="text" (focus)="onFocus()" (blur)="onBlur()" />
-    <textarea type="text" (keydown.shift.enter)="onNewLine($event)"></textarea>
-  </li>
-  <li>
-    <p>Two-way data binding (syntax: <i>[(ngModel)]="TS_property"</i>):</p>
-    <input type="text" [(ngModel)]="twoWayDataBoundString" />
-    {{ twoWayDataBoundString }}
-    <br />
-    <input
-      type="text"
-      [value]="twoWayDataBoundString2"
-      (input)="twoWayDataBoundString2 = twoWayInput.value"
-      #twoWayInput
-    />
-    {{ twoWayDataBoundString2 }}
-  </li>
-</ul>
+  </ng-container>
 
-<hr />
-<h2>CSS class binding</h2>
-<p [class]="'color-red'">Paragraph one</p>
-<p [class.color-red]="enabled">Paragraph one again</p>
-<p [class]="classString">Paragraph two</p>
-<p [class]="classObject">Paragraph three</p>
-<p [ngClass]="classObject">Paragraph three again</p>
+  <!-- Day66-01Nov -->
+  <app-data-binding *ngSwitchCase="'data-binding'"></app-data-binding>
+  <app-diy1 *ngSwitchCase="'diy1-2'"></app-diy1>
 
-<hr />
-<h2>CSS style binding</h2>
-<p [style]="'color: red'">Paragraph one</p>
-<p [style.color]="'red'">Paragraph one again</p>
-<p [style]="styleString">Paragraph one again again</p>
-<p class="bg-blue" [style.padding.%]="padding">Paragraph two</p>
-<button (click)="padding = (padding ?? 0) + 10">Increase padding</button>
-<p [style]="styleObject">Paragraph three</p>
-<p [ngStyle]="styleObject">Paragraph three</p>
-<p
-  [ngStyle]="{
-    color: enabled ? 'green' : 'red',
-    backgroundColor: enabled ? 'blue' : 'yellow',
-  }"
->
-  Paragraph three
-</p> -->
+  <!-- Day67-06Nov -->
+  <app-structural-directives
+    *ngSwitchCase="'structural-directives'"
+  ></app-structural-directives>
+  <app-plus-minus-game *ngSwitchCase="'diy3'"></app-plus-minus-game>
+
+  <!-- Day68-08Nov -->
+  <app-todo-ex *ngSwitchCase="'todo'"></app-todo-ex>
+  <app-component-interaction
+    *ngSwitchCase="'component-interaction'"
+  ></app-component-interaction>
+  <app-input-output *ngSwitchCase="'diy4'"></app-input-output>
+  <app-lifecycle *ngSwitchCase="'lifecycle'"></app-lifecycle>
+
+  <!-- Day69-13Nov -->
+  <app-lifecycle *ngSwitchCase="'app-lifecycle'"></app-lifecycle>
+  <!-- <app-dependency-injection *ngSwitchCase="''"></app-dependency-injection> -->
+  <app-todo-interaction
+    *ngSwitchCase="'todo-interaction'"
+  ></app-todo-interaction>
+  <app-counter-with-services
+    *ngSwitchCase="'counter-with-services'"
+  ></app-counter-with-services>
+
+  <!-- Day70-15Nov -->
+  <app-todo-with-services
+    *ngSwitchCase="'todo-with-services'"
+  ></app-todo-with-services>
+  <app-observables *ngSwitchCase="'observables'"></app-observables>
+</ng-container>

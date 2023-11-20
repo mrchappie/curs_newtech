@@ -1,0 +1,21 @@
+<h1>To-Do List</h1>
+
+<!-- Task creation -->
+<input
+  type="text"
+  [(ngModel)]="newTaskDescription"
+  placeholder="Task description"
+/>
+<input type="date" [(ngModel)]="newTaskDueDate" />
+<button (click)="addTask()">Add task</button>
+<hr />
+
+<!-- Task list -->
+<div class="task" *ngFor="let task of tasks; let index = index">
+  <input type="checkbox" [(ngModel)]="task.completed" />
+  <p [class.completed]="task.completed">{{ task.description }}</p>
+  <p [style.backgroundColor]="task.isPastDue() ? 'red' : ''">
+    {{ task.dueDate }}
+  </p>
+  <button *ngIf="task.completed" (click)="deleteTask(index)">Delete</button>
+</div>

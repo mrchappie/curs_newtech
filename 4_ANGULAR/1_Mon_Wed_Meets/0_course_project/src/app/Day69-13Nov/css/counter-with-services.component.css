@@ -1,0 +1,15 @@
+.container {
+  width: 350px;
+  height: 350px;
+  display: grid;
+  place-items: center;
+  -webkit-box-shadow: 0 0 10px black;
+          box-shadow: 0 0 10px black;
+  border: 10px;
+}
+.container .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}

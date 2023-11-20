@@ -1,0 +1,42 @@
+<h1>Lifecycle</h1>
+
+<hr />
+
+<h2>Referencing views</h2>
+<p #ref>Referenced view-child</p>
+
+<ul #list>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+<ol #list>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ol>
+
+<hr />
+
+<h2>Content projection & reference</h2>
+
+<app-frame>
+  <p #contentRef>Referenced content-child</p>
+  <ng-container buttons>
+    <button #button>Button 1</button
+    ><button #button>Button 2</button></ng-container
+  >
+</app-frame>
+<app-frame>
+  <h2>Lorem, ipsum dolor.</h2>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, repellendus.
+  </p>
+  <hr />
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati qui
+    accusamus aut deleniti nam dolorum! Laudantium est voluptatum facilis
+    placeat id doloribus doloremque natus hic earum exercitationem, iusto
+    corrupti sit.
+  </p>
+</app-frame>
