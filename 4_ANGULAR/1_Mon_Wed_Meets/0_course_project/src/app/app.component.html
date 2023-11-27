@@ -29,6 +29,21 @@
   <option disabled>--- 15 November ---</option>
   <option value="todo-with-services">Todo with services</option>
   <option value="observables">RxJS: Observables & Subjects</option>
+  <option value="plus-minus-service">Plus-Minus with services</option>
+  <option value="rxjs">RxJS: Observables & Subjects</option>
+  <option value="morse-code">RxJS Example: Morse Code</option>
+
+  <!-- Day71-20Nov -->
+  <option disabled>--- 20 November ---</option>
+  <option value="diy1-component">Routing Demo</option>
+
+  <!-- Day72-22Nov -->
+  <option disabled>--- 22 November ---</option>
+  <option value="more-routing">More Routing</option>
+
+  <!-- Day73-27Nov -->
+  <option disabled>--- 27 November ---</option>
+  <option value="pipes">Pipes</option>
 </select>
 
 <ng-container [ngSwitch]="chapter">
@@ -73,4 +88,17 @@
     *ngSwitchCase="'todo-with-services'"
   ></app-todo-with-services>
   <app-observables *ngSwitchCase="'observables'"></app-observables>
+  <app-plus-minus-service
+    *ngSwitchCase="'plus-minus-service'"
+  ></app-plus-minus-service>
+  <app-rx-example *ngSwitchCase="'morse-code'"></app-rx-example>
+
+  <!-- Day71-20Nov -->
+  <app-routing *ngSwitchCase="'routing'"></app-routing>
+
+  <!-- Day72-22Nov -->
+  <app-more-routing *ngSwitchCase="'more-routing'"></app-more-routing>
+
+  <!-- Day73-27Nov -->
+  <app-pipes *ngSwitchCase="'pipes'"></app-pipes>
 </ng-container>

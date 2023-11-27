@@ -1,0 +1,20 @@
+<div>
+  <h3>{{ dish.name }}</h3>
+  <button routerOutlet="..">Back to menu</button>
+  <img src="https://picsum.photos/200" alt="Dish pic" />
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum hic eius
+    aliquam rem fuga facilis quos mollitia. Odit labore quos voluptatum alias at
+    veritatis voluptatem, earum vel quae nobis nihil esse cupiditate cumque
+    inventore suscipit voluptas odio dolorum. Quos quo neque tempora unde error
+    facilis quaerat voluptas quia sequi alias!
+  </p>
+  <p>{{ dish.price }} $</p>
+  <h4>{{ dish.quantity }}</h4>
+  <div>
+    <span>1g: </span>
+    <ul *ngFor="let ingr of dish.ingredients">
+      <li>ingr</li>
+    </ul>
+  </div>
+</div>

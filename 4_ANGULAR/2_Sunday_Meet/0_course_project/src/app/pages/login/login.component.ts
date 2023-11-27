@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UserObject } from '../register/register.component';
 import { Router } from '@angular/router';
-import { HandleDataBase } from 'src/app/utils/helpers/handleDataBase.service';
+import { HandleDataBase } from 'src/app/utils/services/handleLocalStorage/handleDataBase.service';
 
 interface LoginData {
   email: string;

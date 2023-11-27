@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HandleDataBase } from 'src/app/utils/helpers/handleDataBase.service';
+import { HandleDataBase } from 'src/app/utils/services/handleLocalStorage/handleDataBase.service';
 
 export interface UserObject {
   firstName: string;

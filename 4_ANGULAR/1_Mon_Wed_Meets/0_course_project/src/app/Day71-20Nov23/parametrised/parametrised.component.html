@@ -1,0 +1,6 @@
+<h1>Product details</h1>
+<h2>{{ productId }}: {{ productName }}</h2>
+
+<input type="number" placeholder="productId" [(ngModel)]="productId" />
+<input type="text" placeholder="productName" [(ngModel)]="productName" />
+<button [routerLink]="['/product', 'pid', 'pname']">Navigate to product</button>

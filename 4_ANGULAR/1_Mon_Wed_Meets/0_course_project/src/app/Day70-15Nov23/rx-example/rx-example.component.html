@@ -1,0 +1,44 @@
+<div class="container">
+  <h1>Morse code decoder</h1>
+  <div class="grid">
+    <label for="morseCode">Morse code input</label>
+    <textarea
+      id="morseCode"
+      cols="30"
+      rows="10"
+      placeholder="Morse code to decode..."
+      #input
+    >
+- .... . / --.- ..- .. -.-. -.- / -... .-. --- .-- -. / ..-. --- -..- / .--- ..- -- .--. ... / --- ...- . .-. / - .... . / .-.. .- --.. -.-- / -.. --- --.</textarea
+    >
+    <label for="text">Text input</label>
+    <textarea
+      id="text"
+      cols="30"
+      rows="10"
+      placeholder="Text to encode..."
+      #inputText
+    >
+THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG</textarea
+    >
+  </div>
+  <button (click)="decode(input.value, interval.valueAsNumber)">
+    Decode morse code input
+  </button>
+  <button (click)="encode(inputText.value, interval.valueAsNumber)">
+    Encode text input
+  </button>
+  <button (click)="stop()">Stop</button>
+  <input type="number" min="100" max="1000" step="100" value="500" #interval />
+
+  <hr />
+  <p style="display: inline-block">Light signal</p>
+  <div
+    class="light"
+    [style.backgroundColor]="lightOn ? 'green' : 'transparent'"
+  ></div>
+  <p>Output: Morse code</p>
+  <p class="output">{{ transmission }}</p>
+  <p>Output: Text</p>
+  <p class="output">{{ output }}</p>
+</div>

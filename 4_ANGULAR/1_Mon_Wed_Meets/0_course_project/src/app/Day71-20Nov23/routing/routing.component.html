@@ -1,0 +1,22 @@
+<h1>Routing demo</h1>
+<nav>
+  <li>
+    <a
+      routerLink="/"
+      routerLinkActive="activeLink"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Default</a
+    >
+  </li>
+  <li>
+    <a routerLink="diy1" routerLinkActive="activeLink">DIY 1</a>
+  </li>
+  <li><a routerLink="diy2" routerLinkActive="activeLink">DIY 2</a></li>
+  <li>
+    <a routerLink="diy3" routerLinkActive="activeLink">DIY 4</a>
+  </li>
+  <li>
+    <a routerLink="diy4" routerLinkActive="activeLink">DIY 4</a>
+  </li>
+</nav>
+<router-outlet></router-outlet>

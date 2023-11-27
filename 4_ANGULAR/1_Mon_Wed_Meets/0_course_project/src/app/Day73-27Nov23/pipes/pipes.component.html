@@ -1,0 +1,26 @@
+<h1>Angular Pipes demo</h1>
+
+<h2>HR Dep: Employee information</h2>
+<p>{{ empData$ | async | json }}</p>
+
+<hr />
+
+<h2>Employee list</h2>
+<select id="nameFormat" [(ngModel)]="nameFormat">
+  <option value="short">Name Format</option>
+  <option value="short">Short</option>
+  <option value="medium">Medium</option>
+  <option value="long">Long</option>
+</select>
+<ul *ngFor="let emp of employeeData">
+  <li class="employee-info">
+    <h3>
+      {{ emp | name : nameFormat }}
+      <!-- {{ emp.firstName }} {{ emp.middleNames?.join("-") ?? "" }}
+      {{ emp.lastName }} -->
+    </h3>
+    <h3>{{ emp.level | uppercase }} {{ emp.job | titlecase }}</h3>
+    <p>Birthday: {{ emp.dob | date }}</p>
+    <p>Compensation: {{ emp.salary | currency }}</p>
+  </li>
+</ul>

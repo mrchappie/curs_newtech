@@ -11,6 +11,9 @@
   <button (click)="updateUserData()">Update data</button>
 </div>
 
+<h2>Porfile picture</h2>
+<img [src]="this.httpRequest.apiData.message" alt="dog image" />
+
 <!-- Observables  -->
 <p>-- Observables --</p>
 <button (click)="addItem()">Add item</button>

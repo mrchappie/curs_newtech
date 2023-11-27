@@ -1,0 +1,25 @@
+<h2>Menu</h2>
+<p>These are our delicious dishes made with nothing funky</p>
+
+<ol>
+  <li
+    class="menu-item"
+    *ngFor="let dish of dishService.dishes; let dishId = index"
+    [routerLink]="[dishId]"
+  >
+    <div class="menu-item-head">
+      <h3>{{ dish.name }}</h3>
+      <p>{{ dish.price }} $</p>
+    </div>
+    <h4>{{ dish.quantity }}</h4>
+    <p>
+      <span>1g: </span>
+      <ng-container *ngFor="let ingr of dish.ingredients">
+        <span>{{ ingr }}</span
+        ><span> | </span>
+      </ng-container>
+    </p>
+  </li>
+</ol>
+
+<router-outlet></router-outlet>

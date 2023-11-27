@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { Diy1Component } from './Day66-01Nov/diy1/diy1.component';
@@ -30,11 +31,34 @@ import { TaskListServicesComponent } from './Day70-15Nov23/todo-with-services/ta
 import { TaskItemServicesComponent } from './Day70-15Nov23/todo-with-services/task-list-services/task-item-services/task-item-services.component';
 import { CreateTaskServicesComponent } from './Day70-15Nov23/todo-with-services/create-task-services/create-task-services.component';
 import { ObservablesComponent } from './Day70-15Nov23/observables/observables.component';
+import { RxExampleComponent } from './Day70-15Nov23/rx-example/rx-example.component';
+import { PlusMinusServiceComponent } from './Day70-15Nov23/plus-minus-service/plus-minus-service.component';
+import { MinusSComponent } from './Day70-15Nov23/plus-minus-service/minus-s/minus-s.component';
+import { PlusSComponent } from './Day70-15Nov23/plus-minus-service/plus-s/plus-s.component';
+import { DisplaySComponent } from './Day70-15Nov23/plus-minus-service/display-s/display-s.component';
+import { RoutingComponent } from './Day71-20Nov23/routing/routing.component';
+import { Routes } from '@angular/router';
+import { Diy2Component } from './DIY/diy2/diy2.component';
+import { Diy3Component } from './DIY/diy3/diy3.component';
+import { Diy4TodoComponent } from './DIY/diy4-todo/diy4-todo.component';
+import { AppRoutingModule } from './Day71-20Nov23/app-routing/app-routing.module';
+import { NotFoundPageComponent } from './Day71-20Nov23/not-found-page/not-found-page.component';
+import { ParametrisedComponent } from './Day71-20Nov23/parametrised/parametrised.component';
+import { MoreRoutingComponent } from './Day72-22Nov23/more-routing/more-routing.component';
+import { ExerciseMenuComponent } from './Day72-22Nov23/more-routing/exercise-menu/exercise-menu.component';
+import { ExerciseOrdersComponent } from './Day72-22Nov23/more-routing/exercise-orders/exercise-orders.component';
+import { ExerciseServerComponent } from './Day72-22Nov23/more-routing/exercise-server/exercise-server.component';
+import { MenuItemComponent } from './Day72-22Nov23/more-routing/exercise-menu/menu-item/menu-item.component';
+import { PipesComponent } from './Day73-27Nov23/pipes/pipes.component';
+import { NamePipe } from './Day73-27Nov23/pipes/name.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     Diy1Component,
+    Diy2Component,
+    Diy3Component,
+    Diy4TodoComponent,
     StructuralDirectivesComponent,
     PlusMinusGameComponent,
     TodoExComponent,
@@ -61,8 +85,23 @@ import { ObservablesComponent } from './Day70-15Nov23/observables/observables.co
     TaskItemServicesComponent,
     CreateTaskServicesComponent,
     ObservablesComponent,
+    RxExampleComponent,
+    PlusMinusServiceComponent,
+    MinusSComponent,
+    PlusSComponent,
+    DisplaySComponent,
+    RoutingComponent,
+    NotFoundPageComponent,
+    ParametrisedComponent,
+    MoreRoutingComponent,
+    ExerciseMenuComponent,
+    ExerciseOrdersComponent,
+    ExerciseServerComponent,
+    MenuItemComponent,
+    PipesComponent,
+    NamePipe,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule, RouterModule],
   providers: [],
   bootstrap: [AppComponent],
 })

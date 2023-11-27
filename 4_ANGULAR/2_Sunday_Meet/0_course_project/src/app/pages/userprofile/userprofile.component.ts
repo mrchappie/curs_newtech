@@ -1,25 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { UserObject } from '../register/register.component';
-import { HandleDataBase } from 'src/app/utils/helpers/handleDataBase.service';
+import { HandleDataBase } from 'src/app/utils/services/handleLocalStorage/handleDataBase.service';
 import { ObservableService } from 'src/app/utils/observable/observable.service';
+import { HttpRequestService } from 'src/app/utils/services/httpRequest/http-request.service';
+
+export interface DogImage {
+  message: string;
+  status: string;
+}
 
 @Component({
   selector: 'app-userprofile',
   templateUrl: './userprofile.component.html',
   styleUrls: ['./userprofile.component.scss'],
 })
-export class UserprofileComponent {
+export class UserprofileComponent implements OnInit {
   constructor(
     protected handleDataBase: HandleDataBase,
-    protected fetchedData: ObservableService
+    protected fetchedData: ObservableService,
+    protected httpRequest: HttpRequestService
   ) {}
 
   loading: boolean = true;
   items: string[] = [];
+  dogImage: DogImage = {
+    message: '',
+    status: '',
+  };
 
   ngOnInit() {
     this.handleUsers();
     this.fetchData();
+    this.httpRequest.fetchData('https://dog.ceo/api/breeds/image/random');
+    this.dogImage = this.httpRequest.apiData;
+    console.log(this.httpRequest.apiData);
   }
 
   userData: UserObject = {

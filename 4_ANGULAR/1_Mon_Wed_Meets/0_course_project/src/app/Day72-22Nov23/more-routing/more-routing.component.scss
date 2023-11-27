@@ -1,0 +1,31 @@
+nav {
+  background-color: black;
+  color: white;
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    display: flex;
+    justify-content: space-around;
+
+    li {
+      flex: 1;
+      padding: 1em;
+      text-align: center;
+      cursor: pointer;
+
+      &:hover {
+        background-color: darkgray;
+      }
+    }
+  }
+}
+
+.active {
+  background-color: lightgray;
+  color: black;
+  text-decoration: underline;
+}
