@@ -5,6 +5,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { UserprofileComponent } from './pages/userprofile/userprofile.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { FilterPageComponent } from './pages/filter-page/filter-page.component';
+import { UserInfoComponent } from './pages/user-info/user-info.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -12,6 +14,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'userprofile', component: UserprofileComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'filter', component: FilterPageComponent },
+  { path: 'user-info/:username', component: UserInfoComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,8 @@
+<button (click)="handleGetRandomImg()">Get random image</button>
+<button (click)="handleGetBreedImages()">Get all breed images</button>
+<button (click)="handleGetSubBreedList()">Get sub-breed lists</button>
+<button (click)="handleGetRandomBreedImg()">Get random breed image</button>
+<input type="text" [(ngModel)]="breed" />
+<img [src]="randomDogImgUrl" alt="" />
+<div *ngFor="let image of images"><img [src]="image" /></div>
+<div *ngFor="let subBreed of subBreeds">{{ subBreed }}</div>

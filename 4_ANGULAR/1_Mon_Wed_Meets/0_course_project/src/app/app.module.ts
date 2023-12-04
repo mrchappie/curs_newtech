@@ -51,6 +51,11 @@ import { ExerciseServerComponent } from './Day72-22Nov23/more-routing/exercise-s
 import { MenuItemComponent } from './Day72-22Nov23/more-routing/exercise-menu/menu-item/menu-item.component';
 import { PipesComponent } from './Day73-27Nov23/pipes/pipes.component';
 import { NamePipe } from './Day73-27Nov23/pipes/name.pipe';
+import { PipesExerciseComponent } from './Day74-29Nov23/pipes-exercise/pipes-exercise.component';
+import { ConvertTempPipe } from './Day74-29Nov23/pipes-exercise/pipes/convert-temp.pipe';
+import { RoundDecimalsPipe } from './Day74-29Nov23/pipes-exercise/pipes/round-decimals.pipe';
+
+import { TemplateDrivenComponent } from './Day74-29Nov23/forms/template-driven/template-driven.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +105,10 @@ import { NamePipe } from './Day73-27Nov23/pipes/name.pipe';
     MenuItemComponent,
     PipesComponent,
     NamePipe,
+    PipesExerciseComponent,
+    ConvertTempPipe,
+    RoundDecimalsPipe,
+    TemplateDrivenComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, RouterModule],
   providers: [],

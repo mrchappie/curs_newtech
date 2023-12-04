@@ -1,0 +1,10 @@
+<h1>FILTER PIPE</h1>
+<input type="text" [(ngModel)]="query" />
+<ul>
+  <li
+    *ngFor="let item of users | filter : query; let idx = index"
+    (click)="navigate(item)"
+  >
+    {{ item }} <button (click)="deleteItem(idx)">Delete</button>
+  </li>
+</ul>

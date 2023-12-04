@@ -1,0 +1,28 @@
+<div>
+  <label for="celsiusTemp">
+    Temp in Celsius:
+    <input type="number" id="celsiusTemp" [(ngModel)]="tempInCelsius" />
+  </label>
+  <div>
+    Select scale:
+    <select [(ngModel)]="scale">
+      <option value="kelvin">Kelvin</option>
+      <option value="fahrenheit">Fahrenheit</option>
+      <option value="rankine">Rankine</option>
+    </select>
+    with <input type="number" [(ngModel)]="decimals" /> decimals!
+    <p>
+      {{ tempInCelsius | convertTemp : scale | number }} degrees
+      {{ scale }}
+    </p>
+  </div>
+</div>
+
+<!-- 
+    Pipes Exercise:
+1) Create a temperature converter component which allows the user to input a temperature in degrees Celsius and convert it to the selected scale.
+
+Use a pipe to achieve this.
+
+2) Use another pipe to allow the user to display a certain number of decimals in the result. (Add a number input for this)
+ -->

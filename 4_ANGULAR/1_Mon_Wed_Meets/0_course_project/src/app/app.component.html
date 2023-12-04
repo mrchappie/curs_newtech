@@ -44,6 +44,10 @@
   <!-- Day73-27Nov -->
   <option disabled>--- 27 November ---</option>
   <option value="pipes">Pipes</option>
+
+  <!-- Day74-29Nov -->
+  <option value="pipes-exercise">Pipes Exercise</option>
+  <option value="template-driven">template-driven forms</option>
 </select>
 
 <ng-container [ngSwitch]="chapter">
@@ -101,4 +105,8 @@
 
   <!-- Day73-27Nov -->
   <app-pipes *ngSwitchCase="'pipes'"></app-pipes>
+
+  <!-- Day74-29Nov -->
+  <app-pipes-exercise *ngSwitchCase="'pipes-exercise'"></app-pipes-exercise>
+  <app-template-driven *ngSwitchCase="'template-driven'"></app-template-driven>
 </ng-container>

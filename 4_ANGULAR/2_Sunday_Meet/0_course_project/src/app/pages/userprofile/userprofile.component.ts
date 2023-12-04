@@ -3,6 +3,7 @@ import { UserObject } from '../register/register.component';
 import { HandleDataBase } from 'src/app/utils/services/handleLocalStorage/handleDataBase.service';
 import { ObservableService } from 'src/app/utils/observable/observable.service';
 import { HttpRequestService } from 'src/app/utils/services/httpRequest/http-request.service';
+import { UppercasePipe } from 'src/app/utils/pipes/uppercase.pipe';
 
 export interface DogImage {
   message: string;
@@ -21,6 +22,7 @@ export class UserprofileComponent implements OnInit {
     protected httpRequest: HttpRequestService
   ) {}
 
+  private upperCasePipe = new UppercasePipe();
   loading: boolean = true;
   items: string[] = [];
   dogImage: DogImage = {
@@ -61,7 +63,14 @@ export class UserprofileComponent implements OnInit {
       );
 
       if (loggedUser) {
-        this.userData = loggedUser;
+        // this.userData = loggedUser;
+        this.userData = {
+          firstName: this.upperCasePipe.transform(loggedUser.firstName),
+          lastName: this.upperCasePipe.transform(loggedUser.lastName),
+          email: loggedUser.email,
+          password: loggedUser.password,
+          confirmPassword: loggedUser.confirmPassword,
+        };
       }
     }
   }

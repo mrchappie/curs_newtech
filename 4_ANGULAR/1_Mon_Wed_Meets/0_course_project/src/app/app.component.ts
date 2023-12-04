@@ -16,5 +16,5 @@ import { Component } from '@angular/core';
   // ],
 })
 export class AppComponent {
-  chapter = 'pipes';
+  chapter = 'template-driven';
 }
