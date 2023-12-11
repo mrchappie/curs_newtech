@@ -18,6 +18,9 @@ import { UppercasePipe } from './utils/pipes/uppercase.pipe';
 import { FilterPageComponent } from './pages/filter-page/filter-page.component';
 import { FilterPipe } from './utils/pipes/filter.pipe';
 import { UserInfoComponent } from './pages/user-info/user-info.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,7 @@ import { UserInfoComponent } from './pages/user-info/user-info.component';
     FilterPipe,
     UserInfoComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, provideFirebaseApp(() => initializeApp({"projectId":"learn-ang-3a987","appId":"1:192008310003:web:e741738f1801f49383fb86","storageBucket":"learn-ang-3a987.appspot.com","apiKey":"AIzaSyAyon2mKLKrbnOnI9EpoDh4JVIWi2VxWZw","authDomain":"learn-ang-3a987.firebaseapp.com","messagingSenderId":"192008310003","measurementId":"G-1BX22JRK12"})), provideAuth(() => getAuth()), provideFirestore(() => getFirestore())],
   providers: [],
   bootstrap: [AppComponent],
 })

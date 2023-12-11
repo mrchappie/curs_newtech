@@ -46,8 +46,18 @@
   <option value="pipes">Pipes</option>
 
   <!-- Day74-29Nov -->
+  <option disabled>--- 29 November ---</option>
   <option value="pipes-exercise">Pipes Exercise</option>
-  <option value="template-driven">template-driven forms</option>
+  <option value="template-driven-forms">Angular Forms: Template-Driven</option>
+  <option value="reactive-forms">Angular Forms: Reactive</option>
+
+  <!-- Day75-04Dec -->
+  <option disabled>--- 04 December ---</option>
+  <option value="reactive-forms-exercise">reactive form exercise</option>
+
+  <!-- Day76-06Dec -->
+  <option disabled>--- 06 December ---</option>
+  <option value="firebase">firebase intro</option>
 </select>
 
 <ng-container [ngSwitch]="chapter">
@@ -108,5 +118,16 @@
 
   <!-- Day74-29Nov -->
   <app-pipes-exercise *ngSwitchCase="'pipes-exercise'"></app-pipes-exercise>
-  <app-template-driven *ngSwitchCase="'template-driven'"></app-template-driven>
+  <app-template-driven-forms
+    *ngSwitchCase="'template-driven-forms'"
+  ></app-template-driven-forms>
+  <app-reactive-forms *ngSwitchCase="'reactive-forms'"></app-reactive-forms>
+
+  <!-- Day75-04Dec -->
+  <app-reactive-forms-exercise
+    *ngSwitchCase="'reactive-forms-exercise'"
+  ></app-reactive-forms-exercise>
+
+  <!-- Day76-06Dec -->
+  <app-firebase *ngSwitchCase="'firebase'"></app-firebase>
 </ng-container>

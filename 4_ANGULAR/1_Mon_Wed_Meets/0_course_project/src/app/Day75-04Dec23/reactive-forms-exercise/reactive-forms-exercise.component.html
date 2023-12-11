@@ -1,0 +1,158 @@
+<!-- Implementati formularul din 03.JS/Day48-23Aug/streaming-form.html folosind Angular Reactive Forms.
+
+Functionalitati:
+- Un utilizator poate adauga intre 1 si maximul permis de plan de dispositive
+- Un utilizator poate sterge un dispozitiv adaugat fara a le afecta pe celelalte introduce
+- Campul Operating system se actualizeaza dynamic in functie de valoarea campului Device type
+- Valoarea formularului va fi afisata in consola la ngSubmit in aceeasi structura cu formularul
+{
+profile: {
+  email,
+  ...,
+  lastName,
+  dob
+},
+plan: {
+  type,
+  devices: [
+    0: {
+      type,
+      os,
+      name
+    },
+    ...
+  ]
+ }
+}
+
+Validari:
+- Toate campurile afisate sunt obligatorii
+- Campul de email trebuie sa respecte formatul 
+Alte validari:
+- Subscribe este disabled daca formularul este invalid
+- Un utilizator nu poate avea mai putin de 1 sau mai mult de max_plan dispositive
+- Add device trebuie sa fie disabled daca utilizatorul nu mai are voie sa adauge dispositive
+- Remove device trebuie sa fie disabled daca este singurul dispozitiv inregistrat
+- Pass si confirm pass trebuie sa fie identice
+-->
+<form [formGroup]="streamingForm" (ngSubmit)="onSubmit()">
+  <fieldset>
+    <legend>Subscribe to our streaming service</legend>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, qui!</p>
+
+    <fieldset formGroupName="profile">
+      <legend>Personal information</legend>
+      <label for="firstname">
+        First name:
+        <input type="text" id="firstname" formControlName="firstname" />
+      </label>
+      <br />
+      <label for="lastname">
+        Last name:
+        <input type="text" id="lastname" formControlName="lastname" />
+      </label>
+      <br />
+      <label for="email">
+        Email:
+        <input type="email" id="email" formControlName="email" />
+      </label>
+      <br />
+      <label for="password">
+        Password:
+        <input type="password" id="password" formControlName="password" />
+      </label>
+      <br />
+      <label for="confPass">
+        Confirm password:
+        <input type="confPass" id="confPass" formControlName="confPass" />
+      </label>
+      <br />
+      <label for="date_of_birth">
+        Date of birth:
+        <input type="date" id="dateofbirth" formControlName="dob" />
+      </label>
+    </fieldset>
+    <fieldset formGroupName="plan">
+      <div id="plans">
+        Plan type:
+        <label for="basic"
+          ><input
+            type="radio"
+            id="basic"
+            value="basic"
+            formControlName="type"
+          />Basic</label
+        >
+        <label for="premium">
+          <input
+            type="radio"
+            id="premium"
+            value="premium"
+            formControlName="type"
+          />Premium
+        </label>
+        <label for="deluxe">
+          <input
+            type="radio"
+            id="deluxe"
+            value="deluxe"
+            formControlName="type"
+          />Deluxe
+        </label>
+      </div>
+      <br />
+      <div id="resolution">
+        Offers up to 3 devices and 4K streaming resolution!
+      </div>
+      <br />
+      <fieldset formArrayName="devices">
+        <legend>Devices</legend>
+        <button type="button" id="add__device__btn" (click)="addDevice()">
+          Add device
+        </button>
+        <br />
+        <br />
+        <ng-container *ngFor="let device of devices; let index = index">
+          <fieldset [formGroupName]="index">
+            <legend>Device {{ index }}</legend>
+            <label for="device__type{{ index }}">
+              Device type:
+              <select id="device__type{{ index }}" formControlName="type">
+                <option value="smarthphone">Smarthphone</option>
+                <option value="pc">PC</option>
+                <option value="console">Console</option>
+              </select>
+            </label>
+            <br />
+            <label for="device__operating__system{{ index }}">
+              Device operating system:
+              <select
+                id="device__operating__system{{ index }}"
+                formControlName="os"
+              >
+                <option value="android">Android</option>
+                <option value="ios">IOS</option>
+                <option value="windows">Windows</option>
+                <option value="linux">linux</option>
+              </select>
+            </label>
+            <br />
+            <label for="device__name{{ index }}">
+              Device name:
+              <input
+                type="text"
+                id="device__name{{ index }}"
+                formControlName="name"
+              />
+            </label>
+            <br />
+            <button>Delete</button>
+          </fieldset>
+          <br />
+        </ng-container>
+      </fieldset>
+    </fieldset>
+    <br />
+    <button type="submit">Subscribe</button>
+  </fieldset>
+</form>

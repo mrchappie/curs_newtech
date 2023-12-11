@@ -1,0 +1,24 @@
+<div class="flex items-center justify-center">
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+    class="flex flex-col gap-4 p-12 bg-white shadow-2xl"
+  >
+    <input
+      type="email"
+      placeholder="Username / Email"
+      formControlName="email"
+      class="border-2 border-black/50 w-[400px] p-3 rounded-[8px]"
+    />
+    <input
+      type="password"
+      placeholder="Password"
+      formControlName="password"
+      class="border-2 border-black/50 w-[400px] p-3 rounded-[8px]"
+    />
+    <a routerLink="/register">You don't have an account?</a>
+    <button type="submit" class="bg-baseColor w-[400px] p-3 rounded-[8px]">
+      Log In
+    </button>
+  </form>
+</div>

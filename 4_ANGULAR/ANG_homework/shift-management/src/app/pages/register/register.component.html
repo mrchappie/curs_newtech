@@ -1,0 +1,55 @@
+<div class="flex items-center justify-center">
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit()"
+    class="flex flex-col gap-4 p-12 bg-white shadow-2xl"
+  >
+    <input
+      type="text"
+      placeholder="First name"
+      formControlName="firstName"
+      class="border-2 border-black/50 w-[400px] p-3 rounded-[8px]"
+    />
+    <input
+      type="text"
+      placeholder="Last name"
+      formControlName="lastName"
+      class="border-2 border-black/50 w-[400px] p-3 rounded-[8px]"
+    />
+    <input
+      type="password"
+      placeholder="Password"
+      formControlName="password"
+      class="border-2 border-black/50 w-[400px] p-3 rounded-[8px]"
+    />
+    <input
+      type="password"
+      placeholder="Password"
+      formControlName="confPass"
+      class="border-2 border-black/50 w-[400px] p-3 rounded-[8px]"
+    />
+    <input
+      type="text"
+      placeholder="Username / Email"
+      formControlName="email"
+      class="border-2 border-black/50 w-[400px] p-3 rounded-[8px]"
+    />
+    <input
+      type="date"
+      placeholder=""
+      formControlName="dob"
+      class="border-2 border-black/50 w-[400px] p-3 rounded-[8px]"
+    />
+    <label for="termsAndConditions">
+      <input
+        type="checkbox"
+        name="termsAndConditions"
+        id="termsAndConditions"
+        formControlName="termsAndConditions"
+      />
+      Accept terms and conditions
+    </label>
+    <a routerLink="/login">Already have an account?</a>
+    <button type="submit" class="bg-baseColor p-3">Create Account</button>
+  </form>
+</div>

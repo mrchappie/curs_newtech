@@ -1,0 +1,42 @@
+<h1>Reactive Forms</h1>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+  <fieldset>
+    <legend>Register</legend>
+    <input type="email" formControlName="email" /><br />
+    <input type="password" formControlName="password" /><br />
+    <input type="password" formControlName="passConf" />
+    <p
+      *ngIf="registerForm.get('password')?.touched && registerForm.get('passConf')?.touched && registerForm.errors?.['isDifferent']"
+    >
+      Passwords do not match!
+    </p>
+
+    <fieldset formGroupName="profile">
+      <legend>Profile</legend>
+      <input type="text" formControlName="firstName" /><br />
+      <input type="text" formControlName="lastName" /><br />
+      <input type="date" formControlName="dob" />
+
+      <fieldset formArrayName="hobbies">
+        <legend>Hobbies</legend>
+        <button type="button" (click)="addHobby()">Add</button>
+        <br />
+        <ng-container *ngFor="let hobby of hobbies; let index = index">
+          <input type="text" [formControlName]="index" />
+          <br
+        /></ng-container>
+      </fieldset>
+    </fieldset>
+
+    <p *ngIf="registerForm.get('profile')?.pristine">
+      Completing your profile allows us to customize the experience for you.
+    </p>
+
+    <input type="submit" value="Register" [disabled]="registerForm.invalid" />
+    <input type="submit" value="Register anyway" />
+    <button type="button" (click)="resetRegistration()">Reset</button>
+    <button type="button" (click)="prefillRegistration()">Prefill</button>
+    <button type="button" (click)="patch()">Patch</button>
+  </fieldset>
+</form>

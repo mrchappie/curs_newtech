@@ -1,0 +1,25 @@
+<p>firebase works!</p>
+
+<h1>Authentification</h1>
+<input type="text" [(ngModel)]="email" placeholder="Email" />
+<input type="text" [(ngModel)]="password" placeholder="Password" />
+<button (click)="login()">LOG IN</button>
+<button (click)="register()">REGISTER</button>
+<button (click)="logout()">LOG OUT</button>
+
+<h1>{{ authState }}</h1>
+
+<h1>Firestore</h1>
+<input type="text" #collection />
+<input type="text" #path />
+<button (click)="getDBEntry(collection.value, path.value)">Get Doc</button>
+<button (click)="getDBEntry(collection.value, path.value)">
+  Get Collection
+</button>
+
+<input type="text" #empN />
+<input type="text" #empJ />
+<input type="text" #empID />
+<button (click)="addEmployee(empID.value, empN.value, empJ.value)">
+  Add employee
+</button>

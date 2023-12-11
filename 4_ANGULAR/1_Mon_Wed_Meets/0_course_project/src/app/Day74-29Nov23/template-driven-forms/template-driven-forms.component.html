@@ -1,0 +1,53 @@
+<h1>Template-Driven Forms</h1>
+
+<form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
+  <fieldset>
+    <legend>Register</legend>
+    <input type="email" name="email" [ngModel]="'a@b.c'" required email /><br />
+    <input
+      type="password"
+      name="password"
+      ngModel="1234"
+      #password="ngModel"
+      required
+    /><br />
+    <input
+      type="password"
+      name="passConf"
+      ngModel="1234"
+      #passConf="ngModel"
+      required
+    />
+    <p
+      *ngIf="
+        password.touched &&
+        passConf.touched &&
+        password.value !== passConf.value
+      "
+    >
+      Passwords do not match!
+    </p>
+
+    <fieldset ngModelGroup="profile" #profileGroup="ngModelGroup">
+      <legend>Profile</legend>
+      <input type="text" name="firstName" ngModel minlength="2" /><br />
+      <input type="text" name="lastName" ngModel minlength="2" /><br />
+      <input type="date" name="dob" [(ngModel)]="dob" />
+    </fieldset>
+
+    <p *ngIf="profileGroup.pristine">
+      Completing your profile allows us to customize the experience for you.
+    </p>
+
+    <input
+      type="submit"
+      value="Register"
+      [disabled]="
+        registerForm.invalid || password.value !== passConf.value || !isAdult()
+      "
+    />
+    <button type="button" (click)="resetRegistration()">Reset</button>
+    <button type="button" (click)="prefillRegistration()">Prefill</button>
+    <button type="button" (click)="patch()">Patch</button>
+  </fieldset>
+</form>

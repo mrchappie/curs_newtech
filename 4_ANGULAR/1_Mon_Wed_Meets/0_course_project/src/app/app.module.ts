@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -55,7 +55,13 @@ import { PipesExerciseComponent } from './Day74-29Nov23/pipes-exercise/pipes-exe
 import { ConvertTempPipe } from './Day74-29Nov23/pipes-exercise/pipes/convert-temp.pipe';
 import { RoundDecimalsPipe } from './Day74-29Nov23/pipes-exercise/pipes/round-decimals.pipe';
 
-import { TemplateDrivenComponent } from './Day74-29Nov23/forms/template-driven/template-driven.component';
+import { ReactiveFormsExerciseComponent } from './Day75-04Dec23/reactive-forms-exercise/reactive-forms-exercise.component';
+import { TemplateDrivenFormsComponent } from './Day74-29Nov23/template-driven-forms/template-driven-forms.component';
+import { ReactiveFormsComponent } from './Day74-29Nov23/reactive-forms/reactive-forms.component';
+import { FirebaseComponent } from './Day76-06Dec23/firebase/firebase.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -108,9 +114,31 @@ import { TemplateDrivenComponent } from './Day74-29Nov23/forms/template-driven/t
     PipesExerciseComponent,
     ConvertTempPipe,
     RoundDecimalsPipe,
-    TemplateDrivenComponent,
+    TemplateDrivenFormsComponent,
+    ReactiveFormsComponent,
+    ReactiveFormsExerciseComponent,
+    FirebaseComponent,
   ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule, RouterModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    RouterModule,
+    ReactiveFormsModule,
+    provideFirebaseApp(() =>
+      initializeApp({
+        projectId: 'learn-ang-3a987',
+        appId: '1:192008310003:web:e741738f1801f49383fb86',
+        storageBucket: 'learn-ang-3a987.appspot.com',
+        apiKey: 'AIzaSyAyon2mKLKrbnOnI9EpoDh4JVIWi2VxWZw',
+        authDomain: 'learn-ang-3a987.firebaseapp.com',
+        messagingSenderId: '192008310003',
+        measurementId: 'G-1BX22JRK12',
+      })
+    ),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

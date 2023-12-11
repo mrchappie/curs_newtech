@@ -1,0 +1,20 @@
+<div class="flex items-center justify-center h-content">
+  <form
+    [formGroup]="shiftForm"
+    (ngSubmit)="onSubmit()"
+    class="flex flex-col gap-4 p-12 bg-white shadow-2xl"
+  >
+    <input
+      *ngFor="let shift of shiftInputs"
+      type="{{ shift.type }}"
+      placeholder="{{ shift.placeholder }}"
+      formControlName="{{ shift.formControl }}"
+      class="border-2 border-black/50 w-[400px] p-3 rounded-[8px]"
+    />
+
+    <button type="submit" class="bg-baseColor p-3">
+      <span *ngIf="!isEditing">Add</span
+      ><span *ngIf="isEditing">Edit</span> shift
+    </button>
+  </form>
+</div>
