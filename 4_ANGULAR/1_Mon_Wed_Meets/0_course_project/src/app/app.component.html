@@ -58,6 +58,15 @@
   <!-- Day76-06Dec -->
   <option disabled>--- 06 December ---</option>
   <option value="firebase">firebase intro</option>
+  <option value="http-client">http-client</option>
+
+  <!-- Day77-11Dec -->
+  <option disabled>--- 11 December ---</option>
+  <option value="todo-firebase">todo app w firebase</option>
+
+  <!-- Day78-13Dec -->
+  <option disabled>--- 13 December ---</option>
+  <option value="angular-material">angular material</option>
 </select>
 
 <ng-container [ngSwitch]="chapter">
@@ -130,4 +139,13 @@
 
   <!-- Day76-06Dec -->
   <app-firebase *ngSwitchCase="'firebase'"></app-firebase>
+
+  <!-- Day77-11Dec -->
+  <app-todo-firebase *ngSwitchCase="'todo-firebase'"></app-todo-firebase>
+  <app-http-client *ngSwitchCase="'http-client'"></app-http-client>
+
+  <!-- Day77-11Dec -->
+  <app-angular-material
+    *ngSwitchCase="'angular-material'"
+  ></app-angular-material>
 </ng-container>

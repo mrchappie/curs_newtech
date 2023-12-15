@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { UserCredential } from '@angular/fire/auth';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HandleDBService } from 'src/app/utils/services/handleDB/handle-db.service';
+import { StateService } from 'src/app/utils/services/state/state.service';
 
 @Component({
   selector: 'app-login',
@@ -9,18 +12,29 @@ import { HandleDBService } from 'src/app/utils/services/handleDB/handle-db.servi
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  currentUser!: UserCredential;
 
-  constructor(private fb: FormBuilder, private auth: HandleDBService) {}
+  constructor(
+    private fb: FormBuilder,
+    private db: HandleDBService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    this.currentUser = this.db.getLocalStorage('userCredentials');
+
     this.loginForm = this.fb.group({
       email: ['alex@mail.com'],
       password: ['Alex2023!'],
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
     console.log(this.loginForm.value);
-    this.auth.login(this.loginForm.value.email, this.loginForm.value.password);
+    await this.db.login(
+      this.loginForm.value.email,
+      this.loginForm.value.password
+    );
+    this.router.navigate(['']);
   }
 }

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { InputType, formData } from './formData';
-import {
-  State,
-  StateService,
-} from 'src/app/utils/services/state/state.service';
+import { StateService } from 'src/app/utils/services/state/state.service';
 import { HandleDBService } from 'src/app/utils/services/handleDB/handle-db.service';
+import { Subscription } from 'rxjs';
+import { v4 as uuidv4 } from 'uuid';
+import { Router } from '@angular/router';
+import { State } from 'src/app/utils/Interfaces';
 
 @Component({
   selector: 'app-handle-shifts',
@@ -17,30 +18,114 @@ export class HandleShiftsComponent implements OnInit {
 
   shiftForm!: FormGroup;
   shiftInputs: InputType[] = formData;
-  isEditing = this.currentState.isEditing;
+  isEditing: boolean = false;
+
+  private stateSubscription: Subscription | undefined;
 
   constructor(
     private fb: FormBuilder,
     private state: StateService,
-    private handleDB: HandleDBService
+    private DB: HandleDBService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.currentState = this.state.getState();
-
     this.shiftForm = this.fb.group({
-      shiftID: [''],
+      shiftID: [uuidv4()],
       shiftDate: [''],
-      startTime: [''],
-      endTime: [''],
-      wagePerHour: [''],
+      startTime: ['08:00'],
+      endTime: ['20:00'],
+      workplace: ['Mega'],
+      wagePerHour: ['20'],
       shiftRevenue: [''],
+    });
+
+    this.calculateRevenue();
+
+    this.currentState = this.state.getState();
+    this.isEditing = this.currentState.isEditing;
+
+    this.stateSubscription = this.state.stateChanged.subscribe((newState) => {
+      this.currentState = newState;
+      this.isEditing = this.currentState.isEditing;
+    });
+
+    if (this.currentState.shiftToEdit) {
+      this.shiftForm.patchValue(this.currentState.shiftToEdit);
+    } else {
+      this.shiftForm.patchValue({ shiftDate: this.getTodayDate() });
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.stateSubscription) {
+      this.stateSubscription.unsubscribe();
+    }
+  }
+
+  calculateRevenue() {
+    ['wagePerHour'].forEach((field) => {
+      this.shiftForm.get(field)?.valueChanges.subscribe((wage) => {
+        const MINUTES_PER_HOUR: number = 60;
+        const HOURS_IN_DAY: number = 24;
+        const startHours: string = this.shiftForm.value.startTime.split(':')[0];
+        const startMinutes: string =
+          this.shiftForm.value.startTime.split(':')[1];
+        const endHours: string = this.shiftForm.value.endTime.split(':')[0];
+        const endMinutes: string = this.shiftForm.value.endTime.split(':')[1];
+
+        const startTimeMinutes: number =
+          +startHours * MINUTES_PER_HOUR + +startMinutes;
+
+        const endTimeMinutes: number =
+          +endHours * MINUTES_PER_HOUR + +endMinutes;
+
+        console.log(startTimeMinutes, endTimeMinutes);
+
+        if (startTimeMinutes > endTimeMinutes) {
+          this.shiftForm.patchValue({
+            shiftRevenue: Math.round(
+              ((endTimeMinutes +
+                HOURS_IN_DAY * MINUTES_PER_HOUR -
+                startTimeMinutes) /
+                60) *
+                wage
+            ).toString(),
+          });
+        } else {
+          this.shiftForm.patchValue({
+            shiftRevenue: Math.round(
+              ((endTimeMinutes - startTimeMinutes) / 60) * wage
+            ).toString(),
+          });
+        }
+      });
     });
   }
 
-  onSubmit() {
-    // console.log(this.shiftForm.value);
-    console.log(this.handleDB.getFirestoreEntry());
-    console.log(this.handleDB.setFirestoreEntry());
+  getTodayDate() {
+    const today = new Date();
+    const year = today.getFullYear().toString();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+  }
+
+  async onSubmit() {
+    try {
+      const shiftID = this.shiftForm.value.shiftID;
+      console.log(this.currentState);
+
+      this.DB.setFirestoreDoc(
+        'shiftAppShifts',
+        [this.currentState.currentLoggedFireUser!.id, 'shifts', shiftID],
+        { ...this.shiftForm.value, shiftID, timeStamp: new Date() }
+      );
+
+      this.router.navigate(['my-shifts']);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

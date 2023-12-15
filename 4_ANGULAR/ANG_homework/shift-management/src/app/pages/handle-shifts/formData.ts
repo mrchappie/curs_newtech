@@ -27,6 +27,12 @@ export const formData = [
   { type: 'time', formControl: 'endTime', placeholder: '', defaultValue: '' },
   {
     type: 'text',
+    formControl: 'workplace',
+    placeholder: 'Workplace',
+    defaultValue: '',
+  },
+  {
+    type: 'number',
     formControl: 'wagePerHour',
     placeholder: 'Wage per hour',
     defaultValue: '',

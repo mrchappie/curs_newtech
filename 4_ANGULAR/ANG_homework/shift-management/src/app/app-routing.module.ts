@@ -15,7 +15,11 @@ import { isNotLoggedInGuard } from './utils/guards/isNotLoggedIn/is-not-logged-i
 
 const routes: Routes = [
   // main routes
-  { path: '', component: DashboardComponent, canActivate: [isLoggedInGuard] },
+  {
+    path: '',
+    component: DashboardComponent,
+    canActivate: [isLoggedInGuard],
+  },
 
   // login / register routes
   {

@@ -1,34 +1,41 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   Auth,
+  User,
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
-  updateProfile,
 } from '@angular/fire/auth';
 
 import {
   Firestore,
   collection,
+  deleteDoc,
   doc,
+  getDoc,
   getDocs,
   setDoc,
+  updateDoc,
 } from '@angular/fire/firestore';
-import { State, StateService } from '../state/state.service';
+import { StateService, initialState } from '../state/state.service';
+import { Router } from '@angular/router';
+import { RegisterFormData } from 'src/app/pages/register/register.component';
+import { userProfile } from '../../userProfile';
+import { State } from '../../Interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
-export class HandleDBService implements OnInit {
+export class HandleDBService {
   currentState!: State;
 
   constructor(
     private auth: Auth,
     private state: StateService,
-    private firestore: Firestore
-  ) {}
-
-  ngOnInit(): void {
+    private firestore: Firestore,
+    private router: Router
+  ) {
     this.currentState = this.state.getState();
   }
 
@@ -41,64 +48,211 @@ export class HandleDBService implements OnInit {
     return JSON.parse(localStorage.getItem(key) || '[]');
   }
 
-  // firebase auth
-  async register(
-    email: string,
-    password: string,
-    firstName: string,
-    lastName: string
-  ) {
+  removeLocalStorage(key: string) {
+    localStorage.removeItem(key);
+  }
+
+  clearLocalStorage() {
+    localStorage.clear();
+  }
+
+  //! firebase AUTH
+  // firebase register
+  async register(data: RegisterFormData) {
     try {
-      this.currentState.currentUser = await createUserWithEmailAndPassword(
+      const { email, password, firstName, lastName, dob, termsAndConditions } =
+        data;
+
+      const userCredential = await createUserWithEmailAndPassword(
         this.auth,
         email,
         password
       );
 
-      await updateProfile(this.currentState.currentUser.user, {
-        displayName: `${firstName} ${lastName}`,
-      });
+      // add user information to firesote
+      if (userCredential) {
+        this.setFirestoreDoc('shiftAppUsers', [userCredential.user.uid], {
+          firstName,
+          lastName,
+          email,
+          dob,
+          termsAndConditions,
+          id: userCredential.user.uid,
+          ...userProfile,
+        });
 
-      console.log(this.currentState.currentUser.user);
+        // add user information to state
+        this.state.setState({
+          currentLoggedFireUser: this.getFirestoreDoc('shiftAppUsers', [
+            userCredential.user.uid,
+          ]),
+          currentUserCred: userCredential,
+          isLoggedIn: true,
+          loggedUserID: userCredential.user.uid,
+        });
+        this.currentState = this.state.getState();
+
+        // add user information to localStorage
+        this.setLocalStorage(
+          'currentLoggedFireUser',
+          this.currentState.currentLoggedFireUser
+        );
+      }
+
+      console.log(this.currentState);
     } catch (error) {
       console.log(error);
     }
   }
 
+  // firebase login
   async login(email: string, password: string) {
     try {
-      this.state.setState(
-        await signInWithEmailAndPassword(this.auth, email, password)
+      const userCredential = await signInWithEmailAndPassword(
+        this.auth,
+        email,
+        password
       );
 
-      console.log('Logged in with:', this.currentState.currentUser.user);
+      console.log('UserCred', userCredential);
+      // add user information to state
+      this.state.setState({
+        currentLoggedFireUser: await this.getFirestoreDoc('shiftAppUsers', [
+          userCredential.user.uid,
+        ]),
+        currentUserCred: userCredential,
+        isLoggedIn: true,
+        loggedUserID: userCredential.user.uid,
+      });
+      this.currentState = this.state.getState();
+      console.log(this.currentState);
+
+      // add user information to localStorage
+      this.setLocalStorage(
+        'currentLoggedFireUser',
+        this.currentState.currentLoggedFireUser
+      );
+
+      return userCredential;
     } catch (error) {
       console.log(error);
     }
+    return null;
   }
 
+  // firebase logout
   async logout() {
     await signOut(this.auth);
-    console.log('Logged out');
+    this.state.setState(initialState);
+    this.removeLocalStorage('currentLoggedFireUser');
+    this.router.navigate(['/login']);
+
+    console.log('clicked from DB service');
     return;
   }
 
-  // firestore
-
-  getFirestoreEntry(collectionName: string = 'shiftAppUsers') {
-    getDocs(collection(this.firestore, collectionName)).then((docs) =>
-      docs.forEach((d) => console.log(d.data()))
-    );
+  //! firebase getLoggedUser
+  async getUserState(): Promise<User | null> {
+    return new Promise(async (resolve) => {
+      const unsubscribe = onAuthStateChanged(this.auth, async (user) => {
+        if (user) {
+          // User is signed in
+          this.state.setState({
+            currentLoggedFireUser: await this.getFirestoreDoc('shiftAppUsers', [
+              user.uid,
+            ]),
+            currentUserCred: user,
+          });
+          resolve(user);
+        } else {
+          // User is signed out
+          resolve(null);
+        }
+        unsubscribe(); // unsubscribe after the first change
+      });
+    });
   }
 
-  setFirestoreEntry(
-    id: string = 'testID',
-    name: string = 'Lucia',
-    position: string = 'baby'
+  //! firestore
+  async getFirestoreDoc(collectionName: string, documentPath: string[]) {
+    try {
+      const docRef = doc(this.firestore, collectionName, ...documentPath);
+
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        return docSnap.data();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    return null;
+  }
+
+  async getFirestoreDocs(collectionName: string, documentPath: string[]) {
+    try {
+      const docRef = collection(
+        this.firestore,
+        collectionName,
+        ...documentPath
+      );
+
+      // console.log(docRef);
+      const docsData = await getDocs(docRef);
+      const docs: any = [];
+      if (!docsData.empty) {
+        docsData.forEach((doc) => {
+          docs.push(doc.data());
+        });
+
+        return docs;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async setFirestoreDoc(
+    collectionPath: string,
+    documentPath: string[],
+    data: object
   ) {
-    setDoc(doc(this.firestore, 'shiftAppShifts', id), {
-      name,
-      position,
-    }).then(console.log, console.error);
+    try {
+      const docRef = doc(
+        collection(this.firestore, collectionPath),
+        ...documentPath
+      );
+      await setDoc(docRef, data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  //! UPDATE DOC
+
+  async updateFirestoreDoc(
+    collectionPath: string,
+    documentPath: string[],
+    data: object
+  ) {
+    try {
+      const docRef = doc(
+        collection(this.firestore, collectionPath),
+        ...documentPath
+      );
+      await updateDoc(docRef, data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  //! DELETE DOC
+
+  async deleteFirestoreDoc(collectionName: string, documentPath: string[]) {
+    try {
+      await deleteDoc(doc(this.firestore, collectionName, ...documentPath));
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

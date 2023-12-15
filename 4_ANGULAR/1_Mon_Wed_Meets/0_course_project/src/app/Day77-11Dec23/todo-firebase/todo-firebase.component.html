@@ -1,0 +1,66 @@
+<div class="flex items-start justify-center w-screen min-h-screen mt-[100px]">
+  <div class="flex-1 flex items-center justify-center basis-[40%]">
+    <form
+      class="flex flex-col gap-8 shadow-2xl p-6 w-[400px] fixed top-[100px]"
+      [formGroup]="todoForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <input
+        type="text"
+        placeholder="Task name"
+        class="border-2 border-black/50 rounded-md p-2 w-full"
+        formControlName="taskName"
+      />
+      <input
+        type="text"
+        placeholder="Task description"
+        class="border-2 border-black/50 rounded-md p-2 w-full"
+        formControlName="taskDescription"
+      />
+      <button
+        type="submit"
+        class="bg-purple-400 text-white font-bold p-3 rounded-md cursor-pointer border-2 hover:bg-transparent border-purple-400 hover:text-purple-400"
+      >
+        Add task
+      </button>
+    </form>
+  </div>
+  <div class="flex-1 flex items-center justify-center basis-[40%]">
+    <ul class="flex flex-col items-center justify-start gap-4 w-[400px] h-full">
+      <li
+        class="flex items-center justify-between gap-4 w-full shadow-lg p-4 border-[1px] border-black/10 rounded-md"
+        *ngFor="let task of todoTasksList; let index = index"
+      >
+        <div class="flex flex-col gap-4">
+          <div class="flex gap-4">
+            <h1
+              class="font-bold text-xl"
+              [style.textDecoration]="task.isDone ? 'line-through' : null"
+            >
+              {{ task.taskName }}
+            </h1>
+            <input
+              type="checkbox"
+              name="done"
+              class="cursor-pointer w-5"
+              [checked]="task.isDone"
+              (click)="markAsDone(index, task.id)"
+            />
+          </div>
+          <p [style.textDecoration]="task.isDone ? 'line-through' : null">
+            {{ task.taskDescription }}
+          </p>
+        </div>
+        <div class="flex gap-4">
+          <button
+            class="text-2xl text-red-500"
+            [style.color]="task.isDone ? 'green' : 'red'"
+            (click)="deleteTask(index, task.id)"
+          >
+            &#x2718;
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

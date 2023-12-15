@@ -37,7 +37,6 @@ import { MinusSComponent } from './Day70-15Nov23/plus-minus-service/minus-s/minu
 import { PlusSComponent } from './Day70-15Nov23/plus-minus-service/plus-s/plus-s.component';
 import { DisplaySComponent } from './Day70-15Nov23/plus-minus-service/display-s/display-s.component';
 import { RoutingComponent } from './Day71-20Nov23/routing/routing.component';
-import { Routes } from '@angular/router';
 import { Diy2Component } from './DIY/diy2/diy2.component';
 import { Diy3Component } from './DIY/diy3/diy3.component';
 import { Diy4TodoComponent } from './DIY/diy4-todo/diy4-todo.component';
@@ -62,6 +61,13 @@ import { FirebaseComponent } from './Day76-06Dec23/firebase/firebase.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { TodoFirebaseComponent } from './Day77-11Dec23/todo-firebase/todo-firebase.component';
+import { HttpClientComponent } from './Day77-11Dec23/http-client/http-client/http-client.component';
+import { AngularMaterialComponent } from './Day78-13Dec23/angular-material/angular-material.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -118,6 +124,9 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     ReactiveFormsComponent,
     ReactiveFormsExerciseComponent,
     FirebaseComponent,
+    TodoFirebaseComponent,
+    HttpClientComponent,
+    AngularMaterialComponent,
   ],
   imports: [
     BrowserModule,
@@ -138,6 +147,9 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     ),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

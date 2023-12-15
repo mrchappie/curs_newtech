@@ -1,56 +1,79 @@
 <section class="border-black/25 border-2 rounded-md m-4">
-  <form class="flex p-4">
-    <input type="text" placeholder="Search name" />
-    <label>
-      <div>From</div>
-      <input type="date" />
-    </label>
-    <label>
-      <div>To</div>
-      <input type="date" />
-    </label>
-    <label>
-      <div>Filter by</div>
-      <select name="filterBy" id="filterBy">
-        <option value="">--select--</option>
-        <option value="byDate">By date</option>
-        <option value="byEndTime">By end time</option>
-        <option value="byStartTime">By start time</option>
-        <option value="byStartTime">By start time</option>
-        <option value="byWage">By wage</option>
-        <option value="byRevenue">By revenue</option>
-      </select>
-    </label>
-    <label
-      ><div>Sorter by</div>
-      <select name="orderBy" id="orderBy">
-        <option value="">--select--</option>
-        <option value="asc">Ascending</option>
-        <option value="dsc">Descending</option>
-      </select></label
-    >
-  </form>
+  <div class="flex">
+    <form class="flex p-4">
+      <input type="text" placeholder="Search name" />
+      <label>
+        <div>From</div>
+        <input type="date" />
+      </label>
+      <label>
+        <div>To</div>
+        <input type="date" />
+      </label>
+      <label>
+        <div>Filter by</div>
+        <select name="filterBy" id="filterBy">
+          <option *ngFor="let filter of filterBy" value="{{ filter.value }}">
+            {{ filter.name }}
+          </option>
+        </select>
+      </label>
+      <label
+        ><div>Sorter by</div>
+        <select name="orderBy" id="orderBy">
+          <option *ngFor="let filter of sorterBy" value="{{ filter.value }}">
+            {{ filter.name }}
+          </option>
+        </select></label
+      >
+    </form>
+    <div class="p-4 font-bold">{{ shiftsCount }}</div>
+  </div>
   <div class="shifts">
     <ul class="px-4">
-      <li class="flex items-center justify-evenly">
-        <div>Item</div>
-        <div>ID</div>
-        <div>Date</div>
-        <div>Start Time</div>
-        <div>End Time</div>
-        <div>Wage</div>
-        <div>Revenue</div>
+      <li
+        class="flex items-center justify-evenly gap-x-1 p-2 border-2 border-transparent"
+      >
+        <div
+          *ngFor="let head of tableHeadInfo"
+          class="flex-1 bg-slate-500 text-white text-center"
+        >
+          {{ head }}
+        </div>
       </li>
     </ul>
-    <ul *ngFor="let shift of myShifts; let index = index" class="px-4">
-      <li class="flex items-center justify-evenly">
-        <div>{{ index + 1 }}</div>
-        <div>{{ shift.shiftID }}</div>
-        <div>{{ shift.shiftDate }}</div>
-        <div>{{ shift.startTime }}</div>
-        <div>{{ shift.endTime }}</div>
-        <div>{{ shift.wagePerHour }}</div>
-        <div>{{ shift.shiftRevenue }}</div>
+    <ul *ngFor="let shift of myShifts; let index = index" class="p-4 relative">
+      <div
+        class="absolute top-[10px] right-[10px] flex items-center justify-center bg-red-500 text-white text-bold w-[30px] h-[30px] rounded-[50%] cursor-pointer"
+        (click)="deleteShift(shift.shiftID)"
+      >
+        X
+      </div>
+      <li
+        class="flex items-center justify-evenly gap-x-1 shadow-lg border-2 border-transparent"
+        (click)="editShift(shift.shiftID)"
+      >
+        <div class="p-2 flex-1 bg-slate-500 text-white text-center">
+          {{ shift.shiftID | slice : 0 : 9 }}...
+        </div>
+        <div class="p-2 flex-1 bg-slate-500 text-white text-center">
+          {{ shift.shiftDate }}
+        </div>
+        <div class="p-2 flex-1 bg-slate-500 text-white text-center">
+          {{ shift.startTime }}
+        </div>
+        <div class="p-2 flex-1 bg-slate-500 text-white text-center">
+          {{ shift.endTime }}
+        </div>
+        <div class="p-2 flex-1 bg-slate-500 text-white text-center">
+          {{ shift.workplace }}
+        </div>
+        <div class="p-2 flex-1 bg-slate-500 text-white text-center">
+          {{ shift.wagePerHour }}
+        </div>
+        <div class="p-2 flex-1 bg-slate-500 text-white text-center">
+          {{ shift.shiftRevenue }}
+        </div>
       </li>
     </ul>
   </div>

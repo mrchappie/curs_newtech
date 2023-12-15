@@ -1,0 +1,14 @@
+<h1>HTTP Client: Angular networking</h1>
+
+<h2>GET</h2>
+<input
+  type="text"
+  disabled
+  value="https://learn-ang-3a987-default-rtdb.europe-west1.firebasedatabase.app"
+/>
+<input type="text" #endPoint />
+<button (click)="fetchData(endPoint.value)">Fetch data</button>
+
+<h2>POST</h2>
+
+<input type="text" />

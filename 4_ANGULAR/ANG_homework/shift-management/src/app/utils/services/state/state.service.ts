@@ -1,12 +1,6 @@
-import { Injectable, OnInit } from '@angular/core';
-import { UserCredential } from '@angular/fire/auth';
-
-export interface State {
-  currentUser?: UserCredential;
-  currentUserShifts?: string;
-  isEditing: boolean;
-  activeComponent: string;
-}
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import { State } from '../../Interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -15,16 +9,37 @@ export class StateService {
   constructor() {}
 
   private state: State = {
-    currentUser: undefined,
+    currentUserCred: undefined,
+    currentLoggedFireUser: undefined,
     currentUserShifts: undefined,
     isEditing: false,
+    isLoggedIn: false,
+    isAdmin: false,
     activeComponent: 'Dashboard',
+    shiftToEdit: undefined,
   };
+
+  private stateSubject = new Subject<State>();
+  stateChanged = this.stateSubject.asObservable();
 
   getState() {
     return this.state;
   }
-  setState(data: Partial<State>): void {
+
+  setState(data: object) {
     this.state = { ...this.state, ...data };
+
+    this.stateSubject.next(this.state);
   }
 }
+
+export const initialState = {
+  currentUserCred: undefined,
+  currentLoggedFireUser: undefined,
+  currentUserShifts: undefined,
+  isEditing: false,
+  isLoggedIn: false,
+  isAdmin: false,
+  activeComponent: 'Dashboard',
+  shiftToEdit: undefined,
+};
