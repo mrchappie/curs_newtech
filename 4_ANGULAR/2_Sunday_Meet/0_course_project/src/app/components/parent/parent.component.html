@@ -1,0 +1,10 @@
+<app-child
+  [childItems]="items"
+  (modifiedItems)="receivedChildMod($event)"
+></app-child>
+<app-child2
+  [childItems]="items"
+  (modifiedItems)="receivedChildMod($event)"
+></app-child2>
+
+<div>{{ (currentState$ | async)?.firstName }}</div>

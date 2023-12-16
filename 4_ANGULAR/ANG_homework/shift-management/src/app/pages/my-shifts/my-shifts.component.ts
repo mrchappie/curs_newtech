@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HandleDBService } from 'src/app/utils/services/handleDB/handle-db.service';
 import { StateService } from 'src/app/utils/services/state/state.service';
-import { Filter, filterBy, sorterBy, tableHeadInfo } from './formData';
+import { Filter, orderBy, sorterBy, tableHeadInfo } from './formData';
 import { Router } from '@angular/router';
 import { Shift, State } from 'src/app/utils/Interfaces';
 
@@ -13,14 +13,22 @@ import { Shift, State } from 'src/app/utils/Interfaces';
 })
 export class MyShiftsComponent implements OnInit, OnDestroy {
   // html data
-  filterBy: Filter[] = filterBy;
   sorterBy: Filter[] = sorterBy;
+  orderBy: Filter[] = orderBy;
   tableHeadInfo: string[] = tableHeadInfo;
 
   // component data
   currentState!: State;
   myShifts: Shift[] = [];
   shiftsCount: number = 0;
+
+  // filters queries
+  shiftNameQuery: string = '';
+  shiftStartDateQuery: string = '';
+  shiftEndDateQuery: string = '';
+
+  sorterByQuery: string = '';
+  orderByQuery: string = '';
 
   private stateSubscription: Subscription | undefined;
 
@@ -74,5 +82,14 @@ export class MyShiftsComponent implements OnInit, OnDestroy {
     ]);
 
     this.myShifts = this.myShifts.filter((shift) => shift.shiftID != shiftID);
+  }
+
+  resetFilters() {
+    this.shiftNameQuery = '';
+    this.shiftStartDateQuery = '';
+    this.shiftEndDateQuery = '';
+
+    this.sorterByQuery = '';
+    this.orderByQuery = '';
   }
 }

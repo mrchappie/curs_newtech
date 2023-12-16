@@ -1,14 +1,14 @@
-export const filterBy = [
+export const sorterBy = [
   { value: '', name: '--select--' },
-  { value: 'byName', name: 'By name' },
-  { value: 'byDate', name: 'By date' },
-  { value: 'byStartTime', name: 'By start time' },
-  { value: 'byEndTime', name: 'By end time' },
-  { value: 'byWage', name: 'By wage' },
-  { value: 'byRevenue', name: 'By revenue' },
+  { value: 'workplace', name: 'By workplace' },
+  { value: 'shiftDate', name: 'By date' },
+  { value: 'startTime', name: 'By start time' },
+  { value: 'endTime', name: 'By end time' },
+  { value: 'wagePerHour', name: 'By wage' },
+  { value: 'shiftRevenue', name: 'By revenue' },
 ];
 
-export const sorterBy = [
+export const orderBy = [
   { value: '', name: '--select--' },
   { value: 'asc', name: 'Ascending' },
   { value: 'dsc', name: 'Descending' },

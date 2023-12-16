@@ -1,9 +1,17 @@
 <div class="form">
-  <input type="text" placeholder="Email" [(ngModel)]="loggedUserData.email" />
+  <input
+    type="text"
+    placeholder="Email"
+    [(ngModel)]="loggedUserData.email"
+    appCustomDirectives
+  />
   <input
     type="text"
     placeholder="Password"
     [(ngModel)]="loggedUserData.password"
+    appCustomDirectives
   />
-  <button (click)="onSubmit()">Log in</button>
+  <button (click)="onSubmit()" appCustomDirectives textColor="red">
+    Log in
+  </button>
 </div>

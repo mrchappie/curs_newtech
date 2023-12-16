@@ -22,6 +22,8 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { HeaderComponent } from './components/header/header.component';
+import { CustomFilterPipe } from './utils/pipes/customFilter/customFilter.pipe';
+import { CustomSorterPipe } from './utils/pipes/customSorter/customSorter.pipe';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { HeaderComponent } from './components/header/header.component';
     FooterComponent,
     ButtonComponent,
     HeaderComponent,
+    CustomFilterPipe,
+    CustomSorterPipe,
   ],
   imports: [
     BrowserModule,

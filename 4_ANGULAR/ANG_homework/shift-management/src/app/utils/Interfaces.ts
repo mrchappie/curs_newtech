@@ -33,4 +33,5 @@ export interface Shift {
   wagePerHour: string;
   shiftRevenue: string;
   timeStamp: Date;
+  [key: string]: any;
 }
