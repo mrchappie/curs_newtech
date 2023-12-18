@@ -30,6 +30,10 @@ export class MyShiftsComponent implements OnInit, OnDestroy {
   sorterByQuery: string = '';
   orderByQuery: string = '';
 
+  // prettier-ignore
+  private months: string[]=["january","february","march","april","may","june","july",
+  "august","september","october","november","december"];
+
   private stateSubscription: Subscription | undefined;
 
   constructor(
@@ -57,10 +61,15 @@ export class MyShiftsComponent implements OnInit, OnDestroy {
   }
 
   async getShifts() {
-    this.myShifts = await this.DB.getFirestoreDocs('shiftAppShifts', [
-      this.currentState.currentLoggedFireUser!.id,
-      'shifts',
-    ]);
+    const userID = this.currentState.currentLoggedFireUser!.id;
+    const currentYear = new Date().getFullYear().toString();
+    const currentMonth = this.months[new Date().getMonth()];
+
+    this.myShifts = await this.DB.getFirestoreDocsByQuery(
+      'shiftAppShifts',
+      [currentYear, currentMonth],
+      userID
+    );
 
     if (this.myShifts) {
       this.shiftsCount = this.myShifts.length;
@@ -69,18 +78,24 @@ export class MyShiftsComponent implements OnInit, OnDestroy {
   }
 
   async editShift(shiftID: string) {
+    const currentYear = new Date().getFullYear().toString();
+    const currentMonth = this.months[new Date().getMonth()];
+
     this.currentState.shiftToEdit = (await this.DB.getFirestoreDoc(
       'shiftAppShifts',
-      [this.currentState.currentLoggedFireUser!.id, 'shifts', shiftID]
+      [currentYear, currentMonth, shiftID]
     )) as Shift;
 
     this.router.navigate([`edit-shift/${shiftID}`]);
   }
 
   deleteShift(shiftID: string) {
+    const currentYear = new Date().getFullYear().toString();
+    const currentMonth = this.months[new Date().getMonth()];
+
     this.DB.deleteFirestoreDoc('shiftAppShifts', [
-      this.currentState.currentLoggedFireUser!.id,
-      'shifts',
+      currentYear,
+      currentMonth,
       shiftID,
     ]);
 

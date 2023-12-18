@@ -14,7 +14,8 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit, OnDestroy {
   currentState!: State;
   isAdmin: boolean | undefined = false;
-  navbarRoutes!: NavbarRoutes[];
+  navbarUserRoutes: NavbarRoutes[] = userRoutes;
+  navbarAdminRoutes: NavbarRoutes[] = adminRoutes;
   isLoggedIn: boolean = false;
 
   private stateSubscription: Subscription | undefined;
@@ -27,13 +28,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.currentState = this.state.getState();
-    this.navbarRoutes = !this.isAdmin ? userRoutes : adminRoutes;
 
     this.stateSubscription = this.state.stateChanged.subscribe((newState) => {
       this.currentState = newState;
       this.isAdmin =
         this.currentState.currentLoggedFireUser?.adminPanel.isAdmin;
-      this.navbarRoutes = !this.isAdmin ? userRoutes : adminRoutes;
     });
   }
 

@@ -21,6 +21,10 @@ export class HandleShiftsComponent implements OnInit {
   userWorkplaces: string[] | undefined = [];
   isEditing: boolean = false;
 
+  // prettier-ignore
+  private months: string[]=["january","february","march","april","may","june","july",
+  "august","september","october","november","december"];
+
   private stateSubscription: Subscription | undefined;
 
   constructor(
@@ -118,12 +122,22 @@ export class HandleShiftsComponent implements OnInit {
   async onSubmit() {
     try {
       const shiftID = this.shiftForm.value.shiftID;
-      console.log(this.currentState);
+      const currentYear = new Date().getFullYear().toString();
+      const currentMonth = new Date().getMonth();
 
       this.DB.setFirestoreDoc(
         'shiftAppShifts',
-        [this.currentState.currentLoggedFireUser!.id, 'shifts', shiftID],
-        { ...this.shiftForm.value, shiftID, timeStamp: new Date() }
+        [currentYear, this.months[currentMonth], shiftID],
+        {
+          ...this.shiftForm.value,
+          shiftID,
+          timeStamp: new Date(),
+          userID: this.currentState.currentLoggedFireUser?.id,
+          userInfo: {
+            firstName: this.currentState.currentLoggedFireUser?.firstName,
+            lastName: this.currentState.currentLoggedFireUser?.lastName,
+          },
+        }
       );
 
       this.router.navigate(['my-shifts']);

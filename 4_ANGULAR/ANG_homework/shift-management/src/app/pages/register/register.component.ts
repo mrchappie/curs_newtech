@@ -34,9 +34,9 @@ export class RegisterComponent {
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
     console.log(this.registerForm.value);
-    this.auth.register(this.registerForm.value);
+    await this.auth.register(this.registerForm.value);
 
     this.router.navigate(['/']);
   }

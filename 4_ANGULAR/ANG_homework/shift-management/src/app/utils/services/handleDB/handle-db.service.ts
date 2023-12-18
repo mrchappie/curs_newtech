@@ -15,8 +15,10 @@ import {
   doc,
   getDoc,
   getDocs,
+  query,
   setDoc,
   updateDoc,
+  where,
 } from '@angular/fire/firestore';
 import { StateService, initialState } from '../state/state.service';
 import { Router } from '@angular/router';
@@ -55,8 +57,8 @@ export class HandleDBService {
     localStorage.clear();
   }
 
-  //! firebase AUTH
-  // firebase register
+  //! AUTH
+  //! CREATE ACCOUNT
   async register(data: RegisterFormData) {
     try {
       const { email, password, firstName, lastName, dob, termsAndConditions } =
@@ -104,7 +106,7 @@ export class HandleDBService {
     }
   }
 
-  // firebase login
+  //! LOGIN
   async login(email: string, password: string) {
     try {
       const userCredential = await signInWithEmailAndPassword(
@@ -139,7 +141,7 @@ export class HandleDBService {
     return null;
   }
 
-  // firebase logout
+  //! LOGOUT
   async logout() {
     await signOut(this.auth);
     this.state.setState(initialState);
@@ -173,7 +175,7 @@ export class HandleDBService {
     });
   }
 
-  //! firestore
+  //! GET DOC
   async getFirestoreDoc(collectionName: string, documentPath: string[]) {
     try {
       const docRef = doc(this.firestore, collectionName, ...documentPath);
@@ -189,6 +191,7 @@ export class HandleDBService {
     return null;
   }
 
+  //! GET DOCS
   async getFirestoreDocs(collectionName: string, documentPath: string[]) {
     try {
       const docRef = collection(
@@ -212,6 +215,43 @@ export class HandleDBService {
     }
   }
 
+  //! GET DOCS BY QUERY
+  async getFirestoreDocsByQuery(
+    collectionName: string,
+    documentPath: string[],
+    userID: string
+  ) {
+    try {
+      const docRef = collection(
+        this.firestore,
+        collectionName,
+        ...documentPath
+      );
+
+      const q = query(docRef, where('userID', '==', userID));
+
+      console.log(docRef);
+      console.log(q);
+
+      const querySnapshot = await getDocs(q);
+
+      console.log(querySnapshot);
+      const docs: any = [];
+
+      if (!querySnapshot.empty) {
+        querySnapshot.forEach((doc) => {
+          docs.push(doc.data());
+        });
+        return docs;
+      } else {
+        throw new Error('No shifts for this user!');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  //! SET DOC
   async setFirestoreDoc(
     collectionPath: string,
     documentPath: string[],

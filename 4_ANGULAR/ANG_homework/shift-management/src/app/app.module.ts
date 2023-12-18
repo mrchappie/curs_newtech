@@ -7,7 +7,7 @@ import { AllShiftsComponent } from './pages/admin/all-shifts/all-shifts.componen
 import { SettingsComponent } from './pages/settings/settings.component';
 import { HandleShiftsComponent } from './pages/handle-shifts/handle-shifts.component';
 import { MyShiftsComponent } from './pages/my-shifts/my-shifts.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { CustomFilterPipe } from './utils/pipes/customFilter/customFilter.pipe';
 import { CustomSorterPipe } from './utils/pipes/customSorter/customSorter.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { ShiftCardComponent } from './components/shift-card/shift-card.component';
+import { UserCardComponent } from './pages/admin/all-workers/user-card/user-card.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     RegisterComponent,
     NotFoundComponent,
-    DashboardComponent,
+    HomepageComponent,
     MyShiftsComponent,
     HandleShiftsComponent,
     SettingsComponent,
@@ -45,6 +48,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderComponent,
     CustomFilterPipe,
     CustomSorterPipe,
+    DashboardComponent,
+    ShiftCardComponent,
+    UserCardComponent,
   ],
   imports: [
     BrowserModule,

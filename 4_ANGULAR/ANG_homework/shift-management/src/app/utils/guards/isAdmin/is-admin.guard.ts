@@ -15,7 +15,6 @@ export const isAdminGuard: CanActivateFn = async (route, state) => {
     stateService.setState({ isAdmin: true });
     return true;
   } else {
-    // router.navigate(['/login']);
     return false;
   }
 };

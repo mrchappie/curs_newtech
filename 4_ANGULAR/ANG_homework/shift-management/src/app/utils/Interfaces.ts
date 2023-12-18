@@ -13,6 +13,7 @@ export interface State {
 }
 
 export interface UserSettings {
+  accountCreationDate: Date;
   userName: string;
   firstName: string;
   lastName: string;
@@ -20,6 +21,7 @@ export interface UserSettings {
   dob: Date;
   id: string;
   phoneNumber: string;
+  profileImage: string;
   adminPanel: {
     isAdmin: boolean;
   };
@@ -36,4 +38,8 @@ export interface Shift {
   shiftRevenue: string;
   timeStamp: Date;
   [key: string]: any;
+  userInfo: {
+    firstName: string;
+    lastName: string;
+  };
 }

@@ -1,9 +1,10 @@
 export const userProfile = {
   profileImage: '',
-  username: '',
+  userName: '',
   phoneNumber: '',
   accountCreationDate: new Date(),
   adminPanel: {
     isAdmin: false,
   },
+  userWorkplaces: [],
 };

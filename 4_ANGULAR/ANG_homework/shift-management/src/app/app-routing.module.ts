@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { MyShiftsComponent } from './pages/my-shifts/my-shifts.component';
@@ -10,14 +10,15 @@ import { AllShiftsComponent } from './pages/admin/all-shifts/all-shifts.componen
 import { AllWorkersComponent } from './pages/admin/all-workers/all-workers.component';
 import { NotFoundComponent } from './pages/404/404.component';
 import { isLoggedInGuard } from './utils/guards/isLoggedIn/is-logged-in.guard';
-import { isAdminGuard } from './utils/guards/isAdmin/is-admin.guard';
 import { isNotLoggedInGuard } from './utils/guards/isNotLoggedIn/is-not-logged-in.guard';
+import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { isAdminGuard } from './utils/guards/isAdmin/is-admin.guard';
 
 const routes: Routes = [
   // main routes
   {
     path: '',
-    component: DashboardComponent,
+    component: HomepageComponent,
     canActivate: [isLoggedInGuard],
   },
 
@@ -59,27 +60,27 @@ const routes: Routes = [
   {
     path: 'admin/dashboard',
     component: DashboardComponent,
-    canActivate: [isLoggedInGuard],
+    canActivate: [isLoggedInGuard, isAdminGuard],
   },
   {
     path: 'admin/all-shifts',
     component: AllShiftsComponent,
-    canActivate: [isLoggedInGuard],
+    canActivate: [isLoggedInGuard, isAdminGuard],
   },
   {
     path: 'admin/all-users',
     component: AllWorkersComponent,
-    canActivate: [isLoggedInGuard],
+    canActivate: [isLoggedInGuard, isAdminGuard],
   },
   {
     path: 'admin/edit-shift/:shiftId',
     component: HandleShiftsComponent,
-    canActivate: [isLoggedInGuard],
+    canActivate: [isLoggedInGuard, isAdminGuard],
   },
   {
-    path: 'admin/profile',
+    path: 'admin/settings',
     component: SettingsComponent,
-    canActivate: [isLoggedInGuard],
+    canActivate: [isLoggedInGuard, isAdminGuard],
   },
 
   // 404 route
