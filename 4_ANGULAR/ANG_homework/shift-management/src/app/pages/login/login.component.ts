@@ -3,7 +3,6 @@ import { UserCredential } from '@angular/fire/auth';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HandleDBService } from 'src/app/utils/services/handleDB/handle-db.service';
-import { StateService } from 'src/app/utils/services/state/state.service';
 
 @Component({
   selector: 'app-login',
@@ -35,6 +34,6 @@ export class LoginComponent implements OnInit {
       this.loginForm.value.email,
       this.loginForm.value.password
     );
-    this.router.navigate(['']);
+    this.router.navigate(['/']);
   }
 }

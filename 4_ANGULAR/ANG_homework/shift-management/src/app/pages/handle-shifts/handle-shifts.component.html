@@ -1,16 +1,39 @@
-<div class="flex items-center justify-center h-content">
+<div class="flex items-center justify-center h-full">
   <form
     [formGroup]="shiftForm"
     (ngSubmit)="onSubmit()"
     class="flex flex-col gap-4 p-12 bg-white shadow-2xl"
   >
-    <input
-      *ngFor="let shift of shiftInputs"
-      type="{{ shift.type }}"
-      placeholder="{{ shift.placeholder }}"
-      formControlName="{{ shift.formControl }}"
-      class="border-2 border-black/50 w-[400px] p-3 rounded-[8px]"
-    />
+    <ng-container *ngFor="let shift of shiftInputs">
+      <ng-container *ngIf="shift.inputType === 'input'">
+        <input
+          type="{{ shift.type }}"
+          placeholder="{{ shift.placeholder }}"
+          formControlName="{{ shift.formControl }}"
+          class="border-2 border-black/50 w-[400px] p-3 rounded-[8px]"
+      /></ng-container>
+      <ng-container *ngIf="shift.inputType === 'select'">
+        <select
+          name="{{ shift.type }}"
+          id="{{ shift.inputType }}"
+          formControlName="{{ shift.formControl }}"
+          class="border-2 border-black/50 w-[400px] p-3 rounded-[8px]"
+        >
+          <option value="" *ngIf="userWorkplaces!.length === 0">
+            -- go to profile to set workplaces --
+          </option>
+          <option value="" *ngIf="userWorkplaces!.length != 0">
+            -- select --
+          </option>
+          <option
+            *ngFor="let workplace of userWorkplaces"
+            value="{{ workplace }}"
+          >
+            {{ workplace }}
+          </option>
+        </select>
+      </ng-container>
+    </ng-container>
 
     <button type="submit" class="bg-baseColor p-3">
       <span *ngIf="!isEditing">Add</span

@@ -4,6 +4,7 @@ import { StateService } from 'src/app/utils/services/state/state.service';
 import { HandleDBService } from 'src/app/utils/services/handleDB/handle-db.service';
 import { Subscription } from 'rxjs';
 import { State } from 'src/app/utils/Interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -12,13 +13,17 @@ import { State } from 'src/app/utils/Interfaces';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   currentState!: State;
-  isAdmin: boolean = false;
+  isAdmin: boolean | undefined = false;
   navbarRoutes!: NavbarRoutes[];
   isLoggedIn: boolean = false;
 
   private stateSubscription: Subscription | undefined;
 
-  constructor(private state: StateService, private DB: HandleDBService) {}
+  constructor(
+    private state: StateService,
+    private DB: HandleDBService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.currentState = this.state.getState();
@@ -26,7 +31,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     this.stateSubscription = this.state.stateChanged.subscribe((newState) => {
       this.currentState = newState;
-      this.isAdmin = this.currentState.isAdmin;
+      this.isAdmin =
+        this.currentState.currentLoggedFireUser?.adminPanel.isAdmin;
       this.navbarRoutes = !this.isAdmin ? userRoutes : adminRoutes;
     });
   }
@@ -37,8 +43,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
   }
 
-  onSubmit() {
-    this.DB.logout();
+  async onSubmit() {
+    await this.DB.logout();
+    this.router.navigate(['/login']);
     console.log('clicked from navbar comp');
   }
 }

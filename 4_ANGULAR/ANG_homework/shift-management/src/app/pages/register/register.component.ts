@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HandleDBService } from 'src/app/utils/services/handleDB/handle-db.service';
+import { RegisterFormDataI, registerFormData } from './formData';
 
 @Component({
   selector: 'app-register',
@@ -9,6 +10,10 @@ import { HandleDBService } from 'src/app/utils/services/handleDB/handle-db.servi
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
+  //html data
+  formData: RegisterFormDataI[] = registerFormData;
+
+  //
   registerForm!: FormGroup;
 
   constructor(
@@ -19,7 +24,7 @@ export class RegisterComponent {
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
-      firstName: ['Alexandru'],
+      firstName: ['', [Validators.required, Validators.minLength(3)]],
       lastName: ['Boscu'],
       password: ['Alex2023!'],
       confPass: ['Alex2023!'],

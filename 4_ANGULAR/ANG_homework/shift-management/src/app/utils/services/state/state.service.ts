@@ -17,6 +17,7 @@ export class StateService {
     isAdmin: false,
     activeComponent: 'Dashboard',
     shiftToEdit: undefined,
+    shiftsCount: 0,
   };
 
   private stateSubject = new Subject<State>();

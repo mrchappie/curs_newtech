@@ -50,7 +50,7 @@ const routes: Routes = [
     canActivate: [isLoggedInGuard],
   },
   {
-    path: 'settings',
+    path: 'profile',
     component: SettingsComponent,
     canActivate: [isLoggedInGuard],
   },
@@ -59,27 +59,27 @@ const routes: Routes = [
   {
     path: 'admin/dashboard',
     component: DashboardComponent,
-    canActivate: [isLoggedInGuard, isAdminGuard],
+    canActivate: [isLoggedInGuard],
   },
   {
     path: 'admin/all-shifts',
     component: AllShiftsComponent,
-    canActivate: [isLoggedInGuard, isAdminGuard],
+    canActivate: [isLoggedInGuard],
   },
   {
     path: 'admin/all-users',
     component: AllWorkersComponent,
-    canActivate: [isLoggedInGuard, isAdminGuard],
+    canActivate: [isLoggedInGuard],
   },
   {
     path: 'admin/edit-shift/:shiftId',
     component: HandleShiftsComponent,
-    canActivate: [isLoggedInGuard, isAdminGuard],
+    canActivate: [isLoggedInGuard],
   },
   {
-    path: 'admin/settings',
+    path: 'admin/profile',
     component: SettingsComponent,
-    canActivate: [isLoggedInGuard, isAdminGuard],
+    canActivate: [isLoggedInGuard],
   },
 
   // 404 route

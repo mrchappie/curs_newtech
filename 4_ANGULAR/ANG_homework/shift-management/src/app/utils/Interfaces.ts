@@ -9,6 +9,7 @@ export interface State {
   isAdmin: boolean;
   activeComponent: string;
   shiftToEdit: Shift | undefined;
+  shiftsCount: number;
 }
 
 export interface UserSettings {
@@ -22,6 +23,7 @@ export interface UserSettings {
   adminPanel: {
     isAdmin: boolean;
   };
+  userWorkplaces: string[];
 }
 
 export interface Shift {

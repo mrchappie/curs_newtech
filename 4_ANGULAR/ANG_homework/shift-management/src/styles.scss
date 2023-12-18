@@ -1,12 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
-// @tailwind base;
-// @tailwind components;
-// @tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+// @import "tailwindcss/base";
+// @import "tailwindcss/components";
+// @import "tailwindcss/utilities";
 
-body {
-  overflow-x: hidden;
+// body {
+//   overflow-x: hidden;
+// }
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:disabled {
+  opacity: 0.5;
+  filter: grayscale(1);
+  cursor: not-allowed;
 }

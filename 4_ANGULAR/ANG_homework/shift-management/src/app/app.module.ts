@@ -24,6 +24,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { HeaderComponent } from './components/header/header.component';
 import { CustomFilterPipe } from './utils/pipes/customFilter/customFilter.pipe';
 import { CustomSorterPipe } from './utils/pipes/customSorter/customSorter.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { CustomSorterPipe } from './utils/pipes/customSorter/customSorter.pipe';
     ),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

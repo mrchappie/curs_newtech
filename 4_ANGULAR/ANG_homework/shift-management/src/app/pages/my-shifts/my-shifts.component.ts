@@ -40,8 +40,10 @@ export class MyShiftsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.currentState = this.state.getState();
+    this.shiftsCount = this.currentState.shiftsCount;
 
     this.stateSubscription = this.state.stateChanged.subscribe((newState) => {
+      this.shiftsCount = this.currentState.shiftsCount;
       this.currentState = newState;
     });
 
@@ -62,6 +64,7 @@ export class MyShiftsComponent implements OnInit, OnDestroy {
 
     if (this.myShifts) {
       this.shiftsCount = this.myShifts.length;
+      this.DB.setLocalStorage('loggedUserShifts', this.myShifts);
     }
   }
 

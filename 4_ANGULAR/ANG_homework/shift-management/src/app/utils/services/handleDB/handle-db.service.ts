@@ -33,8 +33,7 @@ export class HandleDBService {
   constructor(
     private auth: Auth,
     private state: StateService,
-    private firestore: Firestore,
-    private router: Router
+    private firestore: Firestore
   ) {
     this.currentState = this.state.getState();
   }
@@ -145,7 +144,7 @@ export class HandleDBService {
     await signOut(this.auth);
     this.state.setState(initialState);
     this.removeLocalStorage('currentLoggedFireUser');
-    this.router.navigate(['/login']);
+    this.removeLocalStorage('loggedUserShifts');
 
     console.log('clicked from DB service');
     return;
@@ -162,6 +161,7 @@ export class HandleDBService {
               user.uid,
             ]),
             currentUserCred: user,
+            isLoggedIn: true,
           });
           resolve(user);
         } else {

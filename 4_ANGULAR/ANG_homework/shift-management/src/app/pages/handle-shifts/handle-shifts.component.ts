@@ -18,6 +18,7 @@ export class HandleShiftsComponent implements OnInit {
 
   shiftForm!: FormGroup;
   shiftInputs: InputType[] = formData;
+  userWorkplaces: string[] | undefined = [];
   isEditing: boolean = false;
 
   private stateSubscription: Subscription | undefined;
@@ -35,7 +36,7 @@ export class HandleShiftsComponent implements OnInit {
       shiftDate: [''],
       startTime: ['08:00'],
       endTime: ['20:00'],
-      workplace: ['Mega'],
+      workplace: [''],
       wagePerHour: ['20'],
       shiftRevenue: [''],
     });
@@ -44,6 +45,8 @@ export class HandleShiftsComponent implements OnInit {
 
     this.currentState = this.state.getState();
     this.isEditing = this.currentState.isEditing;
+    this.userWorkplaces =
+      this.currentState.currentLoggedFireUser?.userWorkplaces;
 
     this.stateSubscription = this.state.stateChanged.subscribe((newState) => {
       this.currentState = newState;

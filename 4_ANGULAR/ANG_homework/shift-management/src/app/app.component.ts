@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit, OnDestroy {
   title = 'shift-management';
   currentState!: State;
+  isLoggedIn: boolean = false;
+
   private stateSubscription: Subscription | undefined;
 
   constructor(
@@ -26,6 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.stateSubscription = this.state.stateChanged.subscribe((newState) => {
       this.currentState = newState;
+      this.isLoggedIn = this.currentState.isLoggedIn;
     });
   }
 

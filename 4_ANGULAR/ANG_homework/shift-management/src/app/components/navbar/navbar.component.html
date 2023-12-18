@@ -1,19 +1,24 @@
-<nav class="bg-baseColor px-4 rounded-xl flex flex-col justify-between">
-  <ul class="flex flex-col">
+<nav
+  class="bg-white shadow-lg rounded-xl flex flex-col justify-between h-full overflow-hidden"
+>
+  <ul class="flex flex-col gap-4">
     <ng-container *ngFor="let route of navbarRoutes">
       <li
         routerLink="{{ route.path }}"
-        routerActiveLink="text-red-500"
-        class="uppercase text-xl font-bold text-white text-left w-full cursor-pointer px-2 py-4"
+        routerLinkActive="activeNavLink"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="flex gap-4 uppercase text-lg font-bold text-black text-left w-full cursor-pointer px-4 py-3 hover:bg-baseColor/50"
       >
+        <div>X</div>
         {{ route.name }}
       </li>
     </ng-container>
   </ul>
   <button
-    class="uppercase text-xl font-bold text-white text-left w-full cursor-pointer px-2 py-4"
+    class="flex gap-4 uppercase text-lg font-bold text-black text-left w-full cursor-pointer px-4 py-3 hover:bg-baseColor/50"
     (click)="onSubmit()"
   >
+    <div>X</div>
     LOG OUT
   </button>
 </nav>

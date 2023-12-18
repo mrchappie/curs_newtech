@@ -40,11 +40,7 @@
           class="border-2 p-1 rounded-md"
           [(ngModel)]="sorterByQuery"
         >
-          <option
-            *ngFor="let filter of sorterBy"
-            value="{{ filter.value }} "
-            class="border-2 p-1 rounded-md"
-          >
+          <option *ngFor="let filter of sorterBy" value="{{ filter.value }}">
             {{ filter.name }}
           </option>
         </select>
@@ -78,7 +74,7 @@
       <span class="font-bold text-[24px]">{{ shiftsCount }}</span>
     </div>
   </div>
-  <div class="shifts">
+  <div class="">
     <ul class="px-4">
       <li
         class="flex items-center justify-evenly gap-x-1 p-2 border-2 border-transparent"

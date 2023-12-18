@@ -5,6 +5,7 @@ import { HandleDBService } from 'src/app/utils/services/handleDB/handle-db.servi
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { State, UserSettings } from 'src/app/utils/Interfaces';
+import { arrayRemove, arrayUnion } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-settings',
@@ -14,7 +15,7 @@ import { State, UserSettings } from 'src/app/utils/Interfaces';
 export class SettingsComponent implements OnInit, OnDestroy {
   currentState!: State;
   settingsFormInputs: SettingsForm[] = settingsFormData;
-  isAdmin: boolean = false;
+  isAdmin: boolean | undefined = false;
   userSettings!: UserSettings;
   settingsForm!: FormGroup;
 
@@ -37,12 +38,13 @@ export class SettingsComponent implements OnInit, OnDestroy {
     });
 
     this.currentState = this.state.getState();
-    this.isAdmin = this.currentState.isAdmin;
+    this.isAdmin = this.currentState.currentLoggedFireUser?.adminPanel.isAdmin;
     this.updateState();
 
     this.stateSubscription = this.state.stateChanged.subscribe((newState) => {
       this.currentState = newState;
-      this.isAdmin = this.currentState.isAdmin;
+      this.isAdmin =
+        this.currentState.currentLoggedFireUser!.adminPanel.isAdmin;
     });
   }
 
@@ -71,6 +73,24 @@ export class SettingsComponent implements OnInit, OnDestroy {
       'shiftAppUsers',
       [this.currentState.currentLoggedFireUser!.id],
       this.settingsForm.value
+    );
+    this.updateState();
+  }
+
+  addWorkplace(workplace: string) {
+    this.DB.updateFirestoreDoc(
+      'shiftAppUsers',
+      [this.currentState.currentLoggedFireUser!.id],
+      { userWorkplaces: arrayUnion(workplace) }
+    );
+    this.updateState();
+  }
+
+  removeWorkplace(workplace: string) {
+    this.DB.updateFirestoreDoc(
+      'shiftAppUsers',
+      [this.currentState.currentLoggedFireUser!.id],
+      { userWorkplaces: arrayRemove(workplace) }
     );
     this.updateState();
   }

@@ -2,7 +2,7 @@ export const userProfile = {
   profileImage: '',
   username: '',
   phoneNumber: '',
-  accountCreationDate: '',
+  accountCreationDate: new Date(),
   adminPanel: {
     isAdmin: false,
   },
