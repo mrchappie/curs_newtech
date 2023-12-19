@@ -5,14 +5,16 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { MyShiftsComponent } from './pages/my-shifts/my-shifts.component';
 import { HandleShiftsComponent } from './pages/handle-shifts/handle-shifts.component';
-import { SettingsComponent } from './pages/settings/settings.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { AllShiftsComponent } from './pages/admin/all-shifts/all-shifts.component';
-import { AllWorkersComponent } from './pages/admin/all-workers/all-workers.component';
+import { AllUsersComponent } from './pages/admin/all-workers/all-users.component';
 import { NotFoundComponent } from './pages/404/404.component';
 import { isLoggedInGuard } from './utils/guards/isLoggedIn/is-logged-in.guard';
 import { isNotLoggedInGuard } from './utils/guards/isNotLoggedIn/is-not-logged-in.guard';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { isAdminGuard } from './utils/guards/isAdmin/is-admin.guard';
+import { SettingsComponent } from './pages/admin/settings/settings.component';
+import { EditUserComponent } from './pages/admin/edit-user/edit-user.component';
 
 const routes: Routes = [
   // main routes
@@ -46,13 +48,13 @@ const routes: Routes = [
     canActivate: [isLoggedInGuard],
   },
   {
-    path: 'edit-shift/:shiftId',
+    path: 'edit-shift/:shiftID',
     component: HandleShiftsComponent,
     canActivate: [isLoggedInGuard],
   },
   {
     path: 'profile',
-    component: SettingsComponent,
+    component: ProfileComponent,
     canActivate: [isLoggedInGuard],
   },
 
@@ -69,12 +71,12 @@ const routes: Routes = [
   },
   {
     path: 'admin/all-users',
-    component: AllWorkersComponent,
+    component: AllUsersComponent,
     canActivate: [isLoggedInGuard, isAdminGuard],
   },
   {
-    path: 'admin/edit-shift/:shiftId',
-    component: HandleShiftsComponent,
+    path: 'admin/edit-user/:userID',
+    component: EditUserComponent,
     canActivate: [isLoggedInGuard, isAdminGuard],
   },
   {

@@ -6,5 +6,6 @@ export const userProfile = {
   adminPanel: {
     isAdmin: false,
   },
+
   userWorkplaces: [],
 };

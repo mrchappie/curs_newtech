@@ -1,35 +1,6 @@
 <section class="flex flex-col shadow-xl m-4 p-4 rounded-lg mb-[500px]">
   <div class="text-2xl font-bold py-2">User profile</div>
-  <div class="flex gap-4 mb-[50px]">
-    <form
-      [formGroup]="settingsForm"
-      (ngSubmit)="onSubmit()"
-      class="flex-1 flex flex-col gap-3 w-[600px]"
-    >
-      <label *ngFor="let input of settingsFormInputs" class="flex">
-        <div class="flex-1">{{ input.name }}</div>
-        <input
-          formControlName="{{ input.formControl }}"
-          type="{{ input.type }}"
-          class="flex-2 border-2 border-black/50 w-[400px] p-2 rounded-[8px]"
-        />
-      </label>
-      <button type="submit" class="p-2 bg-baseColor text-white">
-        Update information
-      </button>
-    </form>
-    <div class="flex-1 flex items-center justify-center">
-      <label class="flex flex-col">
-        <div>Upload profile picture</div>
-        <input type="file"
-      /></label>
-      <div
-        class="rounded-[50%] overflow-hidden border-[3px] border-baseColor shadow-2xl"
-      >
-        <img src="https://picsum.photos/250" alt="" />
-      </div>
-    </div>
-  </div>
+  <app-user-profile></app-user-profile>
   <hr />
   <div class="my-[50px]">
     <div class="text-2xl font-bold py-2">Change password</div>
@@ -89,14 +60,4 @@
       >
     </div>
   </div>
-  <ng-container *ngIf="isAdmin">
-    <hr />
-    <div class="text-2xl font-bold py-2">Admin panel</div>
-    <div class="mt-[50px]">
-      <label class="flex gap-2">
-        <div>Promote to Admin</div>
-        <input type="checkbox" name="promoteUser" />
-      </label>
-    </div>
-  </ng-container>
 </section>

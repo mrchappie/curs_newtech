@@ -5,15 +5,17 @@ import { Shift } from '../../Interfaces';
   name: 'customFilter',
 })
 export class CustomFilterPipe implements PipeTransform {
-  transform(value: Shift[], ...args: string[]): Shift[] {
-    const shiftsToFilter: Shift[] = JSON.parse(JSON.stringify(value));
+  transform(value: any[], ...args: string[]): any[] {
+    const shiftsToFilter: any[] = JSON.parse(JSON.stringify(value));
 
-    const filterName = args[0];
-    const filterStartDate = args[1];
-    const filterEndDate = args[2];
+    const [filterName, filterStartDate, filterEndDate, type] = args;
 
-    if (args.length != 0) {
-      const filteredShifts: Shift[] = shiftsToFilter.filter((shift) => {
+    console.log(args);
+
+    if (args.length === 0) return value;
+
+    if (type === 'shifts') {
+      const filteredShifts: any[] = shiftsToFilter.filter((shift) => {
         const shiftName =
           !filterName || shift.workplace.toLowerCase().includes(filterName);
         const shiftStartDate =
@@ -29,6 +31,10 @@ export class CustomFilterPipe implements PipeTransform {
       });
 
       return filteredShifts;
+    } else if (type === 'users') {
+      return value.filter((user) =>
+        user.firstName.toLowerCase().includes(filterName)
+      );
     } else {
       return value;
     }

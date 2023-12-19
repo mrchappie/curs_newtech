@@ -25,6 +25,7 @@ import { Router } from '@angular/router';
 import { RegisterFormData } from 'src/app/pages/register/register.component';
 import { userProfile } from '../../userProfile';
 import { State } from '../../Interfaces';
+import { calculateAge } from '../../functions';
 
 @Injectable({
   providedIn: 'root',
@@ -77,6 +78,7 @@ export class HandleDBService {
           lastName,
           email,
           dob,
+          age: calculateAge(dob),
           termsAndConditions,
           id: userCredential.user.uid,
           ...userProfile,

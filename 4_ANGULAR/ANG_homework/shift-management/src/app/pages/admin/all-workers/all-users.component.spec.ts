@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddWorkerComponent } from './add-worker.component';
+import { AllUsersComponent } from './all-users.component';
 
-describe('AddWorkerComponent', () => {
-  let component: AddWorkerComponent;
-  let fixture: ComponentFixture<AddWorkerComponent>;
+describe('AllUsersComponent', () => {
+  let component: AllUsersComponent;
+  let fixture: ComponentFixture<AllUsersComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AddWorkerComponent]
+      declarations: [AllUsersComponent],
     });
-    fixture = TestBed.createComponent(AddWorkerComponent);
+    fixture = TestBed.createComponent(AllUsersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

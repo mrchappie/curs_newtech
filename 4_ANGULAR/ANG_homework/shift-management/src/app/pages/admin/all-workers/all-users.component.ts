@@ -1,44 +1,41 @@
-import { Component } from '@angular/core';
-import { State, UserSettings } from 'src/app/utils/Interfaces';
-import { Filter, orderBy, sorterBy } from '../../my-shifts/formData';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { PipeFilter, State, UserSettings } from 'src/app/utils/Interfaces';
 import { Subscription } from 'rxjs';
 import { StateService } from 'src/app/utils/services/state/state.service';
 import { HandleDBService } from 'src/app/utils/services/handleDB/handle-db.service';
 
 @Component({
-  selector: 'app-all-workers',
-  templateUrl: './all-workers.component.html',
-  styleUrls: ['./all-workers.component.scss'],
+  selector: 'app-all-users',
+  templateUrl: './all-users.component.html',
+  styleUrls: ['./all-users.component.scss'],
 })
-export class AllWorkersComponent {
+export class AllUsersComponent implements OnInit, OnDestroy {
   // state
   currentState!: State;
-
-  // html data
-  sorterBy: Filter[] = sorterBy;
-  orderBy: Filter[] = orderBy;
+  filters: PipeFilter = {
+    nameQuery: '',
+    startDateQuery: '',
+    endDateQuery: '',
+    sortByQuery: '',
+    orderByQuery: '',
+  };
 
   // component data
   allUsers: UserSettings[] = [];
-  shiftsCount: number = 0;
-
-  // filters queries
-  shiftNameQuery: string = '';
-  shiftStartDateQuery: string = '';
-  shiftEndDateQuery: string = '';
-
-  sorterByQuery: string = '';
-  orderByQuery: string = '';
 
   private stateSubscription: Subscription | undefined;
 
   constructor(private state: StateService, private DB: HandleDBService) {}
 
   ngOnInit(): void {
-    this.currentState = this.state.getState();
     this.getAllUsers();
+    this.currentState = this.state.getState();
+    this.filters = this.currentState.searchForm;
+
     this.stateSubscription = this.state.stateChanged.subscribe((newState) => {
       this.currentState = newState;
+      this.filters = this.currentState.searchForm;
+      console.log(this.filters);
     });
   }
 
@@ -52,6 +49,4 @@ export class AllWorkersComponent {
     this.allUsers = await this.DB.getFirestoreDocs('shiftAppUsers', []);
     console.log(this.allUsers);
   }
-
-  resetFilters() {}
 }

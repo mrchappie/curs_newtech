@@ -18,6 +18,13 @@ export class StateService {
     activeComponent: 'Dashboard',
     shiftToEdit: undefined,
     shiftsCount: 0,
+    searchForm: {
+      nameQuery: '',
+      startDateQuery: '',
+      endDateQuery: '',
+      sortByQuery: '',
+      orderByQuery: '',
+    },
   };
 
   private stateSubject = new Subject<State>();
@@ -43,4 +50,12 @@ export const initialState = {
   isAdmin: false,
   activeComponent: 'Dashboard',
   shiftToEdit: undefined,
+  shiftsCount: 0,
+  searchForm: {
+    nameQuery: '',
+    startDateQuery: '',
+    endDateQuery: '',
+    sortByQuery: '',
+    orderByQuery: '',
+  },
 };

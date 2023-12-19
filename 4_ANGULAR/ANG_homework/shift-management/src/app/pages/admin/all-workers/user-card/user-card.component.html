@@ -15,19 +15,25 @@
       {{ userInfo?.firstName }} {{ userInfo?.lastName }}
     </div>
     <span class="font-semibold italic text-sm text-black/50">{{
-      userInfo?.userName ? userInfo?.userName : "Undefined"
+      userInfo?.email ? userInfo?.email : "Undefined"
     }}</span>
   </div>
   <div class="center flex-col gap-2">
     <div class="center flex-col gap-2 text-sm">
-      <span>{{ userInfo?.dob }}</span
+      <span>{{ userInfo?.dob ? userInfo?.dob : "Undefined" }}</span
       ><span class="italic">{{
         userInfo?.phoneNumber ? userInfo?.phoneNumber : "Undefined"
       }}</span>
     </div>
-    <div>
-      <button class="bg-baseColor text-white font-bold px-6 py-2 rounded-md">
+    <div class="flex flex-col gap-2">
+      <button
+        [routerLink]="['/admin', 'edit-user', userInfo?.id]"
+        class="bg-baseColor text-white font-bold px-6 py-2 rounded-md"
+      >
         Edit User
+      </button>
+      <button class="bg-red-500 text-white font-bold px-6 py-2 rounded-md">
+        Remove User
       </button>
     </div>
   </div>

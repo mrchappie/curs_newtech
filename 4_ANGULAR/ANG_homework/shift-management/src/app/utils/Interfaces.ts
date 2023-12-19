@@ -10,6 +10,7 @@ export interface State {
   activeComponent: string;
   shiftToEdit: Shift | undefined;
   shiftsCount: number;
+  searchForm: PipeFilter;
 }
 
 export interface UserSettings {
@@ -42,4 +43,12 @@ export interface Shift {
     firstName: string;
     lastName: string;
   };
+}
+
+export interface PipeFilter {
+  nameQuery: string;
+  startDateQuery: string;
+  endDateQuery: string;
+  sortByQuery: string;
+  orderByQuery: string;
 }

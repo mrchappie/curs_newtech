@@ -1,10 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HandleDBService } from 'src/app/utils/services/handleDB/handle-db.service';
 import { StateService } from 'src/app/utils/services/state/state.service';
-import { Filter, orderBy, sorterBy, tableHeadInfo } from './formData';
-import { Router } from '@angular/router';
-import { Shift, State } from 'src/app/utils/Interfaces';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PipeFilter, Shift, State } from 'src/app/utils/Interfaces';
 
 @Component({
   selector: 'app-my-shifts',
@@ -12,23 +11,21 @@ import { Shift, State } from 'src/app/utils/Interfaces';
   styleUrls: ['./my-shifts.component.scss'],
 })
 export class MyShiftsComponent implements OnInit, OnDestroy {
-  // html data
-  sorterBy: Filter[] = sorterBy;
-  orderBy: Filter[] = orderBy;
-  tableHeadInfo: string[] = tableHeadInfo;
+  @Input() userIDFromURL: string = '';
+
+  // filters
+  filters: PipeFilter = {
+    nameQuery: '',
+    startDateQuery: '',
+    endDateQuery: '',
+    sortByQuery: '',
+    orderByQuery: '',
+  };
 
   // component data
   currentState!: State;
   myShifts: Shift[] = [];
   shiftsCount: number = 0;
-
-  // filters queries
-  shiftNameQuery: string = '';
-  shiftStartDateQuery: string = '';
-  shiftEndDateQuery: string = '';
-
-  sorterByQuery: string = '';
-  orderByQuery: string = '';
 
   // prettier-ignore
   private months: string[]=["january","february","march","april","may","june","july",
@@ -47,11 +44,17 @@ export class MyShiftsComponent implements OnInit, OnDestroy {
     this.shiftsCount = this.currentState.shiftsCount;
 
     this.stateSubscription = this.state.stateChanged.subscribe((newState) => {
-      this.shiftsCount = this.currentState.shiftsCount;
       this.currentState = newState;
+      this.shiftsCount = this.currentState.shiftsCount;
+      this.filters = this.currentState.searchForm;
     });
 
-    this.getShifts();
+    if (!this.userIDFromURL) {
+      const userID = this.currentState.currentLoggedFireUser!.id;
+      this.getShifts(userID);
+    } else {
+      this.getShifts(this.userIDFromURL);
+    }
   }
 
   ngOnDestroy(): void {
@@ -60,8 +63,7 @@ export class MyShiftsComponent implements OnInit, OnDestroy {
     }
   }
 
-  async getShifts() {
-    const userID = this.currentState.currentLoggedFireUser!.id;
+  async getShifts(userID: string) {
     const currentYear = new Date().getFullYear().toString();
     const currentMonth = this.months[new Date().getMonth()];
 
@@ -100,14 +102,5 @@ export class MyShiftsComponent implements OnInit, OnDestroy {
     ]);
 
     this.myShifts = this.myShifts.filter((shift) => shift.shiftID != shiftID);
-  }
-
-  resetFilters() {
-    this.shiftNameQuery = '';
-    this.shiftStartDateQuery = '';
-    this.shiftEndDateQuery = '';
-
-    this.sorterByQuery = '';
-    this.orderByQuery = '';
   }
 }

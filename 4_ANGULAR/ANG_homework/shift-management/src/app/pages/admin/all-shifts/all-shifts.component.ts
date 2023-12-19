@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Shift, State } from 'src/app/utils/Interfaces';
+import { PipeFilter, Shift, State } from 'src/app/utils/Interfaces';
 import { HandleDBService } from 'src/app/utils/services/handleDB/handle-db.service';
 import { StateService } from 'src/app/utils/services/state/state.service';
 import {
@@ -16,25 +16,20 @@ import {
   styleUrls: ['./all-shifts.component.scss'],
 })
 export class AllShiftsComponent {
+  filters: PipeFilter = {
+    nameQuery: '',
+    startDateQuery: '',
+    endDateQuery: '',
+    sortByQuery: '',
+    orderByQuery: '',
+  };
+
   // state
   currentState!: State;
-
-  // html data
-  sorterBy: Filter[] = sorterBy;
-  orderBy: Filter[] = orderBy;
-  tableHeadInfo: string[] = tableHeadInfo;
 
   // component data
   allShifts: Shift[] = [];
   shiftsCount: number = 0;
-
-  // filters queries
-  shiftNameQuery: string = '';
-  shiftStartDateQuery: string = '';
-  shiftEndDateQuery: string = '';
-
-  sorterByQuery: string = '';
-  orderByQuery: string = '';
 
   private stateSubscription: Subscription | undefined;
 
@@ -43,8 +38,10 @@ export class AllShiftsComponent {
   ngOnInit(): void {
     this.currentState = this.state.getState();
     this.getAllShifts();
+
     this.stateSubscription = this.state.stateChanged.subscribe((newState) => {
       this.currentState = newState;
+      this.filters = this.currentState.searchForm;
     });
   }
 

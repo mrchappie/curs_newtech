@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AddWorkerComponent } from './pages/admin/add-worker/add-worker.component';
-import { AllWorkersComponent } from './pages/admin/all-workers/all-workers.component';
+import { AddUserComponent } from './pages/admin/add-user/add-user.component';
+import { AllUsersComponent } from './pages/admin/all-workers/all-users.component';
 import { AllShiftsComponent } from './pages/admin/all-shifts/all-shifts.component';
-import { SettingsComponent } from './pages/settings/settings.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { HandleShiftsComponent } from './pages/handle-shifts/handle-shifts.component';
 import { MyShiftsComponent } from './pages/my-shifts/my-shifts.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
@@ -28,6 +28,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { ShiftCardComponent } from './components/shift-card/shift-card.component';
 import { UserCardComponent } from './pages/admin/all-workers/user-card/user-card.component';
+import { SearchComponent } from './components/search/search.component';
+import { SettingsComponent } from './pages/admin/settings/settings.component';
+import { EditUserComponent } from './pages/admin/edit-user/edit-user.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { AddWorkplaceComponent } from './components/add-workplace/add-workplace.component';
 
 @NgModule({
   declarations: [
@@ -38,10 +43,10 @@ import { UserCardComponent } from './pages/admin/all-workers/user-card/user-card
     HomepageComponent,
     MyShiftsComponent,
     HandleShiftsComponent,
-    SettingsComponent,
+    ProfileComponent,
     AllShiftsComponent,
-    AllWorkersComponent,
-    AddWorkerComponent,
+    AllUsersComponent,
+    AddUserComponent,
     NavbarComponent,
     FooterComponent,
     ButtonComponent,
@@ -51,6 +56,11 @@ import { UserCardComponent } from './pages/admin/all-workers/user-card/user-card
     DashboardComponent,
     ShiftCardComponent,
     UserCardComponent,
+    SearchComponent,
+    SettingsComponent,
+    EditUserComponent,
+    UserProfileComponent,
+    AddWorkplaceComponent,
   ],
   imports: [
     BrowserModule,

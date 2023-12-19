@@ -1,5 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SettingsForm, settingsFormData } from './formData';
+import {
+  SettingsForm,
+  settingsFormData,
+} from '../../components/user-profile/formData';
 import { StateService } from 'src/app/utils/services/state/state.service';
 import { HandleDBService } from 'src/app/utils/services/handleDB/handle-db.service';
 import { Subscription } from 'rxjs';
@@ -8,14 +11,13 @@ import { State, UserSettings } from 'src/app/utils/Interfaces';
 import { arrayRemove, arrayUnion } from '@angular/fire/firestore';
 
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss'],
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss'],
 })
-export class SettingsComponent implements OnInit, OnDestroy {
+export class ProfileComponent implements OnInit, OnDestroy {
   currentState!: State;
   settingsFormInputs: SettingsForm[] = settingsFormData;
-  isAdmin: boolean | undefined = false;
   userSettings!: UserSettings;
   settingsForm!: FormGroup;
 
@@ -38,13 +40,10 @@ export class SettingsComponent implements OnInit, OnDestroy {
     });
 
     this.currentState = this.state.getState();
-    this.isAdmin = this.currentState.currentLoggedFireUser?.adminPanel.isAdmin;
     this.updateState();
 
     this.stateSubscription = this.state.stateChanged.subscribe((newState) => {
       this.currentState = newState;
-      this.isAdmin =
-        this.currentState.currentLoggedFireUser!.adminPanel.isAdmin;
     });
   }
 
