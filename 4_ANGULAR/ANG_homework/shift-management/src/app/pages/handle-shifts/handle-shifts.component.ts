@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InputType, formData } from './formData';
 import { StateService } from 'src/app/utils/services/state/state.service';
 import { HandleDBService } from 'src/app/utils/services/handleDB/handle-db.service';
@@ -44,6 +44,8 @@ export class HandleShiftsComponent implements OnInit {
       wagePerHour: ['20'],
       shiftRevenue: [''],
     });
+
+    console.log(this.shiftForm.value);
 
     this.calculateRevenue();
 

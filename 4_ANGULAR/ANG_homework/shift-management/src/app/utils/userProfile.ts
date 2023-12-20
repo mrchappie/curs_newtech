@@ -8,4 +8,10 @@ export const userProfile = {
   },
 
   userWorkplaces: [],
+  shiftsCount: {
+    shiftsLastWeek: 0,
+    shiftsThisWeek: 0,
+    shiftsNextWeek: 0,
+    totalShifts: 0,
+  },
 };

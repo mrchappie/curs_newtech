@@ -1,7 +1,7 @@
 <section class="shadow-all-sides rounded-md m-4 p-4 bg-white">
   <app-search [parent]="'shifts'"></app-search>
   <div class="w-full p-4">
-    <ul class="grid grid-cols-4 gap-4 w-full">
+    <ul #childCount class="custom-grid gap-4 w-full">
       <li
         *ngFor="
           let shift of myShifts

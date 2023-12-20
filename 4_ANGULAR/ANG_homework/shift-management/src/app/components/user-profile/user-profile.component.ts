@@ -38,7 +38,7 @@ export class UserProfileComponent {
       userName: [''],
       firstName: [''],
       lastName: [''],
-      email: [''],
+      email: [{ value: '', disabled: this.userIDFromURL ? false : true }],
       dob: [''],
       phoneNumber: [''],
     });

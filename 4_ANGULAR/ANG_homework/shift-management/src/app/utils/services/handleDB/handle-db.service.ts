@@ -26,6 +26,7 @@ import { RegisterFormData } from 'src/app/pages/register/register.component';
 import { userProfile } from '../../userProfile';
 import { State } from '../../Interfaces';
 import { calculateAge } from '../../functions';
+import { ToastService } from 'angular-toastify';
 
 @Injectable({
   providedIn: 'root',
@@ -36,7 +37,8 @@ export class HandleDBService {
   constructor(
     private auth: Auth,
     private state: StateService,
-    private firestore: Firestore
+    private firestore: Firestore,
+    private _toastService: ToastService
   ) {
     this.currentState = this.state.getState();
   }
@@ -136,9 +138,10 @@ export class HandleDBService {
         this.currentState.currentLoggedFireUser
       );
 
+      this._toastService.success('Login successfully!');
       return userCredential;
     } catch (error) {
-      console.log(error);
+      this._toastService.error('Error on login!');
     }
     return null;
   }

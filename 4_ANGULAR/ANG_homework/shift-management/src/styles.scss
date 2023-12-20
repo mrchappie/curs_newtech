@@ -10,21 +10,27 @@
 // body {
 //   overflow-x: hidden;
 // }
-.center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.center-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 
 :disabled {
   opacity: 0.5;
   filter: grayscale(1);
   cursor: not-allowed;
+}
+
+@layer components {
+  .center {
+    @apply flex items-center justify-center;
+  }
+
+  .center-col {
+    @apply flex flex-col items-center justify-center;
+  }
+
+  .custom-input {
+    @apply flex-1 p-3 outline-none;
+  }
+
+  .custom-label {
+    @apply flex w-full border-b-2 border-black/50;
+  }
 }

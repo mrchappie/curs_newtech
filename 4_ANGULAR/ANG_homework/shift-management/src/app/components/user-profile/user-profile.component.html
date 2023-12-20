@@ -2,16 +2,18 @@
   <form
     [formGroup]="userProfileForm"
     (ngSubmit)="onSubmit()"
-    class="flex-1 flex flex-col gap-3 w-[600px]"
+    class="flex-1 center-col gap-3 w-[600px]"
   >
-    <label *ngFor="let input of settingsFormInputs" class="flex">
-      <div class="flex-1">{{ input.name }}</div>
-      <input
-        formControlName="{{ input.formControl }}"
-        type="{{ input.type }}"
-        class="flex-2 border-2 border-black/50 w-[400px] p-2 rounded-[8px]"
-      />
-    </label>
+    <div *ngFor="let input of settingsFormInputs" class="center items-start">
+      <div class="py-4 w-[200px]">{{ input.name }}:</div>
+      <label class="custom-label">
+        <input
+          formControlName="{{ input.formControl }}"
+          type="{{ input.type }}"
+          class="custom-input w-[400px]"
+        />
+      </label>
+    </div>
     <button type="submit" class="p-2 bg-baseColor text-white">
       Update information
     </button>
@@ -22,9 +24,17 @@
       <input type="file"
     /></label>
     <div
-      class="rounded-[50%] overflow-hidden border-[3px] border-baseColor shadow-2xl"
+      class="w-[250px] aspect-square rounded-[50%] overflow-hidden border-[3px] border-baseColor shadow-2xl"
     >
-      <img src="https://picsum.photos/250" alt="" />
+      <img
+        [src]="
+          currentState.currentLoggedFireUser!.profileImage
+            ? currentState.currentLoggedFireUser!.profileImage
+            : 'https://picsum.photos/250'
+        "
+        alt=""
+        class="object-cover"
+      />
     </div>
   </div>
 </div>

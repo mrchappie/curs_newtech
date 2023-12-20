@@ -34,6 +34,10 @@ import { EditUserComponent } from './pages/admin/edit-user/edit-user.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AddWorkplaceComponent } from './components/add-workplace/add-workplace.component';
 
+import { ToastService, AngularToastifyModule } from 'angular-toastify';
+import { NgChartsModule } from 'ng2-charts';
+import { ChartComponent } from './components/chart/chart.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +65,7 @@ import { AddWorkplaceComponent } from './components/add-workplace/add-workplace.
     EditUserComponent,
     UserProfileComponent,
     AddWorkplaceComponent,
+    ChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,8 +86,10 @@ import { AddWorkplaceComponent } from './components/add-workplace/add-workplace.
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule,
+    AngularToastifyModule,
+    NgChartsModule,
   ],
-  providers: [],
+  providers: [ToastService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

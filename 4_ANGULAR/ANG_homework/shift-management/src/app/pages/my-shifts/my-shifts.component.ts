@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HandleDBService } from 'src/app/utils/services/handleDB/handle-db.service';
 import { StateService } from 'src/app/utils/services/state/state.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { PipeFilter, Shift, State } from 'src/app/utils/Interfaces';
 
 @Component({

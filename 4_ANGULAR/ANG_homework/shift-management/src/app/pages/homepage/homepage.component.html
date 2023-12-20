@@ -1,6 +1,14 @@
-<div class="grid grid-cols-2 gap-4 w-full h-full">
-  <div class="bg-green-200 col-span-1 h-full">best month</div>
-  <div class="bg-green-200 col-span-1 h-full">best shift by revenue</div>
-  <div class="bg-green-200 col-span-1 h-full">best workplace by revenue</div>
-  <div class="bg-green-200 col-span-1 h-full">last month</div>
+<div class="grid grid-cols-4 gap-4 p-4 w-full h-full">
+  <app-chart
+    [pieChartLabels]="pieChartLabels"
+    [pieChartDatasets]="pieChartDatasets"
+    [chartName]="'Workplaces by Revenue'"
+    class="col-span-2"
+  ></app-chart>
+  <app-chart
+    [pieChartLabels]="pieChartLabels"
+    [pieChartDatasets]="pieChartDatasets"
+    [chartName]="'Shifts by Revenue'"
+    class="col-span-2"
+  ></app-chart>
 </div>

@@ -6,7 +6,6 @@ import {
 import { StateService } from 'src/app/utils/services/state/state.service';
 import { HandleDBService } from 'src/app/utils/services/handleDB/handle-db.service';
 import { Subscription } from 'rxjs';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { State, UserSettings } from 'src/app/utils/Interfaces';
 import { arrayRemove, arrayUnion } from '@angular/fire/firestore';
 
@@ -19,26 +18,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
   currentState!: State;
   settingsFormInputs: SettingsForm[] = settingsFormData;
   userSettings!: UserSettings;
-  settingsForm!: FormGroup;
 
   private stateSubscription: Subscription | undefined;
 
-  constructor(
-    private state: StateService,
-    private DB: HandleDBService,
-    private fb: FormBuilder
-  ) {}
+  constructor(private state: StateService, private DB: HandleDBService) {}
 
   ngOnInit(): void {
-    this.settingsForm = this.fb.group({
-      userName: [''],
-      firstName: [''],
-      lastName: [''],
-      email: [''],
-      dob: [''],
-      phoneNumber: [''],
-    });
-
     this.currentState = this.state.getState();
     this.updateState();
 
@@ -61,19 +46,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.state.setState({
       currentLoggedFireUser: this.userSettings,
     });
-
-    if (this.userSettings) {
-      this.settingsForm.patchValue(this.userSettings);
-    }
-  }
-
-  async onSubmit() {
-    await this.DB.updateFirestoreDoc(
-      'shiftAppUsers',
-      [this.currentState.currentLoggedFireUser!.id],
-      this.settingsForm.value
-    );
-    this.updateState();
   }
 
   addWorkplace(workplace: string) {
